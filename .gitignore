@@ -1,0 +1,15 @@
+# Python virtual environment — never commit this, everyone builds their own
+venv/
+__pycache__/
+*.pyc
+
+# Scraper's local cache (downloaded Parcel.csv, extracted DBFs, etc.) —
+# large, regenerated fresh on every run, never needs to be committed
+scraper/.cache/
+
+# Local run logs from Tee-Object
+run_log*.txt
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db

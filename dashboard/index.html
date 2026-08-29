@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Franklin County Motivated Seller Leads</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 2rem; background: #0b0d12; color: #e6e8ec; }
+  h1 { font-size: 1.4rem; margin-bottom: .25rem; }
+  .meta { color: #9aa4b2; font-size: .85rem; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #22262e; vertical-align: top; }
+  th { position: sticky; top: 0; background: #14171d; cursor: pointer; }
+  tr:hover { background: #14171d; }
+  .score { font-weight: 700; padding: .15rem .5rem; border-radius: .4rem; display: inline-block; min-width: 2.2rem; text-align: center; }
+  .score-hi { background: #1f5c34; color: #b7f5c8; }
+  .score-mid { background: #6b5a1f; color: #f5e6b7; }
+  .score-lo { background: #3a2a2a; color: #f5c1b7; }
+  .flag { display: inline-block; background: #22262e; border-radius: .35rem; padding: .1rem .4rem; margin: 0 .2rem .2rem 0; font-size: .72rem; color: #cfd6e0; }
+  a { color: #8ab4f8; }
+  #empty { color: #9aa4b2; padding: 2rem 0; }
+  input#search { background: #14171d; border: 1px solid #22262e; color: #e6e8ec; padding: .5rem .7rem; border-radius: .4rem; width: 100%; max-width: 24rem; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+  <h1>Franklin County — Motivated Seller Leads</h1>
+  <div class="meta" id="meta">Loading records.json…</div>
+  <input id="search" type="search" placeholder="Filter by owner, address, or doc #">
+  <div id="table-wrap"></div>
+  <div id="empty" style="display:none;">No records yet — the nightly scrape hasn't run, or found nothing in the lookback window.</div>
+
+<script>
+async function load() {
+  const res = await fetch('records.json', { cache: 'no-store' });
+  const data = await res.json();
+  const meta = document.getElementById('meta');
+  const wrap = document.getElementById('table-wrap');
+  const empty = document.getElementById('empty');
+
+  meta.textContent = data.fetched_at
+    ? `Fetched ${data.fetched_at} · ${data.total} leads (${data.with_address} with address) · window ${data.date_range.from} → ${data.date_range.to}`
+    : 'No fetch has run yet.';
+
+  if (!data.records || data.records.length === 0) {
+    empty.style.display = 'block';
+    return;
+  }
+
+  const rows = data.records;
+
+  function scoreClass(s) {
+    if (s >= 70) return 'score-hi';
+    if (s >= 45) return 'score-mid';
+    return 'score-lo';
+  }
+
+  function render(list) {
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <thead><tr>
+        <th>Score</th><th>Owner</th><th>Doc Type</th><th>Filed</th>
+        <th>Amount</th><th>Property Address</th><th>Mailing Address</th>
+        <th>Flags</th><th>Link</th>
+      </tr></thead>`;
+    const tbody = document.createElement('tbody');
+    for (const r of list) {
+      const tr = document.createElement('tr');
+      const amount = r.amount != null ? '$' + Number(r.amount).toLocaleString() : '—';
+      const flags = (r.flags || []).map(f => `<span class="flag">${f}</span>`).join('');
+      tr.innerHTML = `
+        <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
+        <td>${r.owner || ''}</td>
+        <td>${r.doc_type || ''}</td>
+        <td>${r.filed || ''}</td>
+        <td>${amount}</td>
+        <td>${r.prop_address || ''} ${r.prop_city || ''}</td>
+        <td>${r.mail_address || ''} ${r.mail_city || ''} ${r.mail_state || ''} ${r.mail_zip || ''}</td>
+        <td>${flags}</td>
+        <td>${r.clerk_url ? `<a href="${r.clerk_url}" target="_blank" rel="noopener">view</a>` : ''}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    wrap.innerHTML = '';
+    wrap.appendChild(table);
+  }
+
+  render(rows);
+
+  document.getElementById('search').addEventListener('input', (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    if (!q) return render(rows);
+    render(rows.filter(r =>
+      (r.owner || '').toLowerCase().includes(q) ||
+      (r.prop_address || '').toLowerCase().includes(q) ||
+      (r.doc_num || '').toLowerCase().includes(q)
+    ));
+  });
+}
+
+load().catch(err => {
+  document.getElementById('meta').textContent = 'Failed to load records.json: ' + err;
+});
+</script>
+</body>
+</html>
