@@ -656,7 +656,14 @@ async def scrape_efc_filings(known_doc_nums: Optional[set[str]] = None) -> list[
     filings: list[RawFiling] = []
 
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
+        browser = await pw.chromium.launch(
+            headless=True,
+            # These matter specifically in containerized CI environments
+            # (like GitHub Actions runners) — without them, Chromium can
+            # silently hang rather than error, which is much harder to
+            # diagnose than an outright crash. Harmless locally too.
+            args=["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"],
+        )
         context = await browser.new_context(user_agent=USER_AGENT, accept_downloads=True)
         page = await context.new_page()
 
@@ -748,7 +755,7 @@ async def scrape_efc_filings(known_doc_nums: Optional[set[str]] = None) -> list[
                 )
                 semaphore = asyncio.Semaphore(DOCUMENT_ENRICHMENT_CONCURRENCY)
                 filings = await asyncio.gather(
-                    *[enrich_filing_with_documents(context, f, semaphore) for f in filings]
+                    *[enrich_filing_with_documents_bounded(context, f, semaphore) for f in filings]
                 )
                 filings = filter_to_confirmed_foreclosures(filings)
                 with_parcel_num = sum(1 for f in filings if f.parcel_number)
@@ -851,6 +858,36 @@ async def download_case_documents_zip(context, case_url: str) -> Optional[bytes]
         case_url, DOCUMENT_DOWNLOAD_RETRIES, last_exc,
     )
     return None
+
+
+PER_CASE_HARD_TIMEOUT_SECONDS = 240  # absolute ceiling per case, regardless of cause
+
+
+async def enrich_filing_with_documents_bounded(
+    context, filing: RawFiling, semaphore: asyncio.Semaphore
+) -> RawFiling:
+    """Wraps enrich_filing_with_documents with a hard, unconditional
+    timeout. The download step already has its own retry/timeout logic,
+    but that only helps if Playwright's own timeout mechanism actually
+    fires — in some environments (confirmed: GitHub Actions' containerized
+    runners) something in the underlying browser automation can hang
+    indefinitely instead of erroring out cleanly. Since concurrency is
+    limited by a semaphore, even one such stuck case can permanently
+    occupy a concurrency slot and eventually stall the entire batch —
+    this is a last-resort safety net that guarantees forward progress no
+    matter what's wrong underneath."""
+    try:
+        return await asyncio.wait_for(
+            enrich_filing_with_documents(context, filing, semaphore),
+            timeout=PER_CASE_HARD_TIMEOUT_SECONDS,
+        )
+    except asyncio.TimeoutError:
+        log.error(
+            "Case %s exceeded the hard %ds per-case ceiling (likely stuck at a lower level "
+            "than our own retry logic) — skipping it and moving on",
+            filing.doc_num, PER_CASE_HARD_TIMEOUT_SECONDS,
+        )
+        return filing
 
 
 async def enrich_filing_with_documents(
