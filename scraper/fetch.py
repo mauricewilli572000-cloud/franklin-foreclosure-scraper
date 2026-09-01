@@ -802,14 +802,27 @@ async def _download_case_documents_zip_once(context, case_url: str, timeout_ms: 
     waiting for a download event that was never going to arrive until
     the full timeout expired. Checking the response status lets a
     genuinely broken case fail immediately instead of waiting it out.
+
+    Every major step is logged at DEBUG-visible-as-INFO level right now
+    on purpose — a prior run showed every single case hanging silently
+    all the way to the hard outer ceiling with zero per-attempt warnings
+    logged, meaning the hang is happening somewhere Playwright's own
+    timeouts aren't catching. This instrumentation exists to find out
+    exactly which line that is; strip it back down once that's known.
     """
+    case_id = case_url.rstrip("/").rsplit("/", 2)[-2] if "/" in case_url else case_url
+    log.info("[%s] opening new page...", case_id)
     page = await context.new_page()
+    log.info("[%s] new page opened, starting goto+expect_download...", case_id)
     try:
         async with page.expect_download(timeout=timeout_ms) as download_info:
             response = None
             try:
+                log.info("[%s] calling page.goto...", case_id)
                 response = await page.goto(case_url, timeout=min(timeout_ms, 30000))
+                log.info("[%s] page.goto returned normally, status=%s", case_id, getattr(response, "status", None))
             except Exception as nav_exc:  # noqa: BLE001
+                log.info("[%s] page.goto raised: %s", case_id, nav_exc)
                 if "download is starting" not in str(nav_exc).lower():
                     raise
                 # else: expected — the download event below still fires.
@@ -819,10 +832,13 @@ async def _download_case_documents_zip_once(context, case_url: str, timeout_ms: 
                     f"Server returned HTTP {response.status} instead of a document download"
                 )
 
+            log.info("[%s] waiting on download_info.value...", case_id)
         download = await download_info.value
+        log.info("[%s] download event resolved, reading file path...", case_id)
         tmp_path = await download.path()
         if tmp_path is None:
             raise RuntimeError("Download did not complete (no file path returned)")
+        log.info("[%s] download complete: %s", case_id, tmp_path)
         return Path(tmp_path).read_bytes()
     finally:
         await page.close()
