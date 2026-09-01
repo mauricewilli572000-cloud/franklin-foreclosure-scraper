@@ -919,17 +919,21 @@ async def enrich_filing_with_documents(
             zip_bytes = await download_case_documents_zip(context, filing.clerk_url)
             if not zip_bytes:
                 return filing
+            log.info("[%s] zip downloaded (%d bytes), extracting PDFs...", filing.doc_num, len(zip_bytes))
 
             pdfs = doc_parser.extract_pdfs_from_zip(zip_bytes)
             if not pdfs:
                 log.warning("No PDFs found in case bundle for %s", filing.doc_num)
                 return filing
+            log.info("[%s] found %d PDF(s) in bundle, extracting text...", filing.doc_num, len(pdfs))
 
             combined_text_parts = []
             for name, pdf_bytes in pdfs:
                 # pdfplumber/pytesseract are CPU-bound and blocking —
                 # run them off the event loop.
+                log.info("[%s] extracting text from %s (%d bytes)...", filing.doc_num, name, len(pdf_bytes))
                 text = await asyncio.to_thread(doc_parser.extract_text_hybrid, pdf_bytes, name)
+                log.info("[%s] done with %s (%d chars extracted)", filing.doc_num, name, len(text or ""))
                 if text:
                     combined_text_parts.append(text)
             combined_text = "\n\n".join(combined_text_parts)

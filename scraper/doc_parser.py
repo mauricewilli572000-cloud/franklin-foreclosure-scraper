@@ -73,6 +73,9 @@ def extract_pdfs_from_zip(zip_bytes: bytes) -> list[tuple[str, bytes]]:
     return pdfs
 
 
+OCR_TIMEOUT_SECONDS = 25  # kills the underlying tesseract subprocess if it hangs
+
+
 def _ocr_page(pdf_bytes: bytes, page_index: int, filename: str = "") -> str:
     """Rasterize one page with PyMuPDF and OCR it with Tesseract."""
     if fitz is None:
@@ -91,10 +94,20 @@ def _ocr_page(pdf_bytes: bytes, page_index: int, filename: str = "") -> str:
         zoom = OCR_DPI / 72
         pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom))
         img = Image.open(io.BytesIO(pix.tobytes("png")))
-        result = pytesseract.image_to_string(img)
+        # timeout=... is essential, not optional: asyncio-level cancellation
+        # (used elsewhere as a safety net) cannot forcibly kill a stuck OS
+        # thread — if Tesseract's own subprocess hangs, only Tesseract's own
+        # timeout can actually terminate it. Without this, one hung page can
+        # permanently occupy a worker thread and eventually starve every
+        # other case's processing (confirmed real failure mode in CI).
+        result = pytesseract.image_to_string(img, timeout=OCR_TIMEOUT_SECONDS)
         if not result.strip():
             log.warning("OCR produced no text for %s page %d (image may be blank or unreadable)", filename, page_index)
         return result
+    except RuntimeError as exc:
+        # pytesseract raises RuntimeError specifically for its own timeout
+        log.warning("OCR timed out (>%ds) on %s page %d: %s", OCR_TIMEOUT_SECONDS, filename, page_index, exc)
+        return ""
     except Exception as exc:  # noqa: BLE001
         log.warning("OCR failed on %s page %d: %s", filename, page_index, exc)
         return ""
