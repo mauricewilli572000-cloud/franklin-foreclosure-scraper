@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-09-01T07:09:22+00:00",
+  "fetched_at": "2026-09-01T20:47:40+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 0,
-  "total": 28,
-  "with_address": 10,
+  "new_this_run": 4,
+  "total": 32,
+  "with_address": 13,
   "records": [
     {
       "doc_num": "28237574",
@@ -302,6 +302,87 @@
       "score": 50,
       "interest_rate": null,
       "case_number": "28235474",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28251686",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-01",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "TIA BLANKENSHIP",
+      "grantee": "FRANKLIN COUNTY TREASURER CHERYL BROOKS",
+      "amount": null,
+      "legal": "",
+      "prop_address": "358 S GLENWOOD AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43223",
+      "mail_address": "1300 BROWN RD",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43223-3011",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28251686/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28251686",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28250224",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-01",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "DAJON SWEENEY",
+      "grantee": "ROCKET MORTGAGE LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "2912 OLIVETTE RD",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43232",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28250224/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28250224",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28249223",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-01",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "CASSAUNDRA GROVES",
+      "grantee": "US BANK NATIONAL ASSOCIATION",
+      "amount": null,
+      "legal": "",
+      "prop_address": "5281 COPPERTREE LN",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43232",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28249223/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28249223",
       "loan_type": ""
     },
     {
@@ -761,6 +842,33 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28235477",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28250267",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-01",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "AARON J RAVER",
+      "grantee": "WELLS FARGO BANK NA",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28250267/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28250267",
       "loan_type": ""
     }
   ]
