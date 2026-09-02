@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-09-01T20:47:40+00:00",
+  "fetched_at": "2026-09-02T07:10:36+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 4,
-  "total": 32,
-  "with_address": 13,
+  "new_this_run": 1,
+  "total": 33,
+  "with_address": 14,
   "records": [
     {
       "doc_num": "28237574",
@@ -383,6 +383,33 @@
       "score": 50,
       "interest_rate": null,
       "case_number": "28249223",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28251956",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-09-01",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "Plaintiff vs. Ebony Batchman",
+      "grantee": "JPMorgan Chase Bank, National",
+      "amount": 39939.33,
+      "legal": "",
+      "prop_address": "985 WILSON AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43206",
+      "mail_address": "985 WILSON AVE",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43206-1660",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28251956/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "500336",
       "loan_type": ""
     },
     {
