@@ -40,6 +40,32 @@ jobs:
       - name: Install Tesseract OCR
         run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
 
+      - name: Diagnose Tesseract (sanity check before the full run)
+        run: |
+          echo "--- tesseract --version ---"
+          tesseract --version
+          echo "--- tessdata location ---"
+          find / -iname "eng.traineddata" 2>/dev/null || echo "eng.traineddata NOT FOUND anywhere on disk"
+          echo "--- TESSDATA_PREFIX env var ---"
+          echo "TESSDATA_PREFIX=$TESSDATA_PREFIX"
+          echo "--- standalone pytesseract test (generates its own test image) ---"
+          python - <<'EOF'
+          import time
+          from PIL import Image, ImageDraw
+          import pytesseract
+
+          img = Image.new("RGB", (400, 100), "white")
+          d = ImageDraw.Draw(img)
+          d.text((10, 10), "Hello 12345", fill="black")
+
+          start = time.time()
+          try:
+              text = pytesseract.image_to_string(img, timeout=20)
+              print(f"OCR SUCCEEDED in {time.time() - start:.1f}s. Result: {text!r}")
+          except Exception as exc:
+              print(f"OCR FAILED after {time.time() - start:.1f}s: {exc!r}")
+          EOF
+
       - name: Run scraper
         run: python scraper/fetch.py
         env:
