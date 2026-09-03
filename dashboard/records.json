@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-09-02T07:10:36+00:00",
+  "fetched_at": "2026-09-03T01:27:56+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 1,
-  "total": 33,
-  "with_address": 14,
+  "new_this_run": 5,
+  "total": 38,
+  "with_address": 17,
   "records": [
     {
       "doc_num": "28237574",
@@ -31,6 +31,34 @@
       "score": 60,
       "interest_rate": null,
       "case_number": "28237574",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28254198",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-02",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "ML OHIO PROPERTIES LLC",
+      "grantee": "WILMINGTON SAVINGS FUND S",
+      "amount": null,
+      "legal": "",
+      "prop_address": "1130 WILSON AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43206",
+      "mail_address": "1130 WILSON AVE",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43206-3145",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28254198/documents",
+      "flags": [
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": null,
+      "case_number": "28254198",
       "loan_type": ""
     },
     {
@@ -410,6 +438,60 @@
       "score": 50,
       "interest_rate": null,
       "case_number": "500336",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28255727",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-02",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "DARLENE AKINS",
+      "grantee": "SIWELL INC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "763 S EUREKA AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43204",
+      "mail_address": "901 CORPORATE CENTER DR",
+      "mail_city": "POMONA",
+      "mail_state": "CA",
+      "mail_zip": "91768-2642",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28255727/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28255727",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28253275",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-02",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "LORI BLASER",
+      "grantee": "FARM BUREAU BANK FSB",
+      "amount": null,
+      "legal": "",
+      "prop_address": "120 SUMMIT ST",
+      "prop_city": "WESTERVILLE",
+      "prop_state": "OH",
+      "prop_zip": "43081",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28253275/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28253275",
       "loan_type": ""
     },
     {
@@ -896,6 +978,60 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28250267",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28255580",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-02",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "BRIAN P BYORTH",
+      "grantee": "ROCKET MORTGAGE LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28255580/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28255580",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28255052",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-02",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "LAURA D CUTHBERT",
+      "grantee": "CARRINGTON MORTGAGE SERVICES LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28255052/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28255052",
       "loan_type": ""
     }
   ]
