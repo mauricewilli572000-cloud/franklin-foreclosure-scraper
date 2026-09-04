@@ -73,7 +73,7 @@ def extract_pdfs_from_zip(zip_bytes: bytes) -> list[tuple[str, bytes]]:
     return pdfs
 
 
-OCR_TIMEOUT_SECONDS = 25  # kills the underlying tesseract subprocess if it hangs
+OCR_TIMEOUT_SECONDS = 45  # kills the underlying tesseract subprocess if it hangs
 
 
 def _ocr_page(pdf_bytes: bytes, page_index: int, filename: str = "") -> str:

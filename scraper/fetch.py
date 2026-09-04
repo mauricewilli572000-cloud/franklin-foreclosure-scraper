@@ -50,6 +50,7 @@ import functools
 import io
 import json
 import logging
+import os
 import re
 import sys
 import time
@@ -159,7 +160,15 @@ CLERK_SELECTORS = {
 # How many cases to download+OCR concurrently. Each one opens its own
 # browser tab and can involve several seconds of OCR, so keep this modest
 # to avoid hammering the clerk portal or the CI runner's CPU.
-DOCUMENT_ENRICHMENT_CONCURRENCY = 3
+DOCUMENT_ENRICHMENT_CONCURRENCY = int(os.environ.get("DOCUMENT_ENRICHMENT_CONCURRENCY", "3"))
+# Confirmed via a standalone diagnostic on GitHub Actions: Tesseract
+# itself works fine and fast in isolation (0.1s on a trivial test) — the
+# earlier 100%-timeout failures were CPU starvation, not a broken
+# install. GitHub's standard runners have only 2 CPU cores; 3 concurrent
+# documents each doing PDF rendering + OCR simultaneously (on top of
+# Chromium) can turn a normally-instant OCR call into one that blows
+# past any reasonable timeout. The workflow sets this env var to "1" in
+# CI specifically, while local runs keep the faster default.
 DOCUMENT_DOWNLOAD_TIMEOUT_MS = 30_000
 
 logging.basicConfig(

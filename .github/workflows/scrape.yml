@@ -17,7 +17,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-22.04
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -70,6 +70,12 @@ jobs:
         run: python scraper/fetch.py
         env:
           PYTHONUNBUFFERED: "1"
+          # GitHub's standard runners have only 2 CPU cores — running
+          # documents concurrently here causes severe CPU contention
+          # during OCR (confirmed: Tesseract works fine in isolation but
+          # timed out 100% of the time under 3-way concurrency).
+          # Sequential processing is slower but reliable in CI.
+          DOCUMENT_ENRICHMENT_CONCURRENCY: "1"
 
       - name: Commit and push updated records
         run: |
