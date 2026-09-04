@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-09-03T07:12:01+00:00",
+  "fetched_at": "2026-09-04T07:13:33+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 0,
-  "total": 38,
-  "with_address": 17,
+  "new_this_run": 5,
+  "total": 43,
+  "with_address": 20,
   "records": [
     {
       "doc_num": "28237574",
@@ -59,6 +59,34 @@
       "score": 60,
       "interest_rate": null,
       "case_number": "28254198",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28256793",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-03",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "SWAPNAM ENTERPRISES LLC",
+      "grantee": "FRANKLIN COUNTY TREASURER CHERYL BROOKS",
+      "amount": null,
+      "legal": "",
+      "prop_address": "1653 - 1655 S FOURTH ST",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43207",
+      "mail_address": "6400 E BROAD ST STE 400",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43213-2979",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28256793/documents",
+      "flags": [
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": null,
+      "case_number": "28256793",
       "loan_type": ""
     },
     {
@@ -492,6 +520,60 @@
       "score": 50,
       "interest_rate": null,
       "case_number": "28253275",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28259173",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-03",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "HEATHER HALL",
+      "grantee": "FREEDOM MORTGAGE CORPORATION",
+      "amount": null,
+      "legal": "",
+      "prop_address": "1131 INSCO LOOP",
+      "prop_city": "BLACKLICK",
+      "prop_state": "OH",
+      "prop_zip": "43004",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28259173/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28259173",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28256713",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-03",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "LARRY D THOMPSON",
+      "grantee": "DEUTSCHE BANK NATIONAL TRUST COMPANY FOR",
+      "amount": null,
+      "legal": "",
+      "prop_address": "2141 GAYLORD PL",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43232",
+      "mail_address": "11804 VILLAGE WAY DR",
+      "mail_city": "PICKERINGTON",
+      "mail_state": "OH",
+      "mail_zip": "43147-8923",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28256713/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28256713",
       "loan_type": ""
     },
     {
@@ -1032,6 +1114,60 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28255052",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28259139",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-03",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "MICHAEL JAMES HAMMERS",
+      "grantee": "US BANK NATIONAL ASSOCIATION",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28259139/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28259139",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28258141",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-03",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "RYAN E BENTLEY",
+      "grantee": "THE HUNTINGTON NATIONAL BANK",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28258141/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28258141",
       "loan_type": ""
     }
   ]
