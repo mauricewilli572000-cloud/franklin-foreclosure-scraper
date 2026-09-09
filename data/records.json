@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-09-08T07:17:43+00:00",
+  "fetched_at": "2026-09-09T07:16:47+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 0,
-  "total": 48,
-  "with_address": 22,
+  "new_this_run": 3,
+  "total": 51,
+  "with_address": 25,
   "records": [
     {
       "doc_num": "28260884",
@@ -30,6 +30,60 @@
       "score": 65,
       "interest_rate": 7.5,
       "case_number": "28260884",
+      "loan_type": "FIXED RATE"
+    },
+    {
+      "doc_num": "28264688",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-09-08",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "vs. Nicholas Uriah Hoepker",
+      "grantee": "The Huntington National Bank",
+      "amount": 133121.73,
+      "legal": "ATTACHED HERETO AND MADE A PART HEREOF AS \u201cEXHIBIT A\u201d. APN #: 570-169176-00",
+      "prop_address": "2459 OPAL CT",
+      "prop_city": "GROVE CITY",
+      "prop_state": "OH",
+      "prop_zip": "43123",
+      "mail_address": "901 CORPORATE CENTER DR",
+      "mail_city": "POMONA",
+      "mail_state": "CA",
+      "mail_zip": "91768-2642",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28264688/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 65,
+      "interest_rate": null,
+      "case_number": "25MS000465",
+      "loan_type": "Adjustable Rate"
+    },
+    {
+      "doc_num": "28264487",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-09-08",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "s",
+      "grantee": "UNITED WHOLESALE MORTGAGE",
+      "amount": 191744.69,
+      "legal": "ISSUED BY STEWART TITLE GUARANTY COMPANY",
+      "prop_address": "2228 PINION PL",
+      "prop_city": "REYNOLDSBURG",
+      "prop_state": "OH",
+      "prop_zip": "43068",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28264487/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 65,
+      "interest_rate": null,
+      "case_number": "25MS-436",
       "loan_type": "FIXED RATE"
     },
     {
@@ -629,6 +683,33 @@
       "score": 50,
       "interest_rate": null,
       "case_number": "28256713",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28262464",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-08",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "ROHONDA BRYANT",
+      "grantee": "NEWREZ LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "1214 SNIPE VIEW LP EAST",
+      "prop_city": "BLACKLICK",
+      "prop_state": "OH",
+      "prop_zip": "43004",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28262464/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28262464",
       "loan_type": ""
     },
     {
