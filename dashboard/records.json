@@ -1,10 +1,38 @@
 {
-  "fetched_at": "2026-09-14T07:14:56+00:00",
+  "fetched_at": "2026-09-15T12:32:43+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 0,
-  "total": 69,
-  "with_address": 37,
+  "new_this_run": 3,
+  "total": 72,
+  "with_address": 40,
   "records": [
+    {
+      "doc_num": "28276330",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-09-14",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "Permanent Parcel No: 040-002022-00 -vs- Laura A Harper",
+      "grantee": "Rocket Mortgage, LLC",
+      "amount": 124589.47,
+      "legal": "",
+      "prop_address": "3010 VOELLER CR",
+      "prop_city": "GROVE CITY",
+      "prop_state": "OH",
+      "prop_zip": "43123",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28276330/documents",
+      "flags": [
+        "Tax lien",
+        "New this week"
+      ],
+      "score": 75,
+      "interest_rate": null,
+      "case_number": "26CV008576",
+      "loan_type": ""
+    },
     {
       "doc_num": "28260884",
       "doc_type": "COMPLAINT FOR FORECLOSURE",
@@ -84,6 +112,33 @@
       "score": 65,
       "interest_rate": null,
       "case_number": "25MS-436",
+      "loan_type": "FIXED RATE"
+    },
+    {
+      "doc_num": "28274034",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-09-11",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "s",
+      "grantee": "U.S. BANK NATIONAL ASSOCIATION",
+      "amount": 178278.5,
+      "legal": "File No,: Situated in the State of Ohio, County of Franklin and in the City of Columbus: Being Lot Number Thirty-One (31) Block No. Ten (10) of Henry V. Butler's High Ridge Extension Addition, as the same is numbered and delineated upon the recorded plat thereof, of record in Plat Book 18, page 44. Recorder's Office, Franklin County, Ohio",
+      "prop_address": "644 BUTLER AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43223",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28274034/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 65,
+      "interest_rate": null,
+      "case_number": "26CV008563",
       "loan_type": "FIXED RATE"
     },
     {
@@ -279,6 +334,34 @@
       "score": 60,
       "interest_rate": null,
       "case_number": "28273308",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28273410",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-11",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "TRST LLC",
+      "grantee": "WILMINGTON SAVINGS FUND SOCIETY FSB",
+      "amount": null,
+      "legal": "",
+      "prop_address": "1635 GREENVILLE RD",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43223",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28273410/documents",
+      "flags": [
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": null,
+      "case_number": "28273410",
       "loan_type": ""
     },
     {
