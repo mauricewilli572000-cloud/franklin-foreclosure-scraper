@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-09-27T12:45:59+00:00",
+  "fetched_at": "2026-09-28T14:58:35+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 1,
-  "total": 153,
-  "with_address": 73,
+  "new_this_run": 3,
+  "total": 156,
+  "with_address": 74,
   "records": [
     {
       "doc_num": "28276330",
@@ -60,6 +60,34 @@
       "interest_rate": null,
       "case_number": "25MS000465",
       "loan_type": "FHA"
+    },
+    {
+      "doc_num": "28310856",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-09-28",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "City of Reynoldsburg, Ohio c/o Regional Income Tax Agency",
+      "grantee": "CME Federal Credit Union",
+      "amount": 56628.73,
+      "legal": "Situated in the County of Franklin, State of Ohio and City of Columbus:",
+      "prop_address": "5038 CARBONDALE DR",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43232",
+      "mail_address": "5038 CARBONDALE DR",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43232-4559",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28310856/documents",
+      "flags": [
+        "Judgment lien",
+        "New this week"
+      ],
+      "score": 70,
+      "interest_rate": null,
+      "case_number": "28310856",
+      "loan_type": "Adjustable Rate"
     },
     {
       "doc_num": "28260884",
@@ -4149,6 +4177,60 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28307353",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28309996",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-28",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "IAN SCHMIDT",
+      "grantee": "CROSSCOUNTRY MORTGAGE LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28309996/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28309996",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28309642",
+      "doc_type": "Foreclosure",
+      "filed": "2026-09-26",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "KIMBERLY L JAMESON",
+      "grantee": "BLENDON CHASE CONDOMINIUM ASSOCIATION",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28309642/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28309642",
       "loan_type": ""
     }
   ]
