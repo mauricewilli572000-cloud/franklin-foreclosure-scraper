@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-04T13:06:27+00:00",
+  "fetched_at": "2026-10-05T15:31:46+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 2,
-  "total": 189,
-  "with_address": 88,
+  "new_this_run": 1,
+  "total": 190,
+  "with_address": 89,
   "records": [
     {
       "doc_num": "28320531",
@@ -174,6 +174,34 @@
       "score": 70,
       "interest_rate": null,
       "case_number": "26CV002847",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28325898",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-10-02",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "by virtue of a",
+      "grantee": "CARRINGTON MORTGAGE SERVICES, LLC",
+      "amount": 69939.36,
+      "legal": "",
+      "prop_address": "372 JANICREST PL",
+      "prop_city": "GALLOWAY",
+      "prop_state": "OH",
+      "prop_zip": "43119",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28325898/documents",
+      "flags": [
+        "Judgment lien",
+        "New this week"
+      ],
+      "score": 70,
+      "interest_rate": null,
+      "case_number": "26CV009266",
       "loan_type": ""
     },
     {
