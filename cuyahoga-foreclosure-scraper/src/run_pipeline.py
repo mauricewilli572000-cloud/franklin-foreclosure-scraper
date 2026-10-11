@@ -251,9 +251,9 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
 
     try:
         session = CuyahogaDocketSession()
-        session.load_search_page()
-        session.select_foreclosure_search()
-        html, _ = session.submit_foreclosure_search(date_from=date_from, date_to=date_to)
+        search_html = session.load_search_page()
+        type_select_html = session.select_foreclosure_search()
+        html, was_async = session.submit_foreclosure_search(date_from=date_from, date_to=date_to)
 
         from cuyahoga_clerk_search import parse_results_grid
         listings = parse_results_grid(html)
@@ -266,6 +266,14 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         )
         raise
     listings_found = len(listings)
+    search_debug_fields = dict(
+        search_page_html_length=len(search_html),
+        type_select_html_length=len(type_select_html),
+        submit_was_async=was_async,
+        submit_html_length=len(html),
+        submit_html_head=html[:1500],
+        current_url_after_submit=session.current_url,
+    )
 
     if limit:
         listings = listings[:limit]
@@ -296,12 +304,12 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         date_from=date_from,
         date_to=date_to,
         limit=limit,
-        search_page_title_hint=html[:200] if not listings else None,
         listings_found=listings_found,
         listings_processed=len(listings),
         case_detail_failures=case_detail_failures,
         new_leads_this_run=len(new_leads),
         total_leads_on_file=len(all_leads),
+        **search_debug_fields,
     )
 
     _save_leads(existing)
