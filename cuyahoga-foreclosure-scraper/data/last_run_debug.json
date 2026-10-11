@@ -1,12 +1,17 @@
 {
-  "generated_at": "2026-10-11T19:19:11.607816Z",
+  "generated_at": "2026-10-11T19:21:22.795429Z",
   "date_from": "10/04/2026",
   "date_to": "10/11/2026",
   "limit": 10,
-  "search_page_title_hint": "",
   "listings_found": 0,
   "listings_processed": 0,
   "case_detail_failures": 0,
   "new_leads_this_run": 0,
-  "total_leads_on_file": 0
+  "total_leads_on_file": 0,
+  "search_page_html_length": 40781,
+  "type_select_html_length": 7496,
+  "submit_was_async": true,
+  "submit_html_length": 0,
+  "submit_html_head": "",
+  "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/Search.aspx"
 }
