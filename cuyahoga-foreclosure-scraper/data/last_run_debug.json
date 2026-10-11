@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-11T19:21:22.795429Z",
-  "date_from": "10/04/2026",
-  "date_to": "10/11/2026",
-  "limit": 10,
+  "generated_at": "2026-10-11T19:23:24.814465Z",
+  "date_from": "01/01/2024",
+  "date_to": "10/01/2026",
+  "limit": 5,
   "listings_found": 0,
   "listings_processed": 0,
   "case_detail_failures": 0,
