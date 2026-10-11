@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Franklin County Foreclosure Leads</title>
+<title>Foreclosure Leads</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -179,14 +179,40 @@
     .wrap { padding: 1.5rem 1rem 4rem; }
     thead th:nth-child(6), tbody td:nth-child(6) { display: none; } /* hide mailing address col on small screens */
   }
+
+  .county-tabs {
+    display: flex;
+    gap: .25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .county-tabs button {
+    appearance: none;
+    background: none;
+    border: none;
+    color: var(--ink-dim);
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 500;
+    padding: .6rem 1rem .55rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .county-tabs button:hover { color: var(--ink); }
+  .county-tabs button[aria-selected="true"] {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Franklin County Foreclosure Leads</h1>
-    <p class="tagline">E-Foreclosure filings pulled nightly from the Clerk of Courts, matched against Auditor parcel records, and scored for outreach.</p>
+    <h1>Foreclosure Leads</h1>
+    <p class="tagline" id="tagline">E-Foreclosure filings pulled nightly from the county Clerk of Courts, matched against parcel records, and scored for outreach.</p>
   </header>
+
+  <div class="county-tabs" id="county-tabs" role="tablist"></div>
 
   <div class="stats" id="stats">Loading records…</div>
 
@@ -219,6 +245,70 @@ const COLUMNS = [
   { key: 'flags', label: 'Flags', sortable: false },
 ];
 
+const COUNTIES = [
+  {
+    key: 'franklin',
+    label: 'Franklin County',
+    dataUrl: 'records.json',
+    tagline: "E-Foreclosure filings pulled nightly from the Clerk of Courts, matched against Auditor parcel records, and scored for outreach.",
+    csvUrl: 'ghl_export.csv',
+    // Franklin's records.json is already in the shape render()/applyFilters() expect.
+    adapt(data) {
+      return {
+        fetched_at: data.fetched_at,
+        total: data.total,
+        with_address: data.with_address,
+        new_this_run: data.new_this_run || 0,
+        records: data.records || [],
+      };
+    },
+  },
+  {
+    key: 'cuyahoga',
+    label: 'Cuyahoga County',
+    dataUrl: 'cuyahoga.json',
+    tagline: "Foreclosure filings pulled nightly from the Cuyahoga County Clerk of Courts docket, enriched from the Fiscal Officer's parcel data, and scored for outreach.",
+    csvUrl: 'cuyahoga_ghl_export.csv',
+    // Cuyahoga's run_pipeline.py writes a different shape (LeadRecord
+    // dicts under "leads") - map each one into the same row shape
+    // Franklin's records use, so the rest of this page (render, sort,
+    // filter, detail view) needs no county-specific logic at all.
+    adapt(data) {
+      const records = (data.leads || []).map(l => ({
+        doc_num: l.case_number,
+        case_number: l.case_number,
+        doc_type: l.lead_type || 'Foreclosure Complaint',
+        filed: l.filing_date,
+        owner: l.defendant || l.owner_name,
+        grantee: l.plaintiff,
+        amount: l.amount_owed,
+        legal: '',
+        prop_address: l.property_address,
+        prop_city: l.property_city,
+        prop_state: l.property_state,
+        prop_zip: l.property_zip,
+        mail_address: l.mailing_address,
+        mail_city: '',
+        mail_state: '',
+        mail_zip: '',
+        clerk_url: l.source_url,
+        flags: [],
+        score: l.lead_score,
+        interest_rate: l.interest_rate,
+        loan_type: l.loan_type,
+      }));
+      return {
+        fetched_at: data.generated_at,
+        total: data.total_leads || 0,
+        with_address: data.leads_with_mailing_address || 0,
+        new_this_run: 0,
+        records,
+      };
+    },
+  },
+];
+
+let ACTIVE_COUNTY = COUNTIES[0];
 let ALL_RECORDS = [];
 let SORT_KEY = 'score';
 let SORT_DIR = -1; // -1 desc, 1 asc
@@ -369,6 +459,8 @@ function applyFilters() {
 
 function populateFlagFilter(records) {
   const select = document.getElementById('flagFilter');
+  select.innerHTML = '<option value="">Any flag</option>';
+  select.value = '';
   const seen = new Set();
   for (const r of records) for (const f of (r.flags || [])) seen.add(f);
   for (const f of Array.from(seen).sort()) {
@@ -379,35 +471,75 @@ function populateFlagFilter(records) {
   }
 }
 
-async function load() {
-  const res = await fetch('records.json', { cache: 'no-store' });
-  const data = await res.json();
+const DATA_CACHE = {};
+let FILTERS_WIRED = false;
+
+function renderTabs() {
+  const tabsEl = document.getElementById('county-tabs');
+  tabsEl.innerHTML = COUNTIES.map(c => `
+    <button role="tab" data-key="${c.key}" aria-selected="${c.key === ACTIVE_COUNTY.key}">${esc(c.label)}</button>
+  `).join('');
+  tabsEl.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.key === ACTIVE_COUNTY.key) return;
+      ACTIVE_COUNTY = COUNTIES.find(c => c.key === btn.dataset.key);
+      EXPANDED_DOC_NUM = null;
+      renderTabs();
+      loadActive();
+    });
+  });
+}
+
+async function loadActive() {
+  const county = ACTIVE_COUNTY;
   const stats = document.getElementById('stats');
+  document.getElementById('tagline').textContent = county.tagline;
+  stats.textContent = `Loading ${county.label} records…`;
+  document.getElementById('empty').style.display = 'none';
+  document.getElementById('table-wrap').innerHTML = '';
+
+  let data;
+  try {
+    if (DATA_CACHE[county.key]) {
+      data = DATA_CACHE[county.key];
+    } else {
+      const res = await fetch(county.dataUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`${res.status} fetching ${county.dataUrl}`);
+      const raw = await res.json();
+      data = county.adapt(raw);
+      DATA_CACHE[county.key] = data;
+    }
+  } catch (err) {
+    stats.textContent = `Failed to load ${county.label} data: ` + err;
+    return;
+  }
 
   if (!data.fetched_at) {
-    stats.textContent = 'No fetch has run yet.';
+    stats.textContent = 'No scrape has run yet for ' + county.label + '.';
+    ALL_RECORDS = [];
     document.getElementById('empty').style.display = 'block';
     return;
   }
 
-  const newCount = data.new_this_run || 0;
   stats.innerHTML = `<strong>${data.total}</strong> leads on file, <strong>${data.with_address}</strong> with a mailing address.
-    ${newCount ? `<strong>${newCount}</strong> new as of the last run.` : ''}
-    Last fetched ${esc(data.fetched_at)}. <a href="ghl_export.csv">Download CSV for GoHighLevel →</a>`;
+    ${data.new_this_run ? `<strong>${data.new_this_run}</strong> new as of the last run.` : ''}
+    Last fetched ${esc(data.fetched_at)}. <a href="${esc(county.csvUrl)}">Download CSV for GoHighLevel →</a>`;
 
-  ALL_RECORDS = data.records || [];
+  ALL_RECORDS = data.records;
   populateFlagFilter(ALL_RECORDS);
   applyFilters();
 
-  document.getElementById('search').addEventListener('input', applyFilters);
-  document.getElementById('minScore').addEventListener('change', applyFilters);
-  document.getElementById('flagFilter').addEventListener('change', applyFilters);
-  document.getElementById('addressOnly').addEventListener('change', applyFilters);
+  if (!FILTERS_WIRED) {
+    FILTERS_WIRED = true;
+    document.getElementById('search').addEventListener('input', applyFilters);
+    document.getElementById('minScore').addEventListener('change', applyFilters);
+    document.getElementById('flagFilter').addEventListener('change', applyFilters);
+    document.getElementById('addressOnly').addEventListener('change', applyFilters);
+  }
 }
 
-load().catch(err => {
-  document.getElementById('stats').textContent = 'Failed to load records.json: ' + err;
-});
+renderTabs();
+loadActive();
 </script>
 </body>
 </html>

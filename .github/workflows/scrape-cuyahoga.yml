@@ -1,0 +1,89 @@
+name: Cuyahoga County Lead Scrape
+
+# Independent of the Franklin County workflow (scrape.yml) on purpose:
+# own schedule, own concurrency group, own job - a failure here never
+# blocks or delays Franklin's run, and vice versa. The only thing shared
+# is the repo and the dashboard/ folder that the combined dashboard reads
+# from.
+#
+# This job does NOT deploy GitHub Pages itself. Franklin's scrape.yml
+# already owns that deployment (actions/upload-pages-artifact +
+# actions/deploy-pages) and uploads the whole dashboard/ folder - this
+# job just needs dashboard/cuyahoga.json and dashboard/cuyahoga_ghl_export.csv
+# to already be committed by the time that runs. Scheduling this two
+# hours ahead of Franklin's 07:00 UTC run gives it that buffer.
+
+on:
+  schedule:
+    - cron: "0 5 * * *"   # 05:00 UTC daily (~12:00/1:00 AM America/New_York)
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Optional: cap number of cases processed (for a quick test run)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "scrape-cuyahoga"
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: cuyahoga-foreclosure-scraper
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: cuyahoga-foreclosure-scraper/requirements.txt
+
+      - name: Install system dependency (tesseract-ocr)
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          PYTHONUNBUFFERED: "1"
+          PIPELINE_LIMIT: ${{ github.event.inputs.limit }}
+        run: |
+          cd src
+          if [ -n "$PIPELINE_LIMIT" ]; then
+            python run_pipeline.py --limit "$PIPELINE_LIMIT"
+          else
+            python run_pipeline.py
+          fi
+
+      - name: Commit and push updated leads + dashboard data
+        run: |
+          git config user.name "cuyahoga-lead-bot"
+          git config user.email "actions@users.noreply.github.com"
+          cd ..
+          git add cuyahoga-foreclosure-scraper/data/leads.json dashboard/cuyahoga.json dashboard/cuyahoga_ghl_export.csv
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Automated Cuyahoga lead scrape: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
+
+      - name: Upload GHL export as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cuyahoga-ghl-export
+          path: cuyahoga-foreclosure-scraper/data/ghl_export.csv
+          retention-days: 30
