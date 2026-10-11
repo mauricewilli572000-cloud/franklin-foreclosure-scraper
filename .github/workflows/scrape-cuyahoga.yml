@@ -22,6 +22,14 @@ on:
         description: "Optional: cap number of cases processed (for a quick test run)"
         required: false
         default: ""
+      date_from:
+        description: "Optional: override search start date (MM/DD/YYYY)"
+        required: false
+        default: ""
+      date_to:
+        description: "Optional: override search end date (MM/DD/YYYY)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -60,13 +68,15 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
           PIPELINE_LIMIT: ${{ github.event.inputs.limit }}
+          PIPELINE_DATE_FROM: ${{ github.event.inputs.date_from }}
+          PIPELINE_DATE_TO: ${{ github.event.inputs.date_to }}
         run: |
           cd src
-          if [ -n "$PIPELINE_LIMIT" ]; then
-            python run_pipeline.py --limit "$PIPELINE_LIMIT"
-          else
-            python run_pipeline.py
-          fi
+          ARGS=()
+          if [ -n "$PIPELINE_LIMIT" ]; then ARGS+=(--limit "$PIPELINE_LIMIT"); fi
+          if [ -n "$PIPELINE_DATE_FROM" ]; then ARGS+=(--date-from "$PIPELINE_DATE_FROM"); fi
+          if [ -n "$PIPELINE_DATE_TO" ]; then ARGS+=(--date-to "$PIPELINE_DATE_TO"); fi
+          python run_pipeline.py "${ARGS[@]}"
 
       - name: Commit and push updated leads + dashboard data
         run: |
