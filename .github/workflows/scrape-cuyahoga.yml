@@ -73,7 +73,7 @@ jobs:
           git config user.name "cuyahoga-lead-bot"
           git config user.email "actions@users.noreply.github.com"
           cd ..
-          git add cuyahoga-foreclosure-scraper/data/leads.json dashboard/cuyahoga.json dashboard/cuyahoga_ghl_export.csv
+          git add cuyahoga-foreclosure-scraper/data/leads.json cuyahoga-foreclosure-scraper/data/last_run_debug.json dashboard/cuyahoga.json dashboard/cuyahoga_ghl_export.csv
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

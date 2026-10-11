@@ -229,30 +229,57 @@ def _write_dashboard_data(leads: List[LeadRecord]) -> None:
         json.dump(payload, f, indent=2)
 
 
+DEBUG_PATH = os.path.join(DATA_DIR, "last_run_debug.json")
+
+
+def _write_debug(**fields) -> None:
+    """Always-written diagnostic file - committed every run regardless of
+    how many leads came out, so a quiet run (0 listings, or listings found
+    but every case detail fetch failing) is visible without needing to
+    pull CI logs."""
+    os.makedirs(DATA_DIR, exist_ok=True)
+    payload = {"generated_at": datetime.utcnow().isoformat() + "Z", **fields}
+    with open(DEBUG_PATH, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+
 def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: Optional[int] = None) -> List[LeadRecord]:
     if date_to is None:
         date_to = datetime.now().strftime("%m/%d/%Y")
     if date_from is None:
         date_from = (datetime.now() - timedelta(days=7)).strftime("%m/%d/%Y")
 
-    session = CuyahogaDocketSession()
-    session.load_search_page()
-    session.select_foreclosure_search()
-    html, _ = session.submit_foreclosure_search(date_from=date_from, date_to=date_to)
+    try:
+        session = CuyahogaDocketSession()
+        session.load_search_page()
+        session.select_foreclosure_search()
+        html, _ = session.submit_foreclosure_search(date_from=date_from, date_to=date_to)
 
-    from cuyahoga_clerk_search import parse_results_grid
-    listings = parse_results_grid(html)
+        from cuyahoga_clerk_search import parse_results_grid
+        listings = parse_results_grid(html)
+    except Exception as exc:
+        _write_debug(
+            date_from=date_from,
+            date_to=date_to,
+            limit=limit,
+            error=f"{type(exc).__name__}: {exc}",
+        )
+        raise
+    listings_found = len(listings)
 
     if limit:
         listings = listings[:limit]
 
     existing = _load_existing_leads()
     new_leads: List[LeadRecord] = []
+    case_detail_failures = 0
 
     for listing in listings:
         lead = build_lead_from_case(session, listing)
         if lead is not None:
             new_leads.append(lead)
+        else:
+            case_detail_failures += 1
 
     for lead in new_leads:
         existing[lead.key()] = lead.to_dict()
@@ -264,6 +291,18 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
     for lead, item in zip(all_leads, existing.values()):
         item["lead_score"] = lead.lead_score
         item["key"] = lead.key()
+
+    _write_debug(
+        date_from=date_from,
+        date_to=date_to,
+        limit=limit,
+        search_page_title_hint=html[:200] if not listings else None,
+        listings_found=listings_found,
+        listings_processed=len(listings),
+        case_detail_failures=case_detail_failures,
+        new_leads_this_run=len(new_leads),
+        total_leads_on_file=len(all_leads),
+    )
 
     _save_leads(existing)
     os.makedirs(DATA_DIR, exist_ok=True)
