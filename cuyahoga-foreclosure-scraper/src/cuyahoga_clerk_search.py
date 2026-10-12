@@ -370,21 +370,16 @@ class CuyahogaDocketSession:
         if exclude_br_cases:
             extra[FIELD_EXCLUDE_BR] = "on"
 
-        # NOTE on __EVENTTARGET here: a plain <asp:Button> (the Submit
-        # Search button) is normally triggered by its own name=value pair
-        # showing up in the POST body - NOT by setting __EVENTTARGET to
-        # the button's name the way an AutoPostBack radio/dropdown is
-        # (see select_foreclosure_search, where that IS correct). Every
-        # observed empty-delta run (submit_html_length: 0, see
-        # last_run_debug.json) has had __EVENTTARGET pointed at the
-        # submit button; this leaves it empty, matching how
-        # _accept_terms_of_service's button post already works, and lets
-        # FIELD_SUBMIT's own name=value pair (already in `extra`) signal
-        # the click the standard way. Unverified against the live site as
-        # of this change - the debug file's new postback_status/
-        # postback_delta_keys/postback_raw_head fields are there so the
-        # next real run shows whether this actually fixed it.
-        html, was_async = self._async_postback("", extra_fields=extra)
+        # Tried leaving __EVENTTARGET empty here (treating Submit as a
+        # plain button rather than an AutoPostBack control) - that came
+        # back as an explicit MS AJAX error delta ("0|error|500||", see
+        # submit_postback_raw_head in last_run_debug.json), i.e. a real
+        # server-side exception, which is worse evidence than the silent
+        # empty delta this __EVENTTARGET=FIELD_SUBMIT version produces.
+        # Reverted. The postback_status/delta_keys/raw_head diagnostics
+        # stay on so the next run shows what THIS version's raw response
+        # actually looks like (not captured before this debugging pass).
+        html, was_async = self._async_postback(FIELD_SUBMIT, extra_fields=extra)
         return html, was_async
 
     def open_case_detail(self, listing: CaseListing) -> str:
