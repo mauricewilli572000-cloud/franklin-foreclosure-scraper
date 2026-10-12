@@ -183,6 +183,14 @@ class CuyahogaDocketSession:
         self.eventvalidation = ""
         self.current_url = SEARCH_URL
 
+        # Diagnostics from the most recent _async_postback() call - not
+        # used for control flow, just surfaced so run_pipeline.py's debug
+        # file can show *why* a postback came back empty instead of only
+        # *that* it did.
+        self.last_postback_status = None
+        self.last_postback_delta_keys: list = []
+        self.last_postback_raw_head = ""
+
     # ------------------------------------------------------------------
     # Core helpers
     # ------------------------------------------------------------------
@@ -274,15 +282,19 @@ class CuyahogaDocketSession:
 
         text = resp.text
         is_delta = "|updatePanel|" in text or text.startswith(tuple("0123456789"))
+        self.last_postback_status = resp.status_code
+        self.last_postback_raw_head = text[:500]
 
         if is_delta:
             delta = parse_async_delta(text)
             self._apply_delta_viewstate(delta)
+            self.last_postback_delta_keys = list(delta.keys())
             content = "\n".join(v for k, v in delta.items()
                                  if k not in ("__VIEWSTATE", "__VIEWSTATEGENERATOR",
                                                "__EVENTVALIDATION"))
         else:
             self._extract_viewstate(text)
+            self.last_postback_delta_keys = []
             content = text
 
         # Follow the Check.aspx hop if we land there (confirmed not a CAPTCHA).
@@ -358,7 +370,21 @@ class CuyahogaDocketSession:
         if exclude_br_cases:
             extra[FIELD_EXCLUDE_BR] = "on"
 
-        html, was_async = self._async_postback(FIELD_SUBMIT, extra_fields=extra)
+        # NOTE on __EVENTTARGET here: a plain <asp:Button> (the Submit
+        # Search button) is normally triggered by its own name=value pair
+        # showing up in the POST body - NOT by setting __EVENTTARGET to
+        # the button's name the way an AutoPostBack radio/dropdown is
+        # (see select_foreclosure_search, where that IS correct). Every
+        # observed empty-delta run (submit_html_length: 0, see
+        # last_run_debug.json) has had __EVENTTARGET pointed at the
+        # submit button; this leaves it empty, matching how
+        # _accept_terms_of_service's button post already works, and lets
+        # FIELD_SUBMIT's own name=value pair (already in `extra`) signal
+        # the click the standard way. Unverified against the live site as
+        # of this change - the debug file's new postback_status/
+        # postback_delta_keys/postback_raw_head fields are there so the
+        # next real run shows whether this actually fixed it.
+        html, was_async = self._async_postback("", extra_fields=extra)
         return html, was_async
 
     def open_case_detail(self, listing: CaseListing) -> str:

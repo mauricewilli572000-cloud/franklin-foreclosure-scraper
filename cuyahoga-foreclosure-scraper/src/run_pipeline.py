@@ -272,6 +272,9 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         submit_was_async=was_async,
         submit_html_length=len(html),
         submit_html_head=html[:1500],
+        submit_postback_status=session.last_postback_status,
+        submit_postback_delta_keys=session.last_postback_delta_keys,
+        submit_postback_raw_head=session.last_postback_raw_head,
         current_url_after_submit=session.current_url,
     )
 
