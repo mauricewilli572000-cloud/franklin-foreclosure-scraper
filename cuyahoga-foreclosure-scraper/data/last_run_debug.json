@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-12T12:52:47.700045Z",
+  "generated_at": "2026-10-12T23:27:43.641140Z",
   "date_from": "10/05/2026",
   "date_to": "10/12/2026",
-  "limit": null,
+  "limit": 5,
   "listings_found": 0,
   "listings_processed": 0,
   "case_detail_failures": 0,
