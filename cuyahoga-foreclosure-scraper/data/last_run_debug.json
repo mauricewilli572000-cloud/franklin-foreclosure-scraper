@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T23:27:43.641140Z",
+  "generated_at": "2026-10-12T23:33:47.576210Z",
   "date_from": "10/05/2026",
   "date_to": "10/12/2026",
   "limit": 5,
@@ -13,5 +13,10 @@
   "submit_was_async": true,
   "submit_html_length": 0,
   "submit_html_head": "",
+  "submit_postback_status": 200,
+  "submit_postback_delta_keys": [
+    "500"
+  ],
+  "submit_postback_raw_head": "0|error|500||",
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/Search.aspx"
 }
