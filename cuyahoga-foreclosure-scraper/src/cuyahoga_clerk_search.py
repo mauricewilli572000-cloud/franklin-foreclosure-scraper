@@ -23,8 +23,19 @@ CHECK_URL = f"{BASE_URL}/Check.aspx"
 UPDATE_PANEL_ID = "ctl00$SheetContentPlaceHolder$UpdatePanel1"
 
 # --- Search type selection (AJAX partial postback) ---
+# Confirmed via discover_live_form_fields.py against the live page
+# (2026-10-13): each search-type radio is its own <input type="radio"
+# name="ctl00$SheetContentPlaceHolder$rbSearches" value="...">, not a
+# "rblSearchType" field (that name doesn't exist anywhere on the page).
+# Posting the wrong field name here meant the server never saw "forcl"
+# selected, silently fell back to whatever radio was already checked
+# (observed as rbSearches=coaame, i.e. "Court of Appeals Search by
+# Name"), and rendered THAT panel - which has none of the
+# foreclosureSearch$ fields, explaining both the "missing" fields and
+# the downstream 500 when submit_foreclosure_search() then posted
+# against controls that were never part of that page's control tree.
 FORECLOSURE_EVENT_TARGET = "ctl00$SheetContentPlaceHolder$rbCivilForeclosure"
-SEARCH_TYPE_RADIO_NAME = "ctl00$SheetContentPlaceHolder$rblSearchType"
+SEARCH_TYPE_RADIO_NAME = "ctl00$SheetContentPlaceHolder$rbSearches"
 SEARCH_TYPE_FORECLOSURE_VALUE = "forcl"
 
 # --- Terms of Service (plain Yes/No button pair, not a checkbox) ---
