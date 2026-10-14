@@ -11,9 +11,20 @@ Nothing here is a guess.
 import re
 from dataclasses import dataclass, field
 from typing import Optional, List, Tuple
+from urllib.parse import unquote, urljoin
 
 import requests
 from bs4 import BeautifulSoup
+
+# Matches an MS AJAX "pageRedirect" delta record: length|pageRedirect|id|url|
+# The Check.aspx hop (confirmed not a CAPTCHA - see README) can arrive this
+# way, embedded in an async delta with the real HTTP response status still
+# 200 and resp.url unchanged, instead of as an HTTP-level redirect. Matched
+# directly against the raw text rather than via parse_async_delta's dict,
+# since multiple non-updatePanel records sharing an empty id otherwise
+# collide in that dict (last-content-wins via setdefault) and silently
+# drop this.
+_PAGE_REDIRECT_RE = re.compile(r"\|pageRedirect\|[^|]*\|([^|]*)\|")
 
 BASE_URL = "https://cpdocket.cp.cuyahogacounty.gov"
 SEARCH_URL = f"{BASE_URL}/Search.aspx"
@@ -309,8 +320,21 @@ class CuyahogaDocketSession:
             content = text
 
         # Follow the Check.aspx hop if we land there (confirmed not a CAPTCHA).
+        # Two different ways this shows up: a real HTTP redirect (resp.url
+        # changes), or - as seen once the search-type radio fix let the
+        # submit postback actually reach the real foreclosure panel - a
+        # pageRedirect record embedded in the async delta itself, with
+        # resp.url staying put at Search.aspx.
+        redirect_url = None
         if "Check.aspx" in resp.url:
-            follow = self.session.get(resp.url, headers={"Referer": self.current_url})
+            redirect_url = resp.url
+        elif is_delta:
+            m = _PAGE_REDIRECT_RE.search(text)
+            if m:
+                redirect_url = urljoin(self.current_url, unquote(m.group(1)))
+
+        if redirect_url:
+            follow = self.session.get(redirect_url, headers={"Referer": self.current_url})
             follow.raise_for_status()
             self.current_url = follow.url
             self._extract_viewstate(follow.text)
