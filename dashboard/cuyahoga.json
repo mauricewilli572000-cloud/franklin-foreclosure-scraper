@@ -1,6 +1,6 @@
 {
   "county": "Cuyahoga",
-  "generated_at": "2026-10-14T02:00:57.015724Z",
+  "generated_at": "2026-10-14T02:02:44.477548Z",
   "total_leads": 5,
   "leads_with_mailing_address": 1,
   "average_amount_owed": 1104.32,
@@ -43,7 +43,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyCdwkZmmWLeYU1"
     },
     {
       "county": "Cuyahoga",
@@ -64,7 +64,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC3S49nqDo80I1"
     },
     {
       "county": "Cuyahoga",
@@ -85,7 +85,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC3S49nqDo80I1"
     },
     {
       "county": "Cuyahoga",
@@ -106,7 +106,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC3S49nqDo80I1"
     },
     {
       "county": "Cuyahoga",
@@ -127,7 +127,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC3S49nqDo80I1"
     }
   ]
 }

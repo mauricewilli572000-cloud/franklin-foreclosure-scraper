@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T02:00:56.901231Z",
+  "generated_at": "2026-10-14T02:02:44.468638Z",
   "date_from": "10/07/2026",
   "date_to": "10/14/2026",
   "limit": 5,
@@ -8,6 +8,14 @@
   "case_detail_failures": 0,
   "new_leads_this_run": 5,
   "total_leads_on_file": 5,
+  "auditor_enrichment_stats": {
+    "attempts": 5,
+    "successes": 1,
+    "no_match_by_parcel": 4,
+    "no_match_by_address": 4,
+    "errors": 0,
+    "sample_errors": []
+  },
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
