@@ -3,7 +3,7 @@
     "county": "Cuyahoga",
     "case_number": "CV-26-148146",
     "doc_number": "",
-    "owner_name": "",
+    "owner_name": "Mary L Caver",
     "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
     "defendant": "UNKNOWN HEIRS OF MARY LEE CAVER, ET AL",
     "property_address": "7705 MELROSE AVENUE",
@@ -11,14 +11,14 @@
     "property_state": "OH",
     "property_zip": "44103-0000",
     "parcel_number": "106-18-016",
-    "mailing_address": "",
+    "mailing_address": "7705 MELROSE AVE Cleveland OH 44103-3363",
     "lead_type": "Foreclosure",
     "filing_date": "10/07/2026",
     "amount_owed": 1104.32,
     "interest_rate": null,
     "loan_type": "",
-    "lead_score": 70,
-    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=cr6dqUafU4yJUne_wGSKCKNfhWPehDJhNX8IQoWXfF01",
+    "lead_score": 80,
+    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81",
     "key": "CUYAHOGA:CV-26-148146"
   },
   {
@@ -40,7 +40,7 @@
     "interest_rate": null,
     "loan_type": "",
     "lead_score": 70,
-    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCKNfhWPehDJhNX8IQoWXfF01",
+    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81",
     "key": "CUYAHOGA:CV-26-148160"
   },
   {
@@ -62,7 +62,7 @@
     "interest_rate": null,
     "loan_type": "",
     "lead_score": 70,
-    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCKNfhWPehDJhNX8IQoWXfF01",
+    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81",
     "key": "CUYAHOGA:CV-26-148163"
   },
   {
@@ -84,7 +84,7 @@
     "interest_rate": null,
     "loan_type": "",
     "lead_score": 70,
-    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCKNfhWPehDJhNX8IQoWXfF01",
+    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81",
     "key": "CUYAHOGA:CV-26-148169"
   },
   {
@@ -106,7 +106,7 @@
     "interest_rate": null,
     "loan_type": "",
     "lead_score": 70,
-    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCKNfhWPehDJhNX8IQoWXfF01",
+    "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_All.aspx?q=cr6dqUafU4yJUne_wGSKCP42BIh-XJyC-irf1DgUOc81",
     "key": "CUYAHOGA:CV-26-148181"
   }
 ]
