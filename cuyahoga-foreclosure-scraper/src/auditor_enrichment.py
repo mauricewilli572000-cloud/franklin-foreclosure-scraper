@@ -3,39 +3,41 @@ Cuyahoga County Fiscal Officer parcel lookup, via the live ArcGIS REST
 service (unlike Franklin's monthly bulk Auditor CSV, Cuyahoga has no
 downloadable bulk file for this - it's a live query service).
 
-STATUS: REMAINING GAP. FIELD_MAP and LAYER_ID below are placeholder
-guesses and have never been confirmed against the real service. Run
-discover_parcel_fields.py against a real parcel number to find the
-actual layer and field names, then update FIELD_MAP/LAYER_ID here.
+STATUS: CONFIRMED against the live service (2026-10-13) via
+discover_parcel_fields.py, run against a real parcel number
+(106-18-016, from case CV-26-148146) across three candidate services.
+Open_Data_Parcels layer 0 is the right one - clean, well-documented
+field names, and returns real owner/mailing data (confirmed sample:
+parcelpin "12131022" -> deeded_owner "WOODHILL PARTNERS, INC., A",
+mail_name "Woodhill Partners Inc", mail_addr_street "2417 WOODHILL RD",
+mail_city "Cleveland", mail_state "OH", mail_zip "44104-2401").
+MyPlace/MyPLACE_Tax_Parcels (the original guess) turned out to be a
+parcel-geometry/filing-history service with no owner or mailing
+fields at all - wrong service despite the closest name match.
 
-Until confirmed, every lead's mailing_address stays blank - run_pipeline.py
-wraps this entire enrichment step defensively so a failure here never
-blocks or crashes a run; it just leaves mailing_address blank for that lead.
+parcelpin on this service has no hyphens (e.g. "10618016" for
+"106-18-016"), matching get_parcel_info()'s existing hyphen-stripping.
 """
 
 from typing import Optional, Dict
 import requests
 
-# The original guess used "/arcgis/rest/services/..." - a 404. The real
-# path is "/server/rest/services/..." (confirmed via web search of
-# gis.cuyahogacounty.gov's indexed service directory); this sandbox has
-# no direct network access to confirm further than that, so the exact
-# service/layer/field names below still need discover_parcel_fields.py
-# run against each candidate.
 ARCGIS_BASE = (
     "https://gis.cuyahogacounty.gov/server/rest/services/"
-    "MyPlace/MyPLACE_Tax_Parcels/MapServer"
+    "Open_Data_Parcels/MapServer"
 )
 
-# UNCONFIRMED - placeholder guesses, pending discover_parcel_fields.py run.
 LAYER_ID = 0
 FIELD_MAP = {
-    "parcel_number": "PARCELPIN",
-    "owner_name": "OWNER",
-    "mailing_address": "MAILADDR",
-    "mailing_city": "MAILCITY",
-    "mailing_state": "MAILSTATE",
-    "mailing_zip": "MAILZIP",
+    "parcel_number": "parcelpin",
+    "owner_name": "deeded_owner",
+    "mail_name": "mail_name",
+    "mailing_address": "mail_addr_street",
+    "mailing_unit": "mail_unit",
+    "mailing_city": "mail_city",
+    "mailing_state": "mail_state",
+    "mailing_zip": "mail_zip",
+    "property_address_all": "par_addr_all",
 }
 
 
@@ -103,6 +105,28 @@ def _query_arcgis(where_clause: str) -> Optional[dict]:
     return features[0].get("attributes", {})
 
 
+def _attrs_to_result(attrs: dict) -> Dict[str, str]:
+    return {
+        # deeded_owner is the legal title-of-record name (e.g. "CRAWFORD,
+        # MARY ANN"); mail_name is the addressee name as it should appear
+        # on an envelope (e.g. "MARY ANN CRAWFORD") - prefer mail_name
+        # when present since this feeds a direct-mail workflow, falling
+        # back to deeded_owner otherwise.
+        "owner_name": (
+            attrs.get(FIELD_MAP["mail_name"], "")
+            or attrs.get(FIELD_MAP["owner_name"], "")
+            or ""
+        ),
+        "mailing_address": " ".join(filter(None, [
+            str(attrs.get(FIELD_MAP["mailing_address"], "") or ""),
+            str(attrs.get(FIELD_MAP["mailing_unit"], "") or "").strip(),
+            str(attrs.get(FIELD_MAP["mailing_city"], "") or ""),
+            str(attrs.get(FIELD_MAP["mailing_state"], "") or ""),
+            str(attrs.get(FIELD_MAP["mailing_zip"], "") or ""),
+        ])).strip(),
+    }
+
+
 def get_parcel_info(parcel_number: str) -> Dict[str, str]:
     if not parcel_number:
         return {}
@@ -115,22 +139,20 @@ def get_parcel_info(parcel_number: str) -> Dict[str, str]:
 
     if not attrs:
         return {}
-
-    return {
-        "owner_name": attrs.get(FIELD_MAP["owner_name"], "") or "",
-        "mailing_address": " ".join(filter(None, [
-            str(attrs.get(FIELD_MAP["mailing_address"], "") or ""),
-            str(attrs.get(FIELD_MAP["mailing_city"], "") or ""),
-            str(attrs.get(FIELD_MAP["mailing_state"], "") or ""),
-            str(attrs.get(FIELD_MAP["mailing_zip"], "") or ""),
-        ])).strip(),
-    }
+    return _attrs_to_result(attrs)
 
 
 def get_parcel_info_by_address(street_number: str, street_name: str) -> Dict[str, str]:
     if not street_name:
         return {}
-    where = f"UPPER(SITEADDR) LIKE UPPER('%{street_number} {street_name}%')"
+    # par_addr_all is a single combined "STREET, CITY, OH, ZIP" field
+    # (confirmed real example: "2417  WOODHILL RD, CLEVELAND, OH, 44104")
+    # - there's no standalone site-address field on this service, so
+    # match against that instead of a nonexistent SITEADDR column.
+    where = (
+        f"UPPER({FIELD_MAP['property_address_all']}) LIKE "
+        f"UPPER('%{street_number} {street_name}%')"
+    )
     try:
         attrs = _query_arcgis(where)
     except Exception:
@@ -138,13 +160,4 @@ def get_parcel_info_by_address(street_number: str, street_name: str) -> Dict[str
 
     if not attrs:
         return {}
-
-    return {
-        "owner_name": attrs.get(FIELD_MAP["owner_name"], "") or "",
-        "mailing_address": " ".join(filter(None, [
-            str(attrs.get(FIELD_MAP["mailing_address"], "") or ""),
-            str(attrs.get(FIELD_MAP["mailing_city"], "") or ""),
-            str(attrs.get(FIELD_MAP["mailing_state"], "") or ""),
-            str(attrs.get(FIELD_MAP["mailing_zip"], "") or ""),
-        ])).strip(),
-    }
+    return _attrs_to_result(attrs)
