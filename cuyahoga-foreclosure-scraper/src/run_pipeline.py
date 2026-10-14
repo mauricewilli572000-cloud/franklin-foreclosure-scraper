@@ -150,23 +150,46 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
         return
 
 
+_AUDITOR_STATS: Dict[str, object] = {
+    "attempts": 0,
+    "successes": 0,
+    "no_match_by_parcel": 0,
+    "no_match_by_address": 0,
+    "errors": 0,
+    "sample_errors": [],
+}
+
+
 def _enrich_with_auditor(lead: LeadRecord) -> None:
-    """Best-effort parcel enrichment. Never raises."""
+    """Best-effort parcel enrichment. Never raises - but records what
+    happened in _AUDITOR_STATS so last_run_debug.json can show *why*
+    mailing_address didn't populate for a given batch, instead of only
+    whether it did."""
+    _AUDITOR_STATS["attempts"] += 1
     try:
         info = {}
         if lead.parcel_number:
             info = auditor_enrichment.get_parcel_info(lead.parcel_number)
+            if not info:
+                _AUDITOR_STATS["no_match_by_parcel"] += 1
         if not info and lead.property_address:
             street_parts = lead.property_address.split(" ", 1)
             street_number = street_parts[0] if street_parts else ""
             street_name = street_parts[1] if len(street_parts) > 1 else ""
             info = auditor_enrichment.get_parcel_info_by_address(street_number, street_name)
+            if not info:
+                _AUDITOR_STATS["no_match_by_address"] += 1
 
         if info.get("owner_name") and not lead.owner_name:
             lead.owner_name = info["owner_name"]
         if info.get("mailing_address"):
             lead.mailing_address = info["mailing_address"]
-    except Exception:
+            _AUDITOR_STATS["successes"] += 1
+    except Exception as exc:
+        _AUDITOR_STATS["errors"] += 1
+        samples = _AUDITOR_STATS["sample_errors"]
+        if len(samples) < 3:
+            samples.append(f"{lead.case_number} ({lead.parcel_number}): {type(exc).__name__}: {exc}")
         return
 
 
@@ -312,6 +335,7 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         case_detail_failures=case_detail_failures,
         new_leads_this_run=len(new_leads),
         total_leads_on_file=len(all_leads),
+        auditor_enrichment_stats=_AUDITOR_STATS,
         **search_debug_fields,
     )
 
