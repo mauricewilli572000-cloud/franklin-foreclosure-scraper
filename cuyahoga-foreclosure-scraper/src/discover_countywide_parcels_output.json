@@ -1,0 +1,14 @@
+{
+  "CCFO_Current_Year_Appraisal_Parcels": {
+    "base_url": "https://gis.cuyahogacounty.gov/server/rest/services/CCFO/Current_Year_Appraisal_Parcels/MapServer",
+    "error": "ProxyError: HTTPSConnectionPool(host='gis.cuyahogacounty.gov', port=443): Max retries exceeded with url: /server/rest/services/CCFO/Current_Year_Appraisal_Parcels/MapServer?f=json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
+  },
+  "CCGIS_Parcel_RP_CAMA_Table": {
+    "base_url": "https://gis.cuyahogacounty.gov/server/rest/services/CCGIS/Parcel_RP_CAMA_Table/MapServer",
+    "error": "ProxyError: HTTPSConnectionPool(host='gis.cuyahogacounty.gov', port=443): Max retries exceeded with url: /server/rest/services/CCGIS/Parcel_RP_CAMA_Table/MapServer?f=json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
+  },
+  "MyPlace_Consolidated": {
+    "base_url": "https://gis.cuyahogacounty.gov/server/rest/services/MyPlace/MyPLACE_Consolidated/MapServer",
+    "error": "ProxyError: HTTPSConnectionPool(host='gis.cuyahogacounty.gov', port=443): Max retries exceeded with url: /server/rest/services/MyPlace/MyPLACE_Consolidated/MapServer?f=json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
+  }
+}
