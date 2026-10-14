@@ -16,9 +16,15 @@ blocks or crashes a run; it just leaves mailing_address blank for that lead.
 from typing import Optional, Dict
 import requests
 
+# The original guess used "/arcgis/rest/services/..." - a 404. The real
+# path is "/server/rest/services/..." (confirmed via web search of
+# gis.cuyahogacounty.gov's indexed service directory); this sandbox has
+# no direct network access to confirm further than that, so the exact
+# service/layer/field names below still need discover_parcel_fields.py
+# run against each candidate.
 ARCGIS_BASE = (
-    "https://gis.cuyahogacounty.gov/arcgis/rest/services/"
-    "MyPLACE/MyPLACE_Tax_Parcels/MapServer"
+    "https://gis.cuyahogacounty.gov/server/rest/services/"
+    "MyPlace/MyPLACE_Tax_Parcels/MapServer"
 )
 
 # UNCONFIRMED - placeholder guesses, pending discover_parcel_fields.py run.
