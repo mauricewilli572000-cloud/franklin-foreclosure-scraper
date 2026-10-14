@@ -1,0 +1,45 @@
+name: Discover Cuyahoga Parcel Fields (one-off diagnostic)
+
+# Manual-only diagnostic, not part of the nightly automation. Runs
+# discover_parcel_fields.py against the live ArcGIS parcel service and
+# commits its output so it can be read directly from the repo rather
+# than fetched from Actions log storage.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: cuyahoga-foreclosure-scraper/src
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install requests
+
+      - name: Run discovery script
+        run: python discover_parcel_fields.py
+
+      - name: Commit output
+        run: |
+          git config user.name "cuyahoga-lead-bot"
+          git config user.email "actions@users.noreply.github.com"
+          cd ../..
+          git add cuyahoga-foreclosure-scraper/src/discover_parcel_fields_output.json
+          git diff --cached --quiet || git commit -m "Diagnostic: dump live ArcGIS parcel field names"
+          git push
