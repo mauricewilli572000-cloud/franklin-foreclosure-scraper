@@ -173,10 +173,12 @@ def _enrich_with_auditor(lead: LeadRecord) -> None:
             if not info:
                 _AUDITOR_STATS["no_match_by_parcel"] += 1
         if not info and lead.property_address:
-            street_parts = lead.property_address.split(" ", 1)
+            street_parts = lead.property_address.split(None, 1)
             street_number = street_parts[0] if street_parts else ""
             street_name = street_parts[1] if len(street_parts) > 1 else ""
-            info = auditor_enrichment.get_parcel_info_by_address(street_number, street_name)
+            info = auditor_enrichment.get_parcel_info_by_address(
+                street_number, street_name, lead.property_city or ""
+            )
             if not info:
                 _AUDITOR_STATS["no_match_by_address"] += 1
 
@@ -320,6 +322,22 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         existing[lead.key()]["key"] = lead.key()
 
     all_leads = [LeadRecord(**{k: v for k, v in item.items() if k != "key"}) for item in existing.values()]
+
+    # Backfill: leads saved by earlier runs (before the countywide parcel
+    # source) that never got a mailing address are retried each run.
+    new_keys = {l.key() for l in new_leads}
+    backfilled = 0
+    for lead, item in zip(all_leads, existing.values()):
+        if lead.mailing_address or lead.key() in new_keys:
+            continue
+        _enrich_with_auditor(lead)
+        if lead.mailing_address:
+            backfilled += 1
+            item["mailing_address"] = lead.mailing_address
+            if lead.owner_name:
+                item["owner_name"] = lead.owner_name
+    _AUDITOR_STATS["backfilled_existing_leads"] = backfilled
+
     apply_scores(all_leads)
 
     for lead, item in zip(all_leads, existing.values()):

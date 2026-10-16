@@ -29,6 +29,7 @@ get_parcel_info()'s existing hyphen-stripping. Condo pins can carry a
 trailing letter (e.g. "86301891D").
 """
 
+import re
 from typing import Optional, Dict
 import requests
 
@@ -171,17 +172,78 @@ def get_parcel_info(parcel_number: str) -> Dict[str, str]:
     return _attrs_to_result(attrs)
 
 
-def get_parcel_info_by_address(street_number: str, street_name: str) -> Dict[str, str]:
-    if not street_name:
+_STREET_SUFFIXES = {
+    "ST", "STREET", "AVE", "AVENUE", "RD", "ROAD", "DR", "DRIVE", "LN", "LANE",
+    "BLVD", "BOULEVARD", "CT", "COURT", "CIR", "CIRCLE", "PL", "PLACE", "TER",
+    "TERRACE", "WAY", "PKWY", "PARKWAY", "HWY", "HIGHWAY", "SQ", "SQUARE",
+    "TRL", "TRAIL", "PT", "POINT", "RUN", "ROW", "PATH", "ALY", "ALLEY",
+}
+_UNIT_RE = re.compile(r"(\bUNIT\b|\bAPT\b|\bSTE\b|\bSUITE\b|\bBLDG\b|#)")
+
+
+def _street_core(street_name: str) -> str:
+    """Reduce a street name to its distinctive word: "9489 PONDEROSA LANE"
+    style input -> "PONDEROSA", "WEST RIDGEWOOD DR" -> "RIDGEWOOD". The
+    county stores suffixes abbreviated ("LN") and direction prefixes
+    inconsistently, so matching the full spelled-out name misses."""
+    words = re.sub(r"[^A-Z0-9 ]", " ", street_name.upper()).split()
+    while words and words[-1] in _STREET_SUFFIXES:
+        words.pop()
+    return words[-1] if words else ""
+
+
+def get_parcel_info_by_address(street_number: str, street_name: str, city: str = "") -> Dict[str, str]:
+    """Fallback lookup when the parcel number is missing or doesn't match.
+
+    Matches the house number exactly plus the street's distinctive word
+    (parcel_addr / parcel_street fields). Deliberately conservative, since a
+    wrong owner is worse than none:
+      - addresses with a unit/apt are skipped (a building has many owners,
+        and we can't tell which unit is the lead's);
+      - if several parcels match, the city must narrow it to one; a single
+        match is accepted even if the city text differs (listings contain
+        typos like "BROOK PARL")."""
+    street_number = (street_number or "").strip()
+    core = _street_core(street_name or "")
+    if not street_number.isdigit() or not core:
         return {}
-    # par_addr_all is a single combined "STREET, CITY, OH, ZIP" field
-    # (confirmed real example: "146 KIMROSE LN, BROADVIEW HEIGHTS, OH,
-    # 44147") - there's no standalone site-address field on this service.
+    if _UNIT_RE.search((street_name or "").upper()):
+        return {}
+
+    core_sql = core.replace("'", "''")
     where = (
-        f"UPPER({FIELD_MAP['property_address_all']}) LIKE "
-        f"UPPER('%{street_number} {street_name}%')"
+        f"parcel_addr = '{street_number}' AND "
+        f"UPPER(parcel_street) LIKE '%{core_sql}%'"
     )
-    attrs = _query_arcgis(where)
-    if not attrs:
+
+    candidates = []
+    for layer_id in LAYER_IDS:
+        query_url = f"{ARCGIS_BASE}/{layer_id}/query"
+        params = {"where": where, "outFields": "*", "f": "json", "resultRecordCount": 10}
+        try:
+            resp = requests.get(query_url, params=params, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception:
+            continue
+        if "error" in data:
+            continue
+        candidates = [f.get("attributes", {}) for f in data.get("features", [])]
+        if candidates:
+            break
+
+    if not candidates:
         return {}
-    return _attrs_to_result(attrs)
+
+    if len(candidates) > 1:
+        city_up = (city or "").strip().upper()
+        if not city_up:
+            return {}
+        candidates = [
+            c for c in candidates
+            if _clean(c.get("parcel_city")).upper() == city_up
+        ]
+        if len(candidates) != 1:
+            return {}
+
+    return _attrs_to_result(candidates[0])
