@@ -154,14 +154,26 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
             if len(samples) < 8:
                 # Show what the image list actually contained so the finder
                 # can be taught the real labels.
-                samples.append({
+                sample = {
                     "case": lead.case_number,
+                    "plaintiff": lead.plaintiff,
+                    "amount_owed": lead.amount_owed,
                     "image_entries": [
                         {"desc": e.description, "doc_desc": e.document_description,
                          "has_url": bool(e.doc_url)}
                         for e in image_entries[:8]
                     ],
-                })
+                }
+                if not image_entries:
+                    # Empty list: either the case has no online documents or
+                    # the page isn't in the layout parse_image_list expects.
+                    # Record enough of the page to tell which.
+                    from bs4 import BeautifulSoup
+                    page = BeautifulSoup(resp.text, "html.parser")
+                    sample["image_list_url"] = image_list_url
+                    sample["table_ids"] = [t.get("id") for t in page.find_all("table") if t.get("id")][:8]
+                    sample["page_text_head"] = " ".join(page.get_text(" ", strip=True).split())[:400]
+                samples.append(sample)
             return
 
         pdf_resp = session.session.get(doc_url, headers={"Referer": image_list_url})
