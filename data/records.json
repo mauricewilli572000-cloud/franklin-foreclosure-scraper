@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-15T12:39:11+00:00",
+  "fetched_at": "2026-10-16T12:09:51+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 14,
-  "total": 232,
-  "with_address": 105,
+  "new_this_run": 4,
+  "total": 236,
+  "with_address": 107,
   "records": [
     {
       "doc_num": "28320531",
@@ -897,6 +897,34 @@
       "score": 60,
       "interest_rate": null,
       "case_number": "28342932",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28353082",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-15",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "EMC-KOSSUTH LLC",
+      "grantee": "US BANK TRUST NATIONAL ASSOCIATION",
+      "amount": null,
+      "legal": "",
+      "prop_address": "1703 KOSSUTH ST",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43206",
+      "mail_address": "901 CORPORATE CENTER DR",
+      "mail_city": "POMONA",
+      "mail_state": "CA",
+      "mail_zip": "91768-2642",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28353082/documents",
+      "flags": [
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": null,
+      "case_number": "28353082",
       "loan_type": ""
     },
     {
@@ -2953,6 +2981,33 @@
       "interest_rate": null,
       "case_number": "28344210",
       "loan_type": ""
+    },
+    {
+      "doc_num": "28353094",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-15",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "FOR MONEY, : FORECLOSURE, AND OTHER LIZBETH SANCHEZ : EQUITABLE RELIEF",
+      "grantee": "Civil Division PENNYMAC LOAN SERVICES, LLC :",
+      "amount": 0.9,
+      "legal": "which is attached hereto as Exhibit \"C\"",
+      "prop_address": "6575 BIRCH PARK DR",
+      "prop_city": "GALLOWAY",
+      "prop_state": "OH",
+      "prop_zip": "43119",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28353094/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28353094",
+      "loan_type": "FIXED RATE"
     },
     {
       "doc_num": "28247524",
@@ -6300,6 +6355,60 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28341789",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28353062",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-15",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "STUART J LASH",
+      "grantee": "FIRST FEDERAL BANK",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28353062/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28353062",
+      "loan_type": ""
+    },
+    {
+      "doc_num": "28350802",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-14",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "BRIAN K TABIT",
+      "grantee": "LANDINGS AT QUAIL CREEK CONDOMINIUM ASSO",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28350802/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28350802",
       "loan_type": ""
     }
   ]
