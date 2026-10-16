@@ -21,7 +21,7 @@ _AMOUNT_RE = re.compile(
 # so try the specific phrasings first, then a looser "a % figure shortly
 # after the word interest" fallback. Wording is still unconfirmed against
 # real Cuyahoga text - run_pipeline records samples when nothing matches.
-_RATE_NUM = r"(\d{1,2}(?:\.\d{1,4})?)"
+_RATE_NUM = r"(\d{1,2}(?:\.\d{1,8})?)"  # e.g. "3.500000%" appears in real complaints
 _PCT = r"\s*(?:%|percent\b)"
 _INTEREST_RATE_PATTERNS = [
     re.compile(r"(?i)interest\s+(?:thereon\s+)?(?:at\s+)?(?:the\s+)?(?:annual\s+|contract\s+)?(?:rate\s+)?(?:of\s+)?" + _RATE_NUM + _PCT),

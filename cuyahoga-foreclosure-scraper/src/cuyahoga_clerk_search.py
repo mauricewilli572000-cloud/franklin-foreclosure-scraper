@@ -698,9 +698,25 @@ def parse_image_list(html: str) -> List[ImageListEntry]:
     return entries
 
 
+_NOT_THE_COMPLAINT_RE = re.compile(
+    r"(?i)\b(answer|counter\s*-?claim|cross\s*-?claim|summons|motion|dismiss|"
+    r"notice|affidavit|judgment|entry|order|reply|praecipe|service|return)\b"
+)
+
+
 def find_complaint_doc_url(entries: List[ImageListEntry]) -> Optional[str]:
+    # 1) Exact document type "COMPLAINT" (confirmed wording).
     for entry in entries:
         if entry.document_description.strip().upper() == "COMPLAINT" and entry.doc_url:
+            return entry.doc_url
+    # 2) Variants such as "COMPLAINT W/ EXHIBITS" or "AMENDED COMPLAINT":
+    #    any entry naming a complaint that isn't an answer/motion/etc.
+    #    Many cases file the complaint under a variant label, which the
+    #    exact match above skipped (~44% of cases in one run).
+    for entry in entries:
+        label = f"{entry.document_description} {entry.description}"
+        if (entry.doc_url and "complaint" in label.lower()
+                and not _NOT_THE_COMPLAINT_RE.search(label)):
             return entry.doc_url
     return None
 

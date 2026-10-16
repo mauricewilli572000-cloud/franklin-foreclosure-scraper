@@ -123,6 +123,8 @@ _COMPLAINT_STATS: Dict[str, object] = {
     # Short excerpts of extracted text around the word "interest" for leads
     # where no rate parsed - shows the real wording so the pattern can be fixed.
     "no_rate_text_samples": [],
+    # What the image list held for cases where no complaint document was found.
+    "no_doc_url_samples": [],
 }
 
 
@@ -148,6 +150,18 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
         doc_url = find_complaint_doc_url(image_entries)
         if not doc_url:
             _COMPLAINT_STATS["no_complaint_doc_url"] += 1
+            samples = _COMPLAINT_STATS["no_doc_url_samples"]
+            if len(samples) < 8:
+                # Show what the image list actually contained so the finder
+                # can be taught the real labels.
+                samples.append({
+                    "case": lead.case_number,
+                    "image_entries": [
+                        {"desc": e.description, "doc_desc": e.document_description,
+                         "has_url": bool(e.doc_url)}
+                        for e in image_entries[:8]
+                    ],
+                })
             return
 
         pdf_resp = session.session.get(doc_url, headers={"Referer": image_list_url})
