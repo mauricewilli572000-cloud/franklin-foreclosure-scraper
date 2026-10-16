@@ -108,14 +108,38 @@ def _save_leads(leads_by_key: Dict[str, dict]) -> None:
         json.dump(list(leads_by_key.values()), f, indent=2)
 
 
+_COMPLAINT_STATS: Dict[str, object] = {
+    "attempts": 0,
+    "no_docket_entries": 0,
+    "no_complaint_image_url": 0,
+    "no_complaint_doc_url": 0,
+    "not_a_pdf": 0,
+    "no_text_extracted": 0,
+    "text_extracted": 0,
+    "interest_rate_found": 0,
+    "loan_type_found": 0,
+    "errors": 0,
+    "sample_errors": [],
+    # Short excerpts of extracted text around the word "interest" for leads
+    # where no rate parsed - shows the real wording so the pattern can be fixed.
+    "no_rate_text_samples": [],
+}
+
+
 def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord) -> None:
     """Best-effort bonus enrichment. Never raises - any failure just
-    leaves interest_rate/loan_type unset for this lead."""
+    leaves interest_rate/loan_type unset for this lead, but is counted in
+    _COMPLAINT_STATS so last_run_debug.json shows which step lost it."""
+    _COMPLAINT_STATS["attempts"] += 1
     try:
         all_html = session.click_case_tab(CASE_TAB_ALL)
         docket_entries = parse_docket_table(all_html)
+        if not docket_entries:
+            _COMPLAINT_STATS["no_docket_entries"] += 1
+            return
         image_list_url = find_complaint_image_url(docket_entries)
         if not image_list_url:
+            _COMPLAINT_STATS["no_complaint_image_url"] += 1
             return
 
         resp = session.session.get(image_list_url, headers={"Referer": session.current_url})
@@ -123,11 +147,13 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
         image_entries = parse_image_list(resp.text)
         doc_url = find_complaint_doc_url(image_entries)
         if not doc_url:
+            _COMPLAINT_STATS["no_complaint_doc_url"] += 1
             return
 
         pdf_resp = session.session.get(doc_url, headers={"Referer": image_list_url})
         pdf_resp.raise_for_status()
         if "pdf" not in pdf_resp.headers.get("Content-Type", "").lower():
+            _COMPLAINT_STATS["not_a_pdf"] += 1
             return
 
         with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
@@ -136,17 +162,39 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
 
         try:
             text = _extract_text_with_timeout(tmp_path)
+            if not (text or "").strip():
+                _COMPLAINT_STATS["no_text_extracted"] += 1
+            else:
+                _COMPLAINT_STATS["text_extracted"] += 1
             parsed = parse_complaint_text(text)
             if not lead.interest_rate and parsed.interest_rate:
                 lead.interest_rate = parsed.interest_rate
             if not lead.loan_type and parsed.loan_type:
                 lead.loan_type = parsed.loan_type
+            if lead.interest_rate:
+                _COMPLAINT_STATS["interest_rate_found"] += 1
+            elif text and text.strip():
+                samples = _COMPLAINT_STATS["no_rate_text_samples"]
+                if len(samples) < 4:
+                    idx = text.lower().find("interest")
+                    start = max(0, idx - 150) if idx >= 0 else 0
+                    samples.append({
+                        "case": lead.case_number,
+                        "text_length": len(text),
+                        "around_interest": text[start:start + 500],
+                    })
+            if lead.loan_type:
+                _COMPLAINT_STATS["loan_type_found"] += 1
         finally:
             try:
                 os.unlink(tmp_path)
             except OSError:
                 pass
-    except Exception:
+    except Exception as exc:
+        _COMPLAINT_STATS["errors"] += 1
+        samples = _COMPLAINT_STATS["sample_errors"]
+        if len(samples) < 3:
+            samples.append(f"{lead.case_number}: {type(exc).__name__}: {exc}")
         return
 
 
@@ -354,6 +402,7 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         new_leads_this_run=len(new_leads),
         total_leads_on_file=len(all_leads),
         auditor_enrichment_stats=_AUDITOR_STATS,
+        complaint_pdf_stats=_COMPLAINT_STATS,
         **search_debug_fields,
     )
 

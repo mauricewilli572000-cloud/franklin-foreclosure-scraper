@@ -16,9 +16,19 @@ from typing import Optional
 _AMOUNT_RE = re.compile(
     r"(?i)(?:sum of|amount of|principal (?:balance|sum) of)\s*\$?([\d,]+\.\d{2})"
 )
-_INTEREST_RATE_RE = re.compile(
-    r"(?i)interest(?: rate)?\s*of\s*([\d.]+)\s*%"
-)
+# Ohio foreclosure complaints usually word this as "interest at the rate of
+# 4.5% per annum" (or "bearing interest at 4.5%", "4.5 percent per annum"),
+# so try the specific phrasings first, then a looser "a % figure shortly
+# after the word interest" fallback. Wording is still unconfirmed against
+# real Cuyahoga text - run_pipeline records samples when nothing matches.
+_RATE_NUM = r"(\d{1,2}(?:\.\d{1,4})?)"
+_PCT = r"\s*(?:%|percent\b)"
+_INTEREST_RATE_PATTERNS = [
+    re.compile(r"(?i)interest\s+(?:thereon\s+)?(?:at\s+)?(?:the\s+)?(?:annual\s+|contract\s+)?(?:rate\s+)?(?:of\s+)?" + _RATE_NUM + _PCT),
+    re.compile(r"(?i)at\s+the\s+(?:annual\s+|contract\s+)?rate\s+of\s+" + _RATE_NUM + _PCT),
+    re.compile(r"(?i)" + _RATE_NUM + _PCT + r"\s*(?:per\s+annum|per\s+year|annually)"),
+    re.compile(r"(?i)interest[^.%]{0,80}?" + _RATE_NUM + _PCT),
+]
 _LOAN_TYPE_RE = re.compile(
     r"(?i)\b(conventional|FHA|VA|USDA|adjustable[- ]rate|fixed[- ]rate|balloon)\b"
 )
@@ -58,13 +68,18 @@ def parse_complaint_text(text: str) -> ParsedComplaintData:
         except ValueError:
             amount_owed = None
 
-    rate_str = _first_match(_INTEREST_RATE_RE, text)
     interest_rate = None
-    if rate_str:
+    for pattern in _INTEREST_RATE_PATTERNS:
+        rate_str = _first_match(pattern, text)
+        if not rate_str:
+            continue
         try:
-            interest_rate = float(rate_str)
+            candidate = float(rate_str)
         except ValueError:
-            interest_rate = None
+            continue
+        if 0 < candidate < 30:  # sanity bound; skips stray figures
+            interest_rate = candidate
+            break
 
     loan_type_match = _LOAN_TYPE_RE.search(text)
     loan_type = loan_type_match.group(1) if loan_type_match else ""

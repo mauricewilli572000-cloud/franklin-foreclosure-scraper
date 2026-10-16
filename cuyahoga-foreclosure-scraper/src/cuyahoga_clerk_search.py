@@ -415,12 +415,78 @@ class CuyahogaDocketSession:
         # stay on so the next run shows what THIS version's raw response
         # actually looks like (not captured before this debugging pass).
         html, was_async = self._async_postback(FIELD_SUBMIT, extra_fields=extra)
+        self._save_results_state()
         return html, was_async
 
+    # ------------------------------------------------------------------
+    # Results-page state
+    #
+    # Opening a case moves the session onto that case's page (new URL and
+    # viewstate). Each later case link only exists on the RESULTS page, so
+    # it has to be posted from the results page's own URL/viewstate. Without
+    # this, every case after the first was "opened" from the previous case's
+    # page, and the site just re-served that same case - so every lead
+    # inherited the first case's plaintiff and amount.
+    # ------------------------------------------------------------------
+    def _save_results_state(self) -> None:
+        self._results_state = (
+            self.current_url,
+            self.viewstate,
+            self.viewstategenerator,
+            self.eventvalidation,
+        )
+
+    def _restore_results_state(self) -> bool:
+        state = getattr(self, "_results_state", None)
+        if not state:
+            return False
+        (self.current_url, self.viewstate,
+         self.viewstategenerator, self.eventvalidation) = state
+        return True
+
+    @staticmethod
+    def _norm_case(value: str) -> str:
+        return re.sub(r"[^A-Z0-9]", "", (value or "").upper())
+
+    def _case_page_matches(self, html: str, listing: "CaseListing") -> bool:
+        """True unless the page names a DIFFERENT case than the one asked for.
+        (If the page has no readable case number we can't tell, so allow it.)"""
+        page_case = self._norm_case(parse_case_summary(html).case_number)
+        want = self._norm_case(listing.case_number)
+        return not (page_case and want and page_case != want)
+
     def open_case_detail(self, listing: CaseListing) -> str:
-        return self._postback_current_page(
+        restored = self._restore_results_state()
+        html = self._postback_current_page(
             listing.case_detail_event_target,
             listing.case_detail_event_argument,
+        )
+        if self._case_page_matches(html, listing):
+            return html
+
+        # Wrong case came back: reload the results page for fresh state and
+        # try once more before giving up.
+        state = getattr(self, "_results_state", None)
+        if state:
+            try:
+                resp = self.session.get(state[0], headers={"Referer": state[0]})
+                resp.raise_for_status()
+                self.current_url = resp.url
+                self._extract_viewstate(resp.text)
+                html = self._postback_current_page(
+                    listing.case_detail_event_target,
+                    listing.case_detail_event_argument,
+                )
+                if self._case_page_matches(html, listing):
+                    return html
+            except Exception:
+                pass
+
+        # Refuse to return another case's page - a failed lead is visible in
+        # case_detail_failures, a wrong one silently corrupts the data.
+        raise RuntimeError(
+            f"Opened the wrong case page for {listing.case_number} "
+            f"(results state restored: {restored})"
         )
 
     def click_case_tab(self, event_target: str) -> str:
