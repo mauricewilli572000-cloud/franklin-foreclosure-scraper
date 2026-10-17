@@ -1,40 +1,35 @@
 {
-  "generated_at": "2026-10-16T09:42:29.579318Z",
-  "date_from": "10/09/2026",
-  "date_to": "10/16/2026",
+  "generated_at": "2026-10-17T09:10:58.057977Z",
+  "date_from": "10/10/2026",
+  "date_to": "10/17/2026",
   "limit": null,
-  "listings_found": 106,
-  "listings_processed": 106,
+  "listings_found": 95,
+  "listings_processed": 95,
   "case_detail_failures": 0,
-  "new_leads_this_run": 106,
-  "total_leads_on_file": 141,
+  "new_leads_this_run": 95,
+  "total_leads_on_file": 150,
   "auditor_enrichment_stats": {
-    "attempts": 112,
-    "successes": 109,
+    "attempts": 96,
+    "successes": 93,
     "no_match_by_parcel": 4,
     "no_match_by_address": 2,
     "errors": 0,
     "sample_errors": [],
-    "backfilled_existing_leads": 5
+    "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 106,
+    "attempts": 95,
     "no_docket_entries": 0,
     "no_complaint_image_url": 0,
-    "no_complaint_doc_url": 51,
+    "no_complaint_doc_url": 44,
     "not_a_pdf": 0,
     "no_text_extracted": 0,
-    "text_extracted": 55,
-    "interest_rate_found": 52,
-    "loan_type_found": 48,
+    "text_extracted": 51,
+    "interest_rate_found": 48,
+    "loan_type_found": 45,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
-      {
-        "case": "CV-26-148395",
-        "text_length": 82070,
-        "around_interest": "M\nTHIS IS IN CONNECTION WITH THE COLLECTION OFA DEBT\nANY INFORMATION OBTAINED WILL BE USED FOR THAT PURPOSE\nis due thereon $111,263.41, together with interest at the rate of 3.500000% per year from April 1, 2026,\nplus court costs, advances and other charges, as allowed by law. All conditions precedent required under\nthe note, mortgage and other loan documents have been satisfied.\nSECOND COUNT\n2. Plaintiff incorporates the allegations of Count One and further states that it is the holder of\na mor"
-      },
       {
         "case": "CV-26-148520",
         "text_length": 66911,
@@ -44,13 +39,92 @@
         "case": "CV-26-148688",
         "text_length": 15127,
         "around_interest": "ectronically Filed 10/14/2026 15:33/ /CV 26 148688 / Confirmation Nbr. 4010412 / Cl2m1\nThousand Two Hundred Seven Dollars and 66/100 ($1,207.66) with interest at the maximum rate\nper annum from March 23,2026, plus subsequent additional unpaid assessments, interest, late fees,\nenforcement assessments, collection costs, attorney fees, paralegal fees and court costs.. The Lien\nis a good and valid subsisting lien against the Subject Property. See attached Exhibit \"1\".\n5. Plaintiff is further owed ma"
+      },
+      {
+        "case": "CV-26-148820",
+        "text_length": 53086,
+        "around_interest": "y Agent is Dennis Casey, Jr., with an address of 2140 Miami Rd., Euclid, Ohio\n44117, who claims or may claim an adverse right, title, estate, lien or interest in the\nProperty.\n6. Defendant Tanja Foster is an individual with a last known address of 5388 Mardale\nAve., Bedford Heights, Ohio 44146, who claims or may claim an adverse right, title,\nestate, lien or interest in the Property.\n7. Defendant Torin Darling Brazzle is an individual with a last known address of 928 46th\nSt. Ensley, Birmingham,"
+      }
+    ],
+    "no_doc_url_samples": [
+      {
+        "case": "CV-26-148428",
+        "plaintiff": "SERVBANK, NA",
+        "amount_owed": 55448.25,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=9Tu8WJSQm8JLtVMcVOqPtMDkTUXvkTjvDAOtsKpUGCVFDCzcWtdjBzpb0umPMGVn0",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[4165 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T15:39:20Z 2026-10-13T15:39:20Z uuid:D3F147F3-6438-40C4-A7AA-13CA52D307E5 PDF/UA Universal Accessibility Schema http://www."
+      },
+      {
+        "case": "CV-26-148428",
+        "plaintiff": "SERVBANK, NA",
+        "amount_owed": 55448.25,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=9Tu8WJSQm8JLtVMcVOqPtMDkTUXvkTjvDAOtsKpUGCV0Tmfdbqt4Xnh-jG7naLDe0",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[4165 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T15:39:20Z 2026-10-13T15:39:20Z uuid:D3F147F3-6438-40C4-A7AA-13CA52D307E5 PDF/UA Universal Accessibility Schema http://www."
+      },
+      {
+        "case": "CV-26-148535",
+        "plaintiff": "US BANK TRUST COMPANY NATIONAL ASSOCIATION",
+        "amount_owed": 79132.42,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=6gBd6Z-gMAoJKur__XVQ3EhP84dxCmML2PVz-0INu6ji-mj-KGPj89pkKrH_SkNS0",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.2 %dhi9hklfrp25 dO8\u0000\u0000\u0000\u0000\u0000\ufffd\u0001\u0000\u0000\ufffd 9\u0000\u0000\u0000\u0000\u0000 1 0 obj << /Producer () >> endobj 2 0 obj << /Type /Catalog /Pages 3 0 R /MarkInfo < > >> endobj 4 0 obj << /Type /Page /MediaBox [ 0 0 612.000 792.000 ] /Parent 3 0 R /Resources << /XObject << /Im1 7 0 R >> /ProcSet [ /PDF /ImageI ] >> /Contents 5 0 R >> endobj 5 0 obj << /Length 6 0 R >> stream q 612 0 0 792 0 0 cm /Im1 Do Q endstream endobj 6 0 obj 30"
+      },
+      {
+        "case": "CV-26-148538",
+        "plaintiff": "GEORGETOWN OF THE HIGHLANDS CONDOMINIUM OWNERS",
+        "amount_owed": 0.0,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=6gBd6Z-gMAoLDETh8iKHIeqczQsP6cNYbr42RY0SVf2b-XDcSVGVgxDhntThd6vI0",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[4476 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T19:58:54Z 2026-10-13T19:58:54Z uuid:4B8F6D2D-3386-4751-A845-36173EB9C975 PDF/UA Universal Accessibility Schema http://www."
+      },
+      {
+        "case": "CV-26-148543",
+        "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+        "amount_owed": 1133.43,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=0nJCrglc5bcy4KrkfiYkrU8VYVLfv1QSk3iWMNIzOyuLzyvRWoHnZ719OqjEfgxw0",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[1138 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T19:53:35Z 2026-10-13T19:53:35Z uuid:5746D89D-D080-4CA3-8C20-856CD9CE8171 PDF/UA Universal Accessibility Schema http://www."
+      },
+      {
+        "case": "CV-26-148546",
+        "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+        "amount_owed": 780.33,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=rt3yNUzFr1CvqsR4qFNLP3VHlaeR3Bj7izLzOl8HC1Uz8L5dnZirMibyINPnLYO70",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[1154 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T20:03:07Z 2026-10-13T20:03:07Z uuid:4E59EC98-1651-4512-B6D7-C57C487AF1F5 PDF/UA Universal Accessibility Schema http://www."
+      },
+      {
+        "case": "CV-26-148551",
+        "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+        "amount_owed": 1246.48,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=5uRF6V_729_NwG1p2zDHGL5DQOvbbiVjmIBQrBFPVDlcMqSIyxfor7t5os0kjPRJ0",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[1407 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T20:19:27Z 2026-10-13T20:19:27Z uuid:7D2D3866-5D68-49C0-907F-2B33A7B901E3 PDF/UA Universal Accessibility Schema http://www."
+      },
+      {
+        "case": "CV-26-148553",
+        "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+        "amount_owed": 2195.82,
+        "image_entries": [],
+        "image_list_url": "https://cpdocket.cp.cuyahogacounty.gov/DisplayImageList.aspx?q=5uRF6V_729_lu_lbAV8CGsra2hZw4M0VzN9h-hkdVtHqkC_repapfhpFqrFWKU410",
+        "table_ids": [],
+        "page_text_head": "%PDF-1.4 %\ufffd\ufffd\ufffd\ufffd 2 0 obj < >/OutputIntents[1291 0 R]>> endobj 3 0 obj < > endobj 4 0 obj < > endobj 5 0 obj < > endobj 6 0 obj < > endobj 7 0 obj < > stream \ufeff application/pdf Cuyahoga County Common Pleas document Cuyahoga County Common Pleas ABBYY FineReader Engine 12 2026-10-13T20:20:03Z 2026-10-13T20:20:03Z uuid:CAF46E17-BD89-42B2-BFF0-85EA4FBB6613 PDF/UA Universal Accessibility Schema http://www."
       }
     ]
   },
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 117135,
+  "submit_html_length": 106597,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
