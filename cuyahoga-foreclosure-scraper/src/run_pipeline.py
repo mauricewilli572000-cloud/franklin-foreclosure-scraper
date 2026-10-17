@@ -18,6 +18,7 @@ import os
 import json
 import tempfile
 import threading
+import time
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 
@@ -40,6 +41,10 @@ from lead_scoring import apply_scores
 from ghl_export import export_to_ghl_csv
 
 COUNTY = "Cuyahoga"
+
+# Pause between cases so a full run isn't a burst of hundreds of requests;
+# the court site answers heavy traffic with its Access Denied page.
+CASE_DELAY_SECONDS = 1.5
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO_ROOT = os.path.dirname(PROJECT_DIR)
@@ -356,6 +361,12 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
 
         from cuyahoga_clerk_search import parse_results_grid
         listings = parse_results_grid(html)
+        if "Denied.aspx" in (session.current_url or ""):
+            raise RuntimeError(
+                "The court site returned its Access Denied page (Denied.aspx) "
+                "instead of search results - it is likely rate-limiting this "
+                "IP after heavy use. Wait a few hours and run again."
+            )
     except Exception as exc:
         _write_debug(
             date_from=date_from,
@@ -384,12 +395,19 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
     new_leads: List[LeadRecord] = []
     case_detail_failures = 0
 
-    for listing in listings:
+    blocked_mid_run = False
+    for i, listing in enumerate(listings):
+        if i:
+            time.sleep(CASE_DELAY_SECONDS)
         lead = build_lead_from_case(session, listing)
         if lead is not None:
             new_leads.append(lead)
         else:
             case_detail_failures += 1
+        if "Denied.aspx" in (session.current_url or ""):
+            # Blocked partway: keep what was collected, stop hammering the site.
+            blocked_mid_run = True
+            break
 
     for lead in new_leads:
         existing[lead.key()] = lead.to_dict()
@@ -429,6 +447,7 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
         total_leads_on_file=len(all_leads),
         auditor_enrichment_stats=_AUDITOR_STATS,
         complaint_pdf_stats=_COMPLAINT_STATS,
+        blocked_mid_run=blocked_mid_run,
         **search_debug_fields,
     )
 
