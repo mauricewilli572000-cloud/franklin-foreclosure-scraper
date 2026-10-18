@@ -13,9 +13,16 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
-_AMOUNT_RE = re.compile(
-    r"(?i)(?:sum of|amount of|principal (?:balance|sum) of)\s*\$?([\d,]+\.\d{2})"
-)
+# Ordered most- to least-specific. Real Cuyahoga complaints word the debt as
+# e.g. "is due thereon $111,263.41, together with interest at the rate of..."
+# or "the total sum of $8,014.45 plus interest" (HOA/condo assessments).
+_AMOUNT_PATTERNS = [
+    re.compile(r"(?i)due\s+thereon\s*(?:the\s+(?:sum|amount)\s+of\s*)?\$\s*([\d,]+\.\d{2})"),
+    re.compile(r"(?i)principal\s+(?:balance|sum|amount)\s+of\s*\$\s*([\d,]+\.\d{2})"),
+    re.compile(r"(?i)(?:unpaid\s+)?(?:principal\s+)?balance\s+of\s*\$\s*([\d,]+\.\d{2})"),
+    re.compile(r"(?i)(?:total\s+)?(?:sum|amount)\s+of\s*\$\s*([\d,]+\.\d{2})"),
+]
+_AMOUNT_RE = _AMOUNT_PATTERNS[-1]  # kept for backward compatibility
 # Ohio foreclosure complaints usually word this as "interest at the rate of
 # 4.5% per annum" (or "bearing interest at 4.5%", "4.5 percent per annum"),
 # so try the specific phrasings first, then a looser "a % figure shortly
@@ -60,13 +67,18 @@ def parse_complaint_text(text: str) -> ParsedComplaintData:
     if not text:
         return ParsedComplaintData()
 
-    amount_str = _first_match(_AMOUNT_RE, text)
     amount_owed = None
-    if amount_str:
+    for pattern in _AMOUNT_PATTERNS:
+        amount_str = _first_match(pattern, text)
+        if not amount_str:
+            continue
         try:
-            amount_owed = float(amount_str.replace(",", ""))
+            candidate = float(amount_str.replace(",", ""))
         except ValueError:
-            amount_owed = None
+            continue
+        if candidate > 0:
+            amount_owed = candidate
+            break
 
     interest_rate = None
     for pattern in _INTEREST_RATE_PATTERNS:

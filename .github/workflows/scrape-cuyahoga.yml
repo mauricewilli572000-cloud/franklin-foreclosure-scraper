@@ -70,6 +70,7 @@ jobs:
           PIPELINE_LIMIT: ${{ github.event.inputs.limit }}
           PIPELINE_DATE_FROM: ${{ github.event.inputs.date_from }}
           PIPELINE_DATE_TO: ${{ github.event.inputs.date_to }}
+          GHL_WEBHOOK_URL: ${{ secrets.GHL_WEBHOOK_URL }}
         run: |
           cd src
           ARGS=()
@@ -84,6 +85,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           cd ..
           git add cuyahoga-foreclosure-scraper/data/leads.json cuyahoga-foreclosure-scraper/data/last_run_debug.json dashboard/cuyahoga.json dashboard/cuyahoga_ghl_export.csv
+          if [ -f cuyahoga-foreclosure-scraper/data/ghl_sent.json ]; then git add cuyahoga-foreclosure-scraper/data/ghl_sent.json; fi
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

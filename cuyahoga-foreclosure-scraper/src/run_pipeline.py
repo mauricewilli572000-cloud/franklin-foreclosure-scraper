@@ -39,6 +39,7 @@ import pdf_text_extractor
 import auditor_enrichment
 from lead_scoring import apply_scores
 from ghl_export import export_to_ghl_csv
+import ghl_push
 
 COUNTY = "Cuyahoga"
 
@@ -125,6 +126,7 @@ _COMPLAINT_STATS: Dict[str, object] = {
     "text_extracted": 0,
     "interest_rate_found": 0,
     "loan_type_found": 0,
+    "amount_filled_from_complaint": 0,
     "errors": 0,
     "sample_errors": [],
     # Short excerpts of extracted text around the word "interest" for leads
@@ -132,6 +134,8 @@ _COMPLAINT_STATS: Dict[str, object] = {
     "no_rate_text_samples": [],
     # What the image list held for cases where no complaint document was found.
     "no_doc_url_samples": [],
+    # Complaint text near "$" for leads still without an amount.
+    "no_amount_text_samples": [],
 }
 
 
@@ -208,6 +212,19 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
             else:
                 _COMPLAINT_STATS["text_extracted"] += 1
             parsed = parse_complaint_text(text)
+            # The court summary's prayer amount is 0/blank for some cases; the
+            # complaint text usually states the amount due.
+            if not lead.amount_owed and parsed.amount_owed:
+                lead.amount_owed = parsed.amount_owed
+                _COMPLAINT_STATS["amount_filled_from_complaint"] += 1
+            elif not lead.amount_owed and text and text.strip():
+                amt_samples = _COMPLAINT_STATS["no_amount_text_samples"]
+                if len(amt_samples) < 4:
+                    idx = text.find("$")
+                    amt_samples.append({
+                        "case": lead.case_number,
+                        "around_first_dollar": text[max(0, idx - 150): idx + 350] if idx >= 0 else "(no $ in text)",
+                    })
             if not lead.interest_rate and parsed.interest_rate:
                 lead.interest_rate = parsed.interest_rate
             if not lead.loan_type and parsed.loan_type:
@@ -346,6 +363,18 @@ def _write_dashboard_data(leads: List[LeadRecord]) -> None:
 DEBUG_PATH = os.path.join(DATA_DIR, "last_run_debug.json")
 
 
+def _merge_debug(**fields) -> None:
+    """Add fields to the debug file written earlier in the run."""
+    try:
+        with open(DEBUG_PATH, "r", encoding="utf-8") as f:
+            payload = json.load(f)
+        payload.update(fields)
+        with open(DEBUG_PATH, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+    except Exception:
+        pass
+
+
 def _write_debug(**fields) -> None:
     """Always-written diagnostic file - committed every run regardless of
     how many leads came out, so a quiet run (0 listings, or listings found
@@ -467,6 +496,14 @@ def run(date_from: Optional[str] = None, date_to: Optional[str] = None, limit: O
     os.makedirs(SHARED_DASHBOARD_DIR, exist_ok=True)
     export_to_ghl_csv(all_leads, DASHBOARD_CSV_PATH)
     _write_dashboard_data(all_leads)
+
+    # Optional: push new leads to GoHighLevel (does nothing unless the
+    # GHL_WEBHOOK_URL environment variable is set). Never fails the run.
+    try:
+        ghl_stats = ghl_push.push_new_leads(all_leads, DATA_DIR)
+    except Exception as exc:
+        ghl_stats = {"enabled": True, "error": f"{type(exc).__name__}: {exc}"}
+    _merge_debug(ghl_push=ghl_stats)
 
     return all_leads
 
