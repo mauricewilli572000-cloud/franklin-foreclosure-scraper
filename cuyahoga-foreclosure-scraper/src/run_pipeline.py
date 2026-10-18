@@ -119,6 +119,8 @@ _COMPLAINT_STATS: Dict[str, object] = {
     "no_complaint_image_url": 0,
     "no_complaint_doc_url": 0,
     "not_a_pdf": 0,
+    # Cases with a single document: the "image list" address returns the PDF itself.
+    "pdf_returned_directly": 0,
     "no_text_extracted": 0,
     "text_extracted": 0,
     "interest_rate_found": 0,
@@ -151,44 +153,52 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
 
         resp = session.session.get(image_list_url, headers={"Referer": session.current_url})
         resp.raise_for_status()
-        image_entries = parse_image_list(resp.text)
-        doc_url = find_complaint_doc_url(image_entries)
-        if not doc_url:
-            _COMPLAINT_STATS["no_complaint_doc_url"] += 1
-            samples = _COMPLAINT_STATS["no_doc_url_samples"]
-            if len(samples) < 8:
-                # Show what the image list actually contained so the finder
-                # can be taught the real labels.
-                sample = {
-                    "case": lead.case_number,
-                    "plaintiff": lead.plaintiff,
-                    "amount_owed": lead.amount_owed,
-                    "image_entries": [
-                        {"desc": e.description, "doc_desc": e.document_description,
-                         "has_url": bool(e.doc_url)}
-                        for e in image_entries[:8]
-                    ],
-                }
-                if not image_entries:
-                    # Empty list: either the case has no online documents or
-                    # the page isn't in the layout parse_image_list expects.
-                    # Record enough of the page to tell which.
-                    from bs4 import BeautifulSoup
-                    page = BeautifulSoup(resp.text, "html.parser")
-                    sample["image_list_url"] = image_list_url
-                    sample["table_ids"] = [t.get("id") for t in page.find_all("table") if t.get("id")][:8]
-                    sample["page_text_head"] = " ".join(page.get_text(" ", strip=True).split())[:400]
-                samples.append(sample)
-            return
+        if resp.content[:5] == b"%PDF-" or "pdf" in resp.headers.get("Content-Type", "").lower():
+            # Single-document case: the server hands back the PDF itself
+            # rather than a list page (~half of cases in a real run).
+            _COMPLAINT_STATS["pdf_returned_directly"] += 1
+            pdf_bytes = resp.content
+        else:
+            image_entries = parse_image_list(resp.text)
+            doc_url = find_complaint_doc_url(image_entries)
+            if not doc_url:
+                _COMPLAINT_STATS["no_complaint_doc_url"] += 1
+                samples = _COMPLAINT_STATS["no_doc_url_samples"]
+                if len(samples) < 8:
+                    # Show what the image list actually contained so the finder
+                    # can be taught the real labels.
+                    sample = {
+                        "case": lead.case_number,
+                        "plaintiff": lead.plaintiff,
+                        "amount_owed": lead.amount_owed,
+                        "image_entries": [
+                            {"desc": e.description, "doc_desc": e.document_description,
+                             "has_url": bool(e.doc_url)}
+                            for e in image_entries[:8]
+                        ],
+                    }
+                    if not image_entries:
+                        # Empty list: either the case has no online documents or
+                        # the page isn't in the layout parse_image_list expects.
+                        # Record enough of the page to tell which.
+                        from bs4 import BeautifulSoup
+                        page = BeautifulSoup(resp.text, "html.parser")
+                        sample["image_list_url"] = image_list_url
+                        sample["table_ids"] = [t.get("id") for t in page.find_all("table") if t.get("id")][:8]
+                        sample["page_text_head"] = " ".join(page.get_text(" ", strip=True).split())[:400]
+                    samples.append(sample)
+                return
 
-        pdf_resp = session.session.get(doc_url, headers={"Referer": image_list_url})
-        pdf_resp.raise_for_status()
-        if "pdf" not in pdf_resp.headers.get("Content-Type", "").lower():
-            _COMPLAINT_STATS["not_a_pdf"] += 1
-            return
+            pdf_resp = session.session.get(doc_url, headers={"Referer": image_list_url})
+            pdf_resp.raise_for_status()
+            if "pdf" not in pdf_resp.headers.get("Content-Type", "").lower():
+                _COMPLAINT_STATS["not_a_pdf"] += 1
+                return
+
+            pdf_bytes = pdf_resp.content
 
         with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
-            tmp.write(pdf_resp.content)
+            tmp.write(pdf_bytes)
             tmp_path = tmp.name
 
         try:
