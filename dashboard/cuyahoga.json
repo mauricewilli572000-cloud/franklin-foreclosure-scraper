@@ -1,33 +1,33 @@
 {
   "county": "Cuyahoga",
-  "generated_at": "2026-10-20T10:00:23.948428Z",
-  "total_leads": 228,
-  "leads_with_mailing_address": 224,
-  "average_amount_owed": 470819.63,
-  "average_lead_score": 77.5,
+  "generated_at": "2026-10-21T10:03:50.418644Z",
+  "total_leads": 255,
+  "leads_with_mailing_address": 251,
+  "average_amount_owed": 424079.31,
+  "average_lead_score": 77.7,
   "leads_by_city": [
     [
       "CLEVELAND",
-      116
+      131
     ],
     [
       "PARMA",
-      13
+      15
+    ],
+    [
+      "EUCLID",
+      10
     ],
     [
       "GARFIELD HEIGHTS",
       10
     ],
     [
-      "EUCLID",
+      "MAPLE HEIGHTS",
       9
     ],
     [
       "BROADVIEW HEIGHTS",
-      8
-    ],
-    [
-      "MAPLE HEIGHTS",
       8
     ],
     [
@@ -39,6 +39,10 @@
       5
     ],
     [
+      "SHAKER HEIGHTS",
+      4
+    ],
+    [
       "BEDFORD",
       3
     ],
@@ -47,11 +51,11 @@
       3
     ],
     [
-      "SHAKER HEIGHTS",
+      "STRONGSVILLE",
       3
     ],
     [
-      "STRONGSVILLE",
+      "BEREA",
       3
     ],
     [
@@ -83,27 +87,23 @@
       2
     ],
     [
-      "BEREA",
+      "CLEVELAND,",
+      2
+    ],
+    [
+      "BROOK PARK",
+      2
+    ],
+    [
+      "GARFIELD HTS",
+      2
+    ],
+    [
+      "SEVEN HILLS",
       2
     ],
     [
       "MAYFIELD HEIGHTS",
-      1
-    ],
-    [
-      "FAIRVIEW PARK",
-      1
-    ],
-    [
-      "CLEVELAND HEIGHTS",
-      1
-    ],
-    [
-      "BAY VILLAGE",
-      1
-    ],
-    [
-      "PLANTATION",
       1
     ]
   ],
@@ -128,6 +128,27 @@
       "loan_type": "Adjustable Rate",
       "lead_score": 90,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=gl7BGFkMmEDYkyPJILCqVgWYqKSLGVnNlTaIJXACcac1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149006",
+      "doc_number": "",
+      "owner_name": "GERHARD F OLAH",
+      "plaintiff": "SUN 1318 CORP.",
+      "defendant": "GERHARD FERDINAND OLAH, ET AL",
+      "property_address": "16304 ELSIENNA AVENUE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44135",
+      "parcel_number": "027-11-052",
+      "mailing_address": "16304 ELSIENNA AVE CLEVELAND OH 44135",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 24139.52,
+      "interest_rate": 20.0,
+      "loan_type": "balloon",
+      "lead_score": 90,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=NVdA0mTjkeV24etLb3A9sJQEYoRjrdrLOD4hhrdh1f41"
     },
     {
       "county": "Cuyahoga",
@@ -400,7 +421,7 @@
       "interest_rate": 7.634,
       "loan_type": "FIXED RATE",
       "lead_score": 85,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=lsTZ4wwT51MCwhEPoW-Mj7cx1Dqly3qpXHAXToAAe2E1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=lsTZ4wwT51MCwhEPoW-Mj9lRWIkGyNC2uP0wYy0zcqM1"
     },
     {
       "county": "Cuyahoga",
@@ -421,7 +442,7 @@
       "interest_rate": 3.5,
       "loan_type": "Adjustable Rate",
       "lead_score": 85,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=c05c-2W6OFwJprr31ZcHShB0vMoPTS30kF-mx_LqCZo1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=c05c-2W6OFwJprr31ZcHStkRSJY4qVke8BrqvO30Bns1"
     },
     {
       "county": "Cuyahoga",
@@ -442,7 +463,7 @@
       "interest_rate": 11.125,
       "loan_type": "",
       "lead_score": 85,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=8udhTSJN7tS_YVHYka5Xt_VXI03XQuB_nJqdrAe0eFA1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=8udhTSJN7tS_YVHYka5Xtx_pIq1QvTRZjEU69TmcZLA1"
     },
     {
       "county": "Cuyahoga",
@@ -463,7 +484,7 @@
       "interest_rate": 5.0,
       "loan_type": "Adjustable Rate",
       "lead_score": 85,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=HQOk8M5Sc_KnE66a6Mcp6X8AIfxl2f2nIf-8MI2zjgQ1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=HQOk8M5Sc_KnE66a6Mcp6RH4dUYhiHgZgjUkF5dBiNE1"
     },
     {
       "county": "Cuyahoga",
@@ -484,7 +505,7 @@
       "interest_rate": 11.0,
       "loan_type": "VA",
       "lead_score": 85,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=00xpGuMAfvSqAhrpJlGaQ-7UPw9IoQcn0SuQUasKclU1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=00xpGuMAfvSqAhrpJlGaQ3HYD0pUYTHWRhzfraP1j4k1"
     },
     {
       "county": "Cuyahoga",
@@ -632,6 +653,48 @@
       "loan_type": "Fixed Rate",
       "lead_score": 85,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=q3OepPZEBqq7ssN0fadXMPlypL_vTOoWXoSzben0oo81"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148990",
+      "doc_number": "",
+      "owner_name": "ATTAWAY, YVETTE M.",
+      "plaintiff": "DEUTSCHE BANK NATIONAL TRUST COMPANY, AS TRUSTEE",
+      "defendant": "YVETTE M. ATTAWAY, ET AL.",
+      "property_address": "10610 GRANDVIEW AVE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44104",
+      "parcel_number": "128-02-098",
+      "mailing_address": "3785 E 142ND ST CLEVELAND OH 44120",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 32979.42,
+      "interest_rate": 3.625,
+      "loan_type": "BALLOON",
+      "lead_score": 85,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=n1cRS1ir96iudYxnAAdcWx_twaw7h-nIQly2gR7kJDg1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149046",
+      "doc_number": "",
+      "owner_name": "NATHANIEL D ARMSTRONG",
+      "plaintiff": "KEYBANK NA",
+      "defendant": "NATHANIEL D. ARMSTRONG, ET AL",
+      "property_address": "13619 CRANWOOD PARK BLVD",
+      "property_city": "GARFIELD HTS",
+      "property_state": "OH",
+      "property_zip": "44125",
+      "parcel_number": "546-09-013",
+      "mailing_address": "27305 TINKERS VALLEY DR SOLON OH 44139",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 19932.07,
+      "interest_rate": 9.45,
+      "loan_type": "Fixed Rate",
+      "lead_score": 85,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=-1jpHh39qtZ_1zpqpARFHpl2gdzbv48SxXGyZf35Wlo1"
     },
     {
       "county": "Cuyahoga",
@@ -1639,7 +1702,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=vz9OAyt3np6L_UtxcAF9JX32WfyJk0KA4qNUkSSBguY1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=vz9OAyt3np6L_UtxcAF9JWHPyfIiCYApRO0UFOaIQzw1"
     },
     {
       "county": "Cuyahoga",
@@ -1660,7 +1723,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=4AZdm7PGNTI6yPHCuUckID2eResUbFc4Yb6OdsCPL5s1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=4AZdm7PGNTI6yPHCuUckILQ0vEDNbFL6ZvGJFVT0NQI1"
     },
     {
       "county": "Cuyahoga",
@@ -1681,7 +1744,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=F8Rh58uLUUl-_r8BQpbDzE48NbQ99R5BDL8TS78J_kc1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=F8Rh58uLUUl-_r8BQpbDzGwAClrbY5zi5ye2Rr9ui-Q1"
     },
     {
       "county": "Cuyahoga",
@@ -1702,7 +1765,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=aQluXYaJXupY8MJciq3Ru7XD03q1APRBR4Sg9nti5sY1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=aQluXYaJXupY8MJciq3Ru54fLRkD8cRgJUM1C1G_AtM1"
     },
     {
       "county": "Cuyahoga",
@@ -1723,7 +1786,7 @@
       "interest_rate": 7.25,
       "loan_type": "VA",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=JOknclJob9mZY6XoESplNOIfwNLNu9gjaBQv6DfvDrA1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=JOknclJob9mZY6XoESplNFU-HAilB3LZp-kAgiR3TnU1"
     },
     {
       "county": "Cuyahoga",
@@ -1744,7 +1807,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=g83LJmI0MxEsMLdkCd16DxZfl8GWNaCN9WvQmJRi5Z01"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=g83LJmI0MxEsMLdkCd16DwM5yY1JzCTHkLhE9X9U1Dw1"
     },
     {
       "county": "Cuyahoga",
@@ -1765,7 +1828,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KRJiUCs5ohymJwsDI25PIVFraUBM9FFOJExlmO7-J9c1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KRJiUCs5ohymJwsDI25PIQML7KSG381fwpuuJbh5cKo1"
     },
     {
       "county": "Cuyahoga",
@@ -1786,7 +1849,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KRJiUCs5ohxXPczASiCy0SwRx1CqBxICR_uuIHR9kbs1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KRJiUCs5ohxXPczASiCy0fwa2Xi8eBexmpAMzsXBeHI1"
     },
     {
       "county": "Cuyahoga",
@@ -1807,7 +1870,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KRJiUCs5ohy2Fhw_2vh0HBzrHrvt459vbQD2bwueCh41"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KRJiUCs5ohy2Fhw_2vh0HKxv2i9PnqrzuXBKKwCb5ig1"
     },
     {
       "county": "Cuyahoga",
@@ -1828,7 +1891,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Oxm84O3kMV4W5A4fdAmBV2oWnEhkpvFgFFlF1hz6DWg1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Oxm84O3kMV4W5A4fdAmBV5Igqx0vMwGgZOYJBLDOA6c1"
     },
     {
       "county": "Cuyahoga",
@@ -1849,7 +1912,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V39Jd6rLpxtBTXwHP3InO9mn_bvDebcZejo1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V39Jd6rLpxtBTR0H9jnknCAt0fanas0Gxbk1"
     },
     {
       "county": "Cuyahoga",
@@ -1870,7 +1933,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V38oOn2ko-voEz3TPNxMu9jPwKf8Qde4qQs1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V38oOn2ko-voE3l8zWjvJcLakbjGf_sNLxY1"
     },
     {
       "county": "Cuyahoga",
@@ -1891,7 +1954,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V3_Qjqrgk3ipWBeIJIiCsMpjnN0ny9VxHuk1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V3_Qjqrgk3ipWAKv_m60dHwCiJ7VQ2v0Mpk1"
     },
     {
       "county": "Cuyahoga",
@@ -1912,7 +1975,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=1uZP3ZeZQPNeyUbWDy4c9RxP1IDjGV4mMRZOYiT8zDc1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=1uZP3ZeZQPNeyUbWDy4c9fFp1qZgCK0oFdG-H9kYpOk1"
     },
     {
       "county": "Cuyahoga",
@@ -1933,7 +1996,7 @@
       "interest_rate": 7.375,
       "loan_type": "VA",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=jDxXrvkazjPoxRObMX36Fp1c55Ui1O1DQ3jcOVYKNFc1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=jDxXrvkazjPoxRObMX36FsZzJTwIQB215sEXlPkYQKc1"
     },
     {
       "county": "Cuyahoga",
@@ -1942,11 +2005,11 @@
       "owner_name": "ARENDT POWELL HOLDINGS LLC",
       "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
       "defendant": "ARENDT POWELL HOLDINGS LLC, ET AL",
-      "property_address": "17801 MAPLE HEIGHTS BLVD.",
+      "property_address": "17601 MAPLE HTS. BLVD.",
       "property_city": "MAPLE HEIGHTS",
       "property_state": "OH",
-      "property_zip": "44137",
-      "parcel_number": "783-02-109",
+      "property_zip": "44137-0000",
+      "parcel_number": "783-02-108",
       "mailing_address": "505 75TH ST BRADENTON BEACH FL 34217",
       "lead_type": "Foreclosure",
       "filing_date": "10/15/2026",
@@ -1954,7 +2017,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=JqAaVfjCHWrc-hoANPIWozR5ktiC9aHHuyMfEP6uYDA1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=JqAaVfjCHWrc-hoANPIWo5f5NzmfFUSwai8je55RpKA1"
     },
     {
       "county": "Cuyahoga",
@@ -1975,7 +2038,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=MHzLz9RJ53ZUYYkFNwyCjbuHbxfd8yHacbv1ngBKBE81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=MHzLz9RJ53ZUYYkFNwyCjft5IBtx9CEJPV3ZsYKGwwo1"
     },
     {
       "county": "Cuyahoga",
@@ -1996,7 +2059,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=zC6eg9d1cKQ07H1X2eX-weKDR8RXCjqgrtNQOsXCcf81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=zC6eg9d1cKQ07H1X2eX-wXBjWGEqZZjlhzqbbvDA0oQ1"
     },
     {
       "county": "Cuyahoga",
@@ -2017,7 +2080,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=DWJUBqdbMcognfQRAaSLNyHUL9QyB13hKlQIL4Gl4oM1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=DWJUBqdbMcognfQRAaSLN27NMDCcVs0X2scw2aXj6Gc1"
     },
     {
       "county": "Cuyahoga",
@@ -2038,7 +2101,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=V8dXu3amki1xmEWjJiO227rYl6FJqenUjJCAcQIJe4E1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=V8dXu3amki1xmEWjJiO229cnHQucLwBdVTjkOBTt4Hs1"
     },
     {
       "county": "Cuyahoga",
@@ -2059,7 +2122,7 @@
       "interest_rate": 6.75,
       "loan_type": "FIXED RATE",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=V8dXu3amki2xDWUkWdplivPoC7WSIO2IVk8GyH-oJuA1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=V8dXu3amki2xDWUkWdplipO5N7_XzfhUcs0Et7APoAI1"
     },
     {
       "county": "Cuyahoga",
@@ -2080,7 +2143,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=loheBz_tiBm3zw9ufnPN3IQde3cwEXC6Bosela6FzbA1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=loheBz_tiBm3zw9ufnPN3Exn_IYY5d9du9BF7r1TLhk1"
     },
     {
       "county": "Cuyahoga",
@@ -2101,7 +2164,7 @@
       "interest_rate": null,
       "loan_type": "VA",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=rEgZf_eMrojab7ia35nOqbffHGe7PyHhYeT4-ENL3P01"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=rEgZf_eMrojab7ia35nOqX_qbnhg1HM1o863Mzz3zmg1"
     },
     {
       "county": "Cuyahoga",
@@ -2122,7 +2185,7 @@
       "interest_rate": 6.25,
       "loan_type": "FHA",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=BY6uipmtUVUYQokJl0zYQ8BE5fbHqYjv7IqZS9gttn81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=BY6uipmtUVUYQokJl0zYQ2btUhKEq2IUQeHp-9z1KCc1"
     },
     {
       "county": "Cuyahoga",
@@ -2143,7 +2206,7 @@
       "interest_rate": 6.375,
       "loan_type": "Fixed Rate",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Lw1mznLdkbK65mbdZ1lczI9iSAys75IPOgtz4Ip-ys41"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Lw1mznLdkbK65mbdZ1lczAH36kyGRgrCXtRlw0ixLlU1"
     },
     {
       "county": "Cuyahoga",
@@ -2164,7 +2227,7 @@
       "interest_rate": 7.875,
       "loan_type": "FIXED RATE",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=6F85eMKmxmZ0pB_ztFYFVedMtM96o1TD10U8MPHL3eo1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=6F85eMKmxmZ0pB_ztFYFVdDrSBSOp2NdUK0jcomTLUs1"
     },
     {
       "county": "Cuyahoga",
@@ -2185,7 +2248,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=rR_jEIyGZ73HgDBANAZPIQPaAleaOtJQBvJ4AQ1ZxdM1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=rR_jEIyGZ73HgDBANAZPIWNNRa4d79xoiSF2OjcwltM1"
     },
     {
       "county": "Cuyahoga",
@@ -2206,7 +2269,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=apsf4ypQ1iee8ZxI5tJ1qHlvVHAb1ZrzWz5JVCQz69g1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=apsf4ypQ1iee8ZxI5tJ1qPaQ-m12lMEVhlcFBsV4-v01"
     },
     {
       "county": "Cuyahoga",
@@ -2227,7 +2290,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KZYq05QW71sdt1P0oVk-A0XmrpW5RuWjrg__FkP0WkI1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KZYq05QW71sdt1P0oVk-A6ZDVu4gEs6tg6xuojoub6c1"
     },
     {
       "county": "Cuyahoga",
@@ -2248,7 +2311,7 @@
       "interest_rate": null,
       "loan_type": "va",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=iq-XQ-IrzrJLNoGeTghhfbLFLJlDq_4BxysYHkZMOok1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=iq-XQ-IrzrJLNoGeTghhfdRQxpfQ6TGpIEGi4iTC6r01"
     },
     {
       "county": "Cuyahoga",
@@ -2269,7 +2332,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 80,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KPUU8CRb43NWlW3TBdIiDAlWaQa1a5u6-2YX2HrdTD81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KPUU8CRb43NWlW3TBdIiDBKp-cU3WYEti0gtpzMB_KA1"
     },
     {
       "county": "Cuyahoga",
@@ -3071,6 +3134,384 @@
     },
     {
       "county": "Cuyahoga",
+      "case_number": "CV-26-148951",
+      "doc_number": "",
+      "owner_name": "QUINN, PATRICK",
+      "plaintiff": "ROCKET MORTGAGE LLC",
+      "defendant": "PATRICK QUINN, ET AL",
+      "property_address": "5706 HUSS AVENUE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44105",
+      "parcel_number": "131-36-046",
+      "mailing_address": "5706 HUSS AVE CLEVELAND OH 44105",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/19/2026",
+      "amount_owed": 32177.83,
+      "interest_rate": 5.625,
+      "loan_type": "FIXED RATE",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Uj8cH6z2Mq-smyXZQN3rtMY_BgUtle225As-dQwMjVw1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148956",
+      "doc_number": "",
+      "owner_name": "HANECA, DAVID & KENDRA",
+      "plaintiff": "CROSSCOUNTRY MORTGAGE, LLC",
+      "defendant": "DAVID HANECA, ET AL.",
+      "property_address": "3168 W.84",
+      "property_city": "CLEVELAND,",
+      "property_state": "OH",
+      "property_zip": "",
+      "parcel_number": "017-06-085",
+      "mailing_address": "3168 W 84TH ST CLEVELAND OH 44102",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/19/2026",
+      "amount_owed": 101441.56,
+      "interest_rate": 6.5,
+      "loan_type": "FIXED RATE",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=4wze7MCZhIfOyJyAhgbJSfCucSPxS9vsSdElunP22hA1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148969",
+      "doc_number": "",
+      "owner_name": "DC REMODELING LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "DC REMODELING, LLC, ET AL",
+      "property_address": "CREEKSIDE",
+      "property_city": "GARFIELD HTS",
+      "property_state": "OH",
+      "property_zip": "",
+      "parcel_number": "543-39-019",
+      "mailing_address": "13309 CLAIBORNE RD CLEVELAND OH 44112",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 737.08,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=z9ckhek2blhwZyIaFD738O_N5RW1JkRq7zeL0fVhcjE1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148971",
+      "doc_number": "",
+      "owner_name": "BROWNSTONE HOMES, LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "BROWNSTONE HOMES LLC, AN OHIO LIMITED LIABI, ET AL",
+      "property_address": "20719 WATSON ROAD",
+      "property_city": "MAPLE HEIGHTS",
+      "property_state": "OH",
+      "property_zip": "44137-0000",
+      "parcel_number": "782-15-051",
+      "mailing_address": "46 SHOPPING PLAZA DR #159 CHAGRIN FALLS OH 44022",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 3518.36,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=s97spAeL2W4ZtbfO0qDD_mvG-naW2fkdUgipunGecJ41"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148973",
+      "doc_number": "",
+      "owner_name": "ZEPPETELLA, ANTONIO",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "ANTONIO ZEPPETELLA, ET AL",
+      "property_address": "0000 BROADVIEW RD.",
+      "property_city": "PARMA",
+      "property_state": "OH",
+      "property_zip": "44134",
+      "parcel_number": "452-16-058",
+      "mailing_address": "7120 BROADVIEW RD PARMA OH 44134",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 851.7,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=24AtPahGF_JwPzof4-dd8Jej84XuaJ6DMpDxe-t4drY1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148975",
+      "doc_number": "",
+      "owner_name": "Lutz Michael E. & Mary L.",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "MICHAEL E. LUTZ, ET AL",
+      "property_address": "6304 KENYON AVE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44105",
+      "parcel_number": "132-01-049",
+      "mailing_address": "6304 KENYON AVE Cleveland OH 44105-1236",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 2930.87,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=YDzcLtmpuvLHqtT6Wz9CVrfFlqr5XoKHqCpurpb6rkQ1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148981",
+      "doc_number": "",
+      "owner_name": "Loretta P Weinbroer",
+      "plaintiff": "PNC BANK, NATIONAL ASSOCIATION",
+      "defendant": "ROBERT WEINBROER, ET AL",
+      "property_address": "10911 WINDHAM RD",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "45342",
+      "parcel_number": "442-06-050",
+      "mailing_address": "10911 WINDHAM RD Cleveland OH 44130-1576",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 44707.73,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=gPxM_oX_Wk__RAGB0RKs0X4HCMTEhv7zzh_qD22GOvE1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148989",
+      "doc_number": "",
+      "owner_name": "BRYANT, BRANEA",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "BRANEA BRYANT, ET AL",
+      "property_address": "11607 RUTLAND",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44108-0000",
+      "parcel_number": "111-08-046",
+      "mailing_address": "19500 NAUMAN AVE CLEVELAND OH 44119",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 1164.17,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KaKc3qOAyhk9RoDyKE5bh4UT6Imq2_dsa9jLbvWnD_k1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148992",
+      "doc_number": "",
+      "owner_name": "TALYA PROPERTIES CLE LLC",
+      "plaintiff": "CITIBANK, N.A. NOT IN ITS INDIVIDUAL CAPACITY BUT",
+      "defendant": "SHI LA MASSEY, ET AL.",
+      "property_address": "571 E. 108TH STREET",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44108",
+      "parcel_number": "108-14-070",
+      "mailing_address": "PO BOX 35396 CLEVELAND OH 44135",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 72762.13,
+      "interest_rate": 8.25,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=veNZDwvOxiesGsxPNbSqOHbAX69jzTsBWUbGB8NVc8A1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148994",
+      "doc_number": "",
+      "owner_name": "BAG LIFE INTERNATIONAL SERVICES, LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "SHORELL HILL BOOKER, ET AL",
+      "property_address": "2487 EAST 83RD STREET",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "",
+      "parcel_number": "126-04-001",
+      "mailing_address": "19609  MALAN DR MAPLE HTS OH 44125",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 6904.16,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=veNZDwvOxif0sq5I8gPQsFSSIgDXieEzgAzPSWDQciM1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149005",
+      "doc_number": "",
+      "owner_name": "FIRST GLANCE PROPERTIES LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "FIRST GLANCE PROPERTIES LLC, AN OHIO LIMITE, ET AL",
+      "property_address": "3721 EAST 153RD STREET",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44120",
+      "parcel_number": "139-19-085",
+      "mailing_address": "3721 E 153RD ST CLEVELAND OH 44120",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 421.59,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=NVdA0mTjkeXCBnQaiFRO2MOYnc6DFE8JudrGotpu0H41"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149013",
+      "doc_number": "",
+      "owner_name": "Atals Savings Lp",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "VILLAGE PARTNERSHIP, LLC, ET AL",
+      "property_address": "5644 BROADWAY AVENUE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44127",
+      "parcel_number": "131-22-082",
+      "mailing_address": "5620 BROADWAY AVE STE 200 Cleveland OH 44127-1702",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 6251.78,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=WFi0xhSK34bO4J9kGaq7o1Rpzv0T4rQN7N7KjxKBorY1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149028",
+      "doc_number": "",
+      "owner_name": "O'CONNELL, REGAN T",
+      "plaintiff": "THIRD FEDERAL SAVINGS AND LOAN ASSOCIATION",
+      "defendant": "RYAN O'CONNELL, ET AL",
+      "property_address": "1431 ORCHARDVIEW ROAD",
+      "property_city": "SEVEN HILLS",
+      "property_state": "OH",
+      "property_zip": "44131",
+      "parcel_number": "552-24-023",
+      "mailing_address": "1431 ORCHARDVIEW AVE INDEPENDENCE OH 44131",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 67876.35,
+      "interest_rate": 5.15,
+      "loan_type": "Adjustable Rate",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=7fH7EHj4O7UQ3ngTL0ecd-Bbko7yhZVvBnbHN71y6V01"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149029",
+      "doc_number": "",
+      "owner_name": "JOHNSON, ROBERT L.",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "ROBERT L. JOHNSON, ET AL",
+      "property_address": "3849 E 54 ST.",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44105",
+      "parcel_number": "132-11-074",
+      "mailing_address": "14937 LAKEWOOD HTS BLVD LAKEWOOD OH 44107",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 703.64,
+      "interest_rate": null,
+      "loan_type": "VA",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=PVoElYDsV3ztmEuWHPFrX301lVHgycX4VJVWcwtBong1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149032",
+      "doc_number": "",
+      "owner_name": "LIGHTHOUSE PROJECTS LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "LIGHTHOUSE PROJECTS, LLC A DELAWARE LLC, ET AL",
+      "property_address": "16626 KENYON RD",
+      "property_city": "SHAKER HEIGHTS",
+      "property_state": "OH",
+      "property_zip": "44120-0000",
+      "parcel_number": "735-28-061",
+      "mailing_address": "5851 JUMILLA AVE LOS ANGELES CA 91367",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 3395.5,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=k07O-wlhyUtNuh43xi2rHBt7TwX-mzxs7BA87nr8CE81"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149040",
+      "doc_number": "",
+      "owner_name": "KING CHIE LAM",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "KING CHIE LAM, ET AL",
+      "property_address": "3425 E 72ND STREET",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44127",
+      "parcel_number": "125-34-066",
+      "mailing_address": "400 E BROADWAY ST APT C SAN GABRIEL CA 91776",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 1791.29,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=KM4uosCrZ3o2xdJeJ5KaNj3OWsu09n31YOGFyjJjZxA1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149042",
+      "doc_number": "",
+      "owner_name": "EAST WEST LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "EAST WEST LLC, AN OHIO LLC",
+      "property_address": "5605 BROADWAY AVENUE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44127",
+      "parcel_number": "125-26-002",
+      "mailing_address": "12323 PADUA DR NORTH ROYALTON OH 44133",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 1214.88,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=XzBAB_SeZoZx29cxS4cEAsSihbSidQ3Ufe_vo0bUhIw1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149047",
+      "doc_number": "",
+      "owner_name": "GEORGIA & DIMPLES LLC",
+      "plaintiff": "TREASURER OF CUYAHOGA COUNTY, OHIO",
+      "defendant": "GEORGIA DIMPLES LLC, ET AL",
+      "property_address": "1063 EAST 76TH STREET",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "",
+      "parcel_number": "105-31-043",
+      "mailing_address": "952 E 70TH STREET CLEVELAND OH 44103",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 2279.39,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 80,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=e3Mc1PWGl2ysLFAUmh5Z3PHOUlpdoviyElE0pGPRniw1"
+    },
+    {
+      "county": "Cuyahoga",
       "case_number": "CV-26-148163",
       "doc_number": "",
       "owner_name": "RAMOS, ANDREA MARIE",
@@ -3550,7 +3991,7 @@
       "interest_rate": 5.125,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=dmg9fWHNNJo5aXFtJaf9uj3gT_7NWpTB3-XIjyfcvOc1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=dmg9fWHNNJo5aXFtJaf9uq1k5CqQN1JHZvNjRKIPxFI1"
     },
     {
       "county": "Cuyahoga",
@@ -3571,7 +4012,7 @@
       "interest_rate": 9.95,
       "loan_type": "Fixed Rate",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=26uN4dj9aFG0rASL9egHQ6OwrW0gnyLKrNd5gqtUaQ41"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=26uN4dj9aFG0rASL9egHQ62f6lX4iktpS3Q5dvg8ivs1"
     },
     {
       "county": "Cuyahoga",
@@ -3592,7 +4033,7 @@
       "interest_rate": 5.0,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=9pI6S9lE4i0aFLHAjdGKwiMVoZB2d4LVEQSdtGALL2I1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=9pI6S9lE4i0aFLHAjdGKwoScTzKRc1weAXFstcPyhWI1"
     },
     {
       "county": "Cuyahoga",
@@ -3613,7 +4054,7 @@
       "interest_rate": 2.625,
       "loan_type": "FHA",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Xz9ln89VuHcIi55g0mwH3yIcBO_aQY41V6ePWtBKM1c1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Xz9ln89VuHcIi55g0mwH366fshlaAM9xl2gY4ulWP1o1"
     },
     {
       "county": "Cuyahoga",
@@ -3634,7 +4075,7 @@
       "interest_rate": 3.625,
       "loan_type": "FHA",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=92l8GO2F3XbS5GuhKijhg0bsSObNAURB0FWYl2bF-x01"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=92l8GO2F3XbS5GuhKijhg0lPIidEmqokiWRVfPLTuC41"
     },
     {
       "county": "Cuyahoga",
@@ -3655,7 +4096,7 @@
       "interest_rate": 5.375,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=xTcfgnyTytPR_UesUP-hERbBprYf0PUyagcsqSOdlhk1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=xTcfgnyTytPR_UesUP-hEcklwJMVU6Oa9rx-E0xtLlc1"
     },
     {
       "county": "Cuyahoga",
@@ -3668,7 +4109,7 @@
       "property_city": "BEREA",
       "property_state": "OH",
       "property_zip": "44017",
-      "parcel_number": "363-03-072",
+      "parcel_number": "363-03-020",
       "mailing_address": "635 LINDBERG BLVD BEREA OH 44017",
       "lead_type": "Foreclosure",
       "filing_date": "10/14/2026",
@@ -3676,7 +4117,7 @@
       "interest_rate": 6.25,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Oxm84O3kMV7RRilnGYIKm3YwHTAy4B2zMgdaq_yYYms1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Oxm84O3kMV7RRilnGYIKm0HYA_ERmMy-mtM2xXMzB481"
     },
     {
       "county": "Cuyahoga",
@@ -3697,7 +4138,7 @@
       "interest_rate": 3.75,
       "loan_type": "FHA",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V38wr_8WqiOKztziPfqGyd3N9AROgYw6-nk1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2HD3Nt72V38wr_8WqiOKzumwkpKZdRCJS8SiRdSyalQ1"
     },
     {
       "county": "Cuyahoga",
@@ -3718,7 +4159,7 @@
       "interest_rate": 7.25,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2DP8Ti7pV1aMF-AgivplHH_--Cw8pRvWcWbZe_w3tDo1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=2DP8Ti7pV1aMF-AgivplHBps1-NpMfCbIRdr7hDXCcs1"
     },
     {
       "county": "Cuyahoga",
@@ -3739,7 +4180,7 @@
       "interest_rate": 3.25,
       "loan_type": "FHA",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=XdPMrZBBKISZ3hk49H-652zrE-FtYhjwY-fWDnHjQgI1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=XdPMrZBBKISZ3hk49H-65ynif1IcK0kYa732ivHdQmU1"
     },
     {
       "county": "Cuyahoga",
@@ -3760,7 +4201,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=DWJUBqdbMcp01aj-yHgLmwCFnRQUCM33E6PPFBd85V81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=DWJUBqdbMcp01aj-yHgLmy7XfQez1FzvpqOtLSrPen01"
     },
     {
       "county": "Cuyahoga",
@@ -3781,7 +4222,7 @@
       "interest_rate": 3.75,
       "loan_type": "FHA",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=F5WqgnfqsZy-igSmaIpyCVPC7wtUbeaQYBMCShvlDg01"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=F5WqgnfqsZy-igSmaIpyCf-aw-YK1Cx9UAM5YlxVw6U1"
     },
     {
       "county": "Cuyahoga",
@@ -3802,7 +4243,7 @@
       "interest_rate": 2.75,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=r5-yK7C6HRShgR3z_KIVm6vaMDX3d42rhiM5WvNxc_81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=r5-yK7C6HRShgR3z_KIVm2OTCXA4RR3jcsG4DLPTAAs1"
     },
     {
       "county": "Cuyahoga",
@@ -3823,7 +4264,7 @@
       "interest_rate": 3.875,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Uh3wCE0S6R1BtxOmiqqO9d4jh5SvQTFHfMrnMJmXeYU1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Uh3wCE0S6R1BtxOmiqqO9dUqImy0OEqCJPCaT0pZy-A1"
     },
     {
       "county": "Cuyahoga",
@@ -3844,7 +4285,7 @@
       "interest_rate": 2.375,
       "loan_type": "VA",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=WYSSCi9JPlY0kKTtqp2IN_ZwuPVN1ILRb0xqwcZZTJU1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=WYSSCi9JPlY0kKTtqp2IN-ENTKEqSm3I0yLo6dO3-H41"
     },
     {
       "county": "Cuyahoga",
@@ -4222,7 +4663,7 @@
       "interest_rate": 5.875,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=3d3NlU4afH76r_ExC99AmQ4iW6pHH6LCd1oqkAJRyHQ1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=3d3NlU4afH76r_ExC99AmfI4vOzh1mZZYomBJEK6fIg1"
     },
     {
       "county": "Cuyahoga",
@@ -4243,7 +4684,7 @@
       "interest_rate": 4.5,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=J7HRYQ8AVHh_sTDofoCgLRzaJbtyGyb5pMSZXtmAboA1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=J7HRYQ8AVHh_sTDofoCgLcnILcB--ltzCSI7sdsDZkI1"
     },
     {
       "county": "Cuyahoga",
@@ -4264,7 +4705,91 @@
       "interest_rate": 5.125,
       "loan_type": "FIXED RATE",
       "lead_score": 75,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=RrjviBhW8mnkUvsObxpKNs65htLFUbWBy7bePsHPFMc1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=RrjviBhW8mnkUvsObxpKNqFKdC3BkrcLnCViGvfVTUk1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148953",
+      "doc_number": "",
+      "owner_name": "DAVIDSON ROBERT R",
+      "plaintiff": "LAKEVIEW LOAN SERVICING, LLC",
+      "defendant": "ROBERT R DAVIDSON, ET AL.",
+      "property_address": "5121 SEQUOIA DRIVE",
+      "property_city": "PARMA",
+      "property_state": "OH",
+      "property_zip": "44134",
+      "parcel_number": "454-23-016",
+      "mailing_address": "5121 SEQUOIA DR PARMA OH 44134",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/19/2026",
+      "amount_owed": 141764.54,
+      "interest_rate": 4.125,
+      "loan_type": "FHA",
+      "lead_score": 75,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Uj8cH6z2Mq-L9BkA3VhmrPqx0Cm6Pjh1yuinh1zgCC01"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148986",
+      "doc_number": "",
+      "owner_name": "CONNER, WILLIAM T. & CONNER, BARBARA J.",
+      "plaintiff": "ROCKET MORTGAGE, LLC",
+      "defendant": "WILLIAM T. CONNER, ET AL",
+      "property_address": "18815 SHAWNEE AVE",
+      "property_city": "CLEVELAND",
+      "property_state": "OH",
+      "property_zip": "44119",
+      "parcel_number": "114-20-088",
+      "mailing_address": "18815 SHAWNEE AVE CLEVELAND OH 44119",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 68381.74,
+      "interest_rate": 4.125,
+      "loan_type": "VA",
+      "lead_score": 75,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=B83KeuB6mj-LWGYelVTO2D-AEx5JMHTpMwPtyWTDsyo1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149021",
+      "doc_number": "",
+      "owner_name": "BUEHLER, NANCY L.",
+      "plaintiff": "JPMORGAN CHASE BANK, NATIONAL ASSOCIATION",
+      "defendant": "JOHN DOE(S) UNKNOWN HEIRS,OF NANCY BUEHLER, ET AL",
+      "property_address": "406 ANNE DRIVE",
+      "property_city": "BEREA",
+      "property_state": "OH",
+      "property_zip": "44017-0000",
+      "parcel_number": "363-27-107",
+      "mailing_address": "406 ANNE DR BEREA OH 44017",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 70418.12,
+      "interest_rate": 4.625,
+      "loan_type": "FIXED RATE",
+      "lead_score": 75,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=ddAEWciZUHhwX--5JyrKTyf7vkCUW-fsSFJXM4leuJM1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-149027",
+      "doc_number": "",
+      "owner_name": "JONES BEL;INDA",
+      "plaintiff": "LAKEVIEW LOAN SERVICING, LLC",
+      "defendant": "BELINDA JONES, ET AL.",
+      "property_address": "21759 KENNISON AVE",
+      "property_city": "EUCLID",
+      "property_state": "OH",
+      "property_zip": "44123",
+      "parcel_number": "642-13-097",
+      "mailing_address": "21759 KENISON AVE EUCLID OH 44123",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 159870.5,
+      "interest_rate": 6.75,
+      "loan_type": "FIXED RATE",
+      "lead_score": 75,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=fUOiHFM0ltmR7eVPVfNUsVKmBv804RdRGcFurHEzLuw1"
     },
     {
       "county": "Cuyahoga",
@@ -4369,7 +4894,7 @@
       "interest_rate": 4.25,
       "loan_type": "FHA",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=c05c-2W6OFywpyAIHZj6U_K-cA_JVblsGaZCpTkG67M1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=c05c-2W6OFywpyAIHZj6U4KSul35e8dZa1bW5W7eFrA1"
     },
     {
       "county": "Cuyahoga",
@@ -4390,7 +4915,7 @@
       "interest_rate": null,
       "loan_type": "",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=JxX6_epVr9UnFj0gu_vsIGcGo3QwwqdkEEbegNUHsM81"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=JxX6_epVr9UnFj0gu_vsIE_NGr7At5Y9JGMn5cnQM3M1"
     },
     {
       "county": "Cuyahoga",
@@ -4411,7 +4936,7 @@
       "interest_rate": 7.49,
       "loan_type": "VA",
       "lead_score": 70,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=ttZLd25b4Kj305yNDaXCTla8QIx7MZ3pcpikAaC8Wac1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=ttZLd25b4Kj305yNDaXCTnVZ4cQMt3JdsEBq87UOnnw1"
     },
     {
       "county": "Cuyahoga",
@@ -4604,6 +5129,27 @@
     },
     {
       "county": "Cuyahoga",
+      "case_number": "CV-26-149024",
+      "doc_number": "",
+      "owner_name": "PAOLELLA, CHASE & ANISSA",
+      "plaintiff": "NEWREZ LLC DBA SHELLPOINT MORTGAGE SERVICING",
+      "defendant": "CHASE PAOLELLA, ET AL.",
+      "property_address": "6226 SAINT FRANCIS DRIVE",
+      "property_city": "SEVEN HILLS",
+      "property_state": "OH",
+      "property_zip": "44131",
+      "parcel_number": "551-14-114",
+      "mailing_address": "6226 ST FRANCIS DR SEVEN HILLS OH 44131",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 201758.46,
+      "interest_rate": 3.875,
+      "loan_type": "FIXED RATE",
+      "lead_score": 70,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=-_cxa3QflGcuyVNLqOm2XhhZhhVn2qCxP8vrXI2veT01"
+    },
+    {
+      "county": "Cuyahoga",
       "case_number": "CV-26-148231",
       "doc_number": "",
       "owner_name": "SMITH, ANDRE",
@@ -4747,7 +5293,7 @@
       "interest_rate": 3.625,
       "loan_type": "FIXED RATE",
       "lead_score": 65,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=lhnTAF0FvEZthehCq4I9I2JLbS_0QCUDln6apnPdlhE1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=lhnTAF0FvEZthehCq4I9Izql7U-hF3HmDUBy9A62YTs1"
     },
     {
       "county": "Cuyahoga",
@@ -4768,7 +5314,7 @@
       "interest_rate": 8.25,
       "loan_type": "FIXED RATE",
       "lead_score": 65,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=x465rgXMOHK-CuexRYHVE8r3PcdaN7e3iYLdTsbd0AQ1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=x465rgXMOHK-CuexRYHVE-Y3uvgS-CzUZeDLNtoIENw1"
     },
     {
       "county": "Cuyahoga",
@@ -4789,7 +5335,7 @@
       "interest_rate": 5.375,
       "loan_type": "FIXED RATE",
       "lead_score": 65,
-      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Bk1a953U4r0tzeAZcurIpbu8IV4wRGJyF1UWf6vdsDc1"
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=Bk1a953U4r0tzeAZcurIpcCebNjTqz56UQEoLi7hqIw1"
     },
     {
       "county": "Cuyahoga",
@@ -4832,6 +5378,27 @@
       "loan_type": "",
       "lead_score": 65,
       "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=jJ48M00FHqzOyItCzTMtmHRBnW6sBzZglpQnJo-SCQs1"
+    },
+    {
+      "county": "Cuyahoga",
+      "case_number": "CV-26-148997",
+      "doc_number": "",
+      "owner_name": "BLOTZER, RICHARD J III",
+      "plaintiff": "UNION HOME MORTGAGE CORP.",
+      "defendant": "RICHARD BLOTZER, ET AL",
+      "property_address": "6462 LOCKHAVEN DRIVE",
+      "property_city": "BROOK PARK",
+      "property_state": "OH",
+      "property_zip": "44142",
+      "parcel_number": "343-30-040",
+      "mailing_address": "6462 LOCKHAVEN DR BROOK PARK OH 44142",
+      "lead_type": "Foreclosure",
+      "filing_date": "10/20/2026",
+      "amount_owed": 0.0,
+      "interest_rate": null,
+      "loan_type": "",
+      "lead_score": 65,
+      "source_url": "https://cpdocket.cp.cuyahogacounty.gov/CV_CaseInformation_Summary.aspx?q=veNZDwvOxieANYwV-jDP5vpW_Fh1DTdQ0sSOak1Kh_o1"
     },
     {
       "county": "Cuyahoga",
