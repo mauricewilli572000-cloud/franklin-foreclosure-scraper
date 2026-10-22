@@ -161,6 +161,12 @@ CLERK_SELECTORS = {
 # browser tab and can involve several seconds of OCR, so keep this modest
 # to avoid hammering the clerk portal or the CI runner's CPU.
 DOCUMENT_ENRICHMENT_CONCURRENCY = int(os.environ.get("DOCUMENT_ENRICHMENT_CONCURRENCY", "3"))
+# A lead saved with no address (its documents failed to download/read, or
+# no parcel matched) is retried on later runs instead of being treated as
+# "already captured" forever. Each retry costs a full document download +
+# OCR, so retries are capped per run and per lead.
+MAX_ATTEMPTS_PER_LEAD = int(os.environ.get("MAX_ATTEMPTS_PER_LEAD", "4"))
+MAX_RETRIES_PER_RUN = int(os.environ.get("MAX_RETRIES_PER_RUN", "30"))
 # Confirmed via a standalone diagnostic on GitHub Actions: Tesseract
 # itself works fine and fast in isolation (0.1s on a trivial test) — the
 # earlier 100%-timeout failures were CPU starvation, not a broken
@@ -282,6 +288,8 @@ class LeadRecord:
     interest_rate: Optional[float] = None
     case_number: str = ""
     loan_type: str = ""
+    captured_date: str = ""    # UTC date the lead was first added to the list
+    attempts: int = 0          # how many runs have tried to read this case's documents
 
 
 # --------------------------------------------------------------------------
@@ -648,7 +656,10 @@ def parse_date(text: str) -> str:
 
 
 @retry_async(times=3, delay=4.0, exceptions=(Exception,))
-async def scrape_efc_filings(known_doc_nums: Optional[set[str]] = None) -> list[RawFiling]:
+async def scrape_efc_filings(
+    known_doc_nums: Optional[set[str]] = None,
+    retry_doc_nums: Optional[set[str]] = None,
+) -> list[RawFiling]:
     """Drive the clerk portal to pull E-Foreclosure filings. Selectors
     are centralized in CLERK_SELECTORS — verify them against the live
     DOM if the site markup changes.
@@ -661,6 +672,7 @@ async def scrape_efc_filings(known_doc_nums: Optional[set[str]] = None) -> list[
     if async_playwright is None:
         raise RuntimeError("playwright is not installed; run `python -m playwright install`.")
     known_doc_nums = known_doc_nums or set()
+    retry_doc_nums = retry_doc_nums or set()
 
     filings: list[RawFiling] = []
 
@@ -747,6 +759,20 @@ async def scrape_efc_filings(known_doc_nums: Optional[set[str]] = None) -> list[
 
             already_captured = [f for f in filings if f.doc_num and f.doc_num in known_doc_nums]
             filings = [f for f in filings if not (f.doc_num and f.doc_num in known_doc_nums)]
+
+            # Incomplete leads from earlier runs that are still listed on
+            # the portal get another try, newest first, capped per run so
+            # a big backlog can't blow the job's time limit.
+            retries = [f for f in filings if f.doc_num in retry_doc_nums]
+            if len(retries) > MAX_RETRIES_PER_RUN:
+                deferred = {f.doc_num for f in retries[MAX_RETRIES_PER_RUN:]}
+                log.info(
+                    "Retrying %d incomplete lead(s) this run; %d more deferred to later runs",
+                    MAX_RETRIES_PER_RUN, len(deferred),
+                )
+                filings = [f for f in filings if f.doc_num not in deferred]
+            elif retries:
+                log.info("Retrying %d incomplete lead(s) from earlier runs", len(retries))
             if already_captured:
                 log.info(
                     "Skipping document download for %d E-Foreclosure filing(s) already "
@@ -885,7 +911,7 @@ async def download_case_documents_zip(context, case_url: str) -> Optional[bytes]
     return None
 
 
-PER_CASE_HARD_TIMEOUT_SECONDS = 240  # absolute ceiling per case, regardless of cause
+PER_CASE_HARD_TIMEOUT_SECONDS = 420  # absolute ceiling per case, regardless of cause
 
 
 async def enrich_filing_with_documents_bounded(
@@ -1159,20 +1185,41 @@ def load_existing_records() -> dict[str, dict]:
     return {}
 
 
-def load_existing_doc_nums() -> set[str]:
-    return set(load_existing_records().keys())
+def _has_address(rec: dict) -> bool:
+    return bool(rec.get("prop_address") or rec.get("mail_address"))
 
 
-def build_records(filings: list[RawFiling], parcel_lookup: ParcelLookup) -> list[LeadRecord]:
+def split_known_and_retry(existing: dict[str, dict]) -> tuple[set[str], set[str]]:
+    """(known, retry). `known` = leads to skip: they have an address, or
+    have already used up MAX_ATTEMPTS_PER_LEAD tries. `retry` = saved
+    without an address and still under the attempt cap."""
+    known: set[str] = set()
+    retry: set[str] = set()
+    for doc_num, rec in existing.items():
+        if _has_address(rec) or int(rec.get("attempts") or 0) >= MAX_ATTEMPTS_PER_LEAD:
+            known.add(doc_num)
+        else:
+            retry.add(doc_num)
+    return known, retry
+
+
+def build_records(
+    filings: list[RawFiling],
+    parcel_lookup: ParcelLookup,
+    existing: Optional[dict[str, dict]] = None,
+) -> list[LeadRecord]:
     """Build LeadRecords for newly-processed filings. `filings` here is
     always the set of genuinely new cases — anything already captured in
     a prior run was filtered out earlier (in scrape_efc_filings, before
     documents were even downloaded), so every record built here is, by
     construction, new."""
     records: list[LeadRecord] = []
+    existing = existing or {}
+    today = datetime.now(timezone.utc).date().isoformat()
 
     for filing in filings:
         try:
+            prior = existing.get(filing.doc_num or "", {})
             parcel = match_parcel(filing.grantor, filing.parcel_number, parcel_lookup)
             has_address = bool(parcel and (parcel.get("prop_address") or parcel.get("mail_address")))
 
@@ -1195,6 +1242,8 @@ def build_records(filings: list[RawFiling], parcel_lookup: ParcelLookup) -> list
                 interest_rate=filing.interest_rate,
                 case_number=filing.case_number,
                 loan_type=filing.loan_type,
+                captured_date=prior.get("captured_date") or today,
+                attempts=int(prior.get("attempts") or 0) + 1,
             )
 
             if parcel:
@@ -1320,16 +1369,20 @@ async def run(skip_parcels: bool = False) -> dict:
     else:
         log.info("Skipping Auditor parcel data (--skip-parcels)")
 
-    known_doc_nums = load_existing_doc_nums()
-    log.info("%d case(s) already captured from prior runs", len(known_doc_nums))
+    existing = load_existing_records()
+    known_doc_nums, retry_doc_nums = split_known_and_retry(existing)
+    log.info(
+        "%d case(s) already captured from prior runs; %d saved without an address and eligible to retry",
+        len(known_doc_nums), len(retry_doc_nums),
+    )
 
     try:
-        filings = await scrape_efc_filings(known_doc_nums)
+        filings = await scrape_efc_filings(known_doc_nums, retry_doc_nums)
     except Exception as exc:  # noqa: BLE001
         log.error("Clerk portal scrape failed after retries: %s", exc)
         filings = []
 
-    new_records = build_records(filings, parcel_lookup)
+    new_records = build_records(filings, parcel_lookup, existing)
     payload = write_outputs(new_records)
 
     # Export the full accumulated lead list (matching records.json), not

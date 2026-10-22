@@ -241,6 +241,7 @@ const COLUMNS = [
   { key: 'prop_address', label: 'Property', sortable: false },
   { key: 'amount', label: 'Amount owed', sortable: true },
   { key: 'filed', label: 'Filed', sortable: true },
+  { key: 'captured_date', label: 'Added', sortable: true },
   { key: 'mail_address', label: 'Mailing address', sortable: false },
   { key: 'flags', label: 'Flags', sortable: false },
 ];
@@ -401,6 +402,7 @@ function render(list) {
       <td>${esc(r.prop_address) || '—'}${r.prop_city ? `<br><span class="muted">${esc(r.prop_city)}${r.prop_zip ? ', ' + esc(r.prop_zip) : ''}</span>` : ''}</td>
       <td class="amount">${money(r.amount)}</td>
       <td>${esc(r.filed) || '—'}</td>
+      <td>${esc(r.captured_date) || '<span class="muted" title="Added before date tracking began">—</span>'}</td>
       <td>${esc(fullMailAddress(r)) || '<span class="muted">not matched</span>'}</td>
       <td>${flagsHTML}</td>
     `;
