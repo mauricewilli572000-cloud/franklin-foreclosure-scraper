@@ -97,6 +97,11 @@ OUTPUT_PATHS = [
     REPO_ROOT / "dashboard" / "records.json",
     REPO_ROOT / "data" / "records.json",
 ]
+# Leads with no address yet. Kept out of records.json (and so out of the
+# dashboard and the GoHighLevel export) but still tracked, so a lead whose
+# documents failed to read is retried on later runs and moves into
+# records.json once it has an address.
+PENDING_PATH = REPO_ROOT / "data" / "pending_records.json"
 GHL_CSV_PATH = REPO_ROOT / "dashboard" / "ghl_export.csv"
 CACHE_DIR = REPO_ROOT / "scraper" / ".cache"
 
@@ -1177,18 +1182,40 @@ def load_existing_records() -> dict[str, dict]:
     (accumulated) rather than overwritten each time — a case that ages
     off the "unapproved" grid stays in the lead list instead of
     disappearing."""
+    existing: dict[str, dict] = {}
     for path in OUTPUT_PATHS:
         if path.exists():
             try:
                 data = json.loads(path.read_text())
-                return {r.get("doc_num", ""): r for r in data.get("records", []) if r.get("doc_num")}
+                existing = {r.get("doc_num", ""): r for r in data.get("records", []) if r.get("doc_num")}
+                break
             except Exception as exc:  # noqa: BLE001
                 log.warning("Could not read existing records at %s: %s", path, exc)
-    return {}
+    if PENDING_PATH.exists():
+        try:
+            pending = json.loads(PENDING_PATH.read_text())
+            for r in pending.get("records", []):
+                if r.get("doc_num"):
+                    existing.setdefault(r["doc_num"], r)
+        except Exception as exc:  # noqa: BLE001
+            log.warning("Could not read pending records at %s: %s", PENDING_PATH, exc)
+    return existing
 
 
 def _has_address(rec: dict) -> bool:
     return bool(rec.get("prop_address") or rec.get("mail_address"))
+
+
+_JUNK_OWNER = re.compile(
+    r"(?:^|\s)-*vs\b|\bPPN\b|\bPARCEL\b|\bPERM\b|\bREFILED\b|\bCASE\s*#|\bTHIS IS\b",
+    re.IGNORECASE,
+)
+
+
+def owner_is_junk(name: str) -> bool:
+    """Caption text that got mistaken for a party name."""
+    name = (name or "").strip()
+    return len(name) < 4 or bool(_JUNK_OWNER.search(name))
 
 
 def _needs_reread(rec: dict) -> bool:
@@ -1197,8 +1224,7 @@ def _needs_reread(rec: dict) -> bool:
     it never got its documents read at all (placeholder type, no amount)."""
     if not _has_address(rec):
         return True
-    owner = rec.get("owner") or ""
-    if re.search(r"(?:^|\s)-*vs\b|\bPPN\b|\bPARCEL\b|\bPERM\b", owner, re.IGNORECASE):
+    if owner_is_junk(rec.get("owner") or ""):
         return True
     return rec.get("doc_type") == "Foreclosure" and rec.get("amount") is None
 
@@ -1261,6 +1287,10 @@ def build_records(
             )
 
             if parcel:
+                # The caption sometimes yields junk instead of a name; the
+                # Auditor's owner of record is a better value than that.
+                if owner_is_junk(record.owner) and parcel.get("owner_raw"):
+                    record.owner = parcel["owner_raw"]
                 record.prop_address = parcel.get("prop_address", "")
                 record.prop_city = parcel.get("prop_city", "")
                 record.prop_zip = parcel.get("prop_zip", "")
@@ -1320,17 +1350,29 @@ def write_outputs(new_records: list[LeadRecord]) -> dict:
     for record in new_records:
         existing_by_doc_num[record.doc_num] = asdict(record)
 
-    merged = sorted(existing_by_doc_num.values(), key=lambda r: r.get("score", 0), reverse=True)
+    everything = sorted(existing_by_doc_num.values(), key=lambda r: r.get("score", 0), reverse=True)
+    merged = [r for r in everything if _has_address(r)]
+    pending = [r for r in everything if not _has_address(r)]
+    new_with_address = sum(1 for r in new_records if _has_address(asdict(r)))
 
     now = datetime.now(timezone.utc)
     payload = {
         "fetched_at": now.isoformat(timespec="seconds"),
         "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-        "new_this_run": len(new_records),
+        "new_this_run": new_with_address,
         "total": len(merged),
-        "with_address": sum(1 for r in merged if r.get("prop_address") or r.get("mail_address")),
+        "with_address": len(merged),
+        "pending_no_address": len(pending),
         "records": merged,
     }
+
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(json.dumps(
+        {"fetched_at": payload["fetched_at"], "note": "Leads with no address yet; retried on later runs.",
+         "total": len(pending), "records": pending},
+        indent=2, default=str,
+    ))
+    log.info("%d lead(s) without an address held in %s", len(pending), PENDING_PATH)
 
     for path in OUTPUT_PATHS:
         path.parent.mkdir(parents=True, exist_ok=True)
