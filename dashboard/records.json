@@ -1,7 +1,7 @@
 {
-  "fetched_at": "2026-10-23T00:45:32+00:00",
+  "fetched_at": "2026-10-23T01:12:44+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 4,
+  "new_this_run": 6,
   "total": 251,
   "with_address": 120,
   "records": [
@@ -97,7 +97,7 @@
       "filed": "2026-10-22",
       "cat": "efc",
       "cat_label": "E-Foreclosure",
-      "owner": "Permanent Parcel No: 610-209144-00 -vs- Christian Morales",
+      "owner": "Christian Morales",
       "grantee": "Selene Finance, LP",
       "amount": 171181.78,
       "legal": "BEING LOT NO. TWO HUNDRED TEN (210), OF WORTHINGTON GREEN, SECTION 3, AS THE SAME IS NUMBERED AND DELINEATED UPON THE RECORDED PLAT THEREOF, OF RECORD IN PLAT BOOK 66, PAGE 98, RECORDER'S OFFICE, FRANKLIN COUNTY, OHIO",
@@ -119,7 +119,7 @@
       "case_number": "26JG030938",
       "loan_type": "",
       "captured_date": "2026-10-23",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28310856",
@@ -269,7 +269,7 @@
       "filed": "2026-10-22",
       "cat": "efc",
       "cat_label": "E-Foreclosure",
-      "owner": "vs. Kourtney S. Cole",
+      "owner": "Kourtney S. Cole",
       "grantee": "Riga Capital Partners LLC",
       "amount": 4530.22,
       "legal": "FileNumber:J250430 SituatedintheCityofColumbus,CountyofFranklin,andStateofOhio BeingLotNumberOneHundredSixty-Five(165)SouthfieldSecondAdditionasshowninPlatBookNo.34, Page254,Recorder'sOffice,FranklinCounty,Ohio. Premisescommonlyknownas: 3121HoustonDrive Columbus,OH43207 Permanent",
@@ -292,7 +292,7 @@
       "case_number": "619582",
       "loan_type": "FIXED RATE",
       "captured_date": "2026-10-23",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28260884",
@@ -994,10 +994,10 @@
       "filed": "2026-10-19",
       "cat": "efc",
       "cat_label": "E-Foreclosure",
-      "owner": "DARRELL ERVIN PERM PARCEL NO",
+      "owner": "s",
       "grantee": "WESTBURY VILLAGE",
       "amount": 6066.34,
-      "legal": "contained in the Preliminary Judicial Report attached hereto as Exhibit A (the \u201cProperty\u201d). Upon taking title to the Property, Defendants, Darrell Ervin and MaryAnn Johnson, became members of the Association and are bound by the Association\u2019s Declaration of Condominium Ownership (the \u201cDeclaration\u201d), including but not limited to the payment of maintenance fees and assessments, late fees and attorney fees. A copy of said Declaration is not attached as it is filed with the Franklin County Recorder at Volume 3394, Page 223 et seq. and constructive notice of its existence and contents is deemed to have been given to the \u201cwhole world\u201d pursuant to Ohio Revised Code 1301.401(B); due to its size, it is impractical and economically inefficient to attach and serve on multiple parties, especially in view of Defendants ultimate obligation for such costs, and; upon information and belief, Defendants already possess a copy. 3. Defendants, Darrell Ervin and MaryAnn Johnson are now in breach of their obligation by default in payment under the terms and conditions of the Declaration, and by reason thereof, there is currently due the Plaintiff from the Defendants, Darrell Ervin and MaryAnn Johnson, based upon unpaid maintenance fees and assessments, late fees and attorney fees, the total sum of $6,066.34 plus interest at the highest rate then permitted by law pursuant to O.R.C. 1343.01 as provided for in the Declaration of Covenants, Conditions, Restrictions and Assessments as of October 6, 2026. 4. Plaintiff is further owed from the Defendants, Darrell Ervin and MaryAnn Johnson, maintenance fees and assessments, late fee and attorneys\u2019 fees incurred subsequent to the filing of this action up to the date of sale, the precise total amount of which is not presently ascertainable because it continues to accrue on a monthly basis. SECOND COUNT 5. Plaintiff incorporates herein by reference all the allegations contained in its First Count, and further states that pursuant to the authority of Section 5311.18 of the Ohio Revised Code, the Plaintiff filed its Certificate of Lien on the property, attached hereto as Exhibit \"B\" to secure payment of the maintenance fees, common expenses and assessments. Said lien is a good and valid continuing lien, second only to real estate taxes and prior recorded lien of first mortgages on the condominium unit, in accordance with Section 5311.18 of the Ohio Revised Code. 6. The Defendants named herein have or may claim to have an interest in the property described in the Preliminary Judicial Report, a copy of which is attached hereto as Exhibit A. 7. That Defendant, Darrell Ervin, may be married and that his spouse, Unknown Spouse, if any, of Darrell Ervin, may have an interest in the real property described herein. 8. That Defendant, MaryAnn Johnson, may be married and that her spouse, Unknown Spouse, if any, of MaryAnn Johnson, may have an interest in the real property described herein. 9. The Franklin County Treasurer may have an interest in the subject property by virtue of delinquent taxes due and owing. 10. Plaintiff states that the terms and conditions of the Declaration have been breached by reason of default in payment, and Plaintiff is entitled to foreclosure of its lien, and to have the Property appraised, advertised and sold, and the proceeds arising therefrom applied to the judgment of Plaintiff. 11. Plaintiff states it has complied with all conditions precedents prior to proceeding with this action. 12. In accordance with the condominium documents recorded with the Franklin County Recorder\u2019s office, Defendants, Darrell Ervin and MaryAnn Johnson, have, by covenant, agreed to be responsible for the legal fees and court costs incurred in the within action. Pursuant to Nottingdale Homeowners\u2019 Assn., Inc. v. Darby (1987), 33 Ohio St.3d 32 and First Fed. Sav. Bank v. WSB Investments, Inc. (1990), 67 Ohio App. 3d 277, the courts held that the condominium instruments make defaulting unit owners responsible for attorney fees. WHEREFORE, Plaintiff prays that: (a) Plaintiff be granted judgment against Defendants, Darrell Ervin and MaryAnn Johnson, in the sum of $6,066.34 plus interest at the rate of the highest rate of interest then permitted by law pursuant to O.R.C. 1343.01 upon which execution may issue; (b) Plaintiff be granted judgment for maintenance fees and assessments incurred subsequent to the filing of this action in an amount to be determined, plus interest and costs; (c) All Defendants be required to answer and set forth any claim that they may have in said premises or be forever barred; (d) Plaintiff\u2019s lien be found to be good and valid lien upon said property; (e) All liens on said property be marshaled and the premises be ordered appraised, advertised and sold according to law; (f) Plaintiff recover its costs herein, including the cost incurred for the preliminary judicial report; (g) Plaintiff recover its attorney fees and court costs of the within action from the proceeds of the sale; or alternatively, that Plaintiff be granted judgment for attorneys\u2019 fees and costs, upon which execution may issue; and that (h) Plaintiff be granted any additional relief to which it may be entitled to at law or in equity, including, but not limited to additional unpaid condominium maintenance fees and special assessments incurred subsequent to the filing of the within action. KAMAN & CUSIMANO, LLC /s/ Angela D. Kirk Magdalena E. Myers (0087846) Angela D. Kirk (0075177) Attorneys for Plaintiff, Westbury Village Association 8101 North High Street, Suite 370 Columbus, Ohio 43235 (614) 882-3100 / FAX (614) 882-3800 kcattorney@kamancus.com NNOTICE REQUIRED BY THE FAIR DEBT COLLECTION PRACTICES ACT (15 U.S.C. 1692 et seq.) 1) This notice is directed only to the party or parties who may be obligated to pay the debt referred to in the attached pleading. The amount of the debt is stated in the pleading attached hereto. 2) The debt is owed to Westbury Village Association. This communication is from a debt collector. This is an attempt to collect a debt and any information obtained will be used for that purpose. If a petition for bankruptcy protection has been filed, we are not suggesting personal liability on any pre-petition or dischargeable debt. The Association is only seeking pre-petition or dischargeable debt, if any, through the property. 3) Unless you notify this office within 30 days after receiving this notice that you dispute the validity of this debt or any portion thereof, this office will assume this debt is valid. If you notify this office in writing within 30 days after receiving this notice that you dispute the validity of this debt or any portion of it, this office will obtain verification of the debt and mail you a copy of such verification. And if, within the same 30-day time period, you request the name and address of your original creditor, this office will furnish you with that information as well, if it is different than the current creditor. 4) All communications, including payoff requests, should be directed to Kaman & Cusimano, LLC, 8101 North High Street, Suite 370, Columbus, Ohio 43235, 888-800- 1042. 5) If this was issued by the Clerk of Courts, the summons states that you have 28 days to serve an answer. You must do so within that time or you will be in default. The 30-day right for verification of the debt, as set forth in paragraph 3 above, is separate from the 28 days you have to serve your answer. Do not confuse the two. Your request for verification of the debt will not relieve you of the need to serve your answer within 28 days. Please read the summons issued by the clerk carefully for instructions concerning filing your answer with the court. EXHIBIT A",
+      "legal": "contained in the Preliminary Judicial Report attached hereto as Exhibit A (the \u201cProperty\u201d). Upon taking title to the Property, Defendants, Darrell Ervin and MaryAnn Johnson, became members of the Association and are bound by the Association\u2019s Declaration of Condominium Ownership (the \u201cDeclaration\u201d), including but not limited to the payment of maintenance fees and assessments, late fees and attorney fees. A copy of said Declaration is not attached as it is filed with the Franklin County Recorder at Volume 3394, Page 223 et seq. and constructive notice of its existence and contents is deemed to have been given to the \u201cwhole world\u201d pursuant to Ohio Revised Code 1301.401(B); due to its size, it is impractical and economically inefficient to attach and serve on",
       "prop_address": "844 N WESTBURY LN",
       "prop_city": "COLUMBUS",
       "prop_state": "OH",
@@ -1013,8 +1013,10 @@
       ],
       "score": 60,
       "interest_rate": null,
-      "case_number": "645338",
-      "loan_type": ""
+      "case_number": "26CV009758",
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28360663",
@@ -1045,39 +1047,12 @@
       "loan_type": ""
     },
     {
-      "doc_num": "28365636",
-      "doc_type": "COMPLAINT FOR FORECLOSURE",
-      "filed": "2026-10-20",
-      "cat": "efc",
-      "cat_label": "E-Foreclosure",
-      "owner": "vs. THIS IS REFILED CASE #22CV",
-      "grantee": "Lakeview Loan Servicing, LLC",
-      "amount": 60114.39,
-      "legal": "File Number: The following REAL PROPERTY:",
-      "prop_address": "3653 PARK ST",
-      "prop_city": "GROVE CITY",
-      "prop_state": "OH",
-      "prop_zip": "43123",
-      "mail_address": "PO BOX 9202",
-      "mail_city": "COPPELL",
-      "mail_state": "TX",
-      "mail_zip": "75019-9208",
-      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28365636/documents",
-      "flags": [
-        "New this week"
-      ],
-      "score": 60,
-      "interest_rate": null,
-      "case_number": "22CV006378",
-      "loan_type": "FHA"
-    },
-    {
       "doc_num": "28372570",
       "doc_type": "COMPLAINT FOR FORECLOSURE",
       "filed": "2026-10-22",
       "cat": "efc",
       "cat_label": "E-Foreclosure",
-      "owner": "vs. PPN: 01014",
+      "owner": "ALISA CRADDOLPH",
       "grantee": "JP MORGAN CHASE BANK, NATIONAL ASSOCIATION",
       "amount": 65602.11,
       "legal": "",
@@ -1098,7 +1073,7 @@
       "case_number": "26MS000408",
       "loan_type": "",
       "captured_date": "2026-10-23",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28356992",
@@ -1135,7 +1110,7 @@
       "filed": "2026-10-20",
       "cat": "efc",
       "cat_label": "E-Foreclosure",
-      "owner": "-vs.- PERM PARCEL NO. 010-284051-",
+      "owner": "CYNTHIA LAUREN TOVELL",
       "grantee": "GRAMERCY PLACE",
       "amount": 8612.42,
       "legal": "contained in the Preliminary Judicial Report attached hereto as Exhibit A. 3. Pursuant to the authority of Section 5311.18 of the Ohio Revised Code, the Plaintiff filed its Certificate of Lien on the property attached hereto as Exhibit \"B\" to secure payment of the maintenance fees, common expenses and assessments. Said lien is a good and valid continuing lien, second only to real estate taxes and",
@@ -1157,7 +1132,36 @@
       "case_number": "26CV009777",
       "loan_type": "",
       "captured_date": "2026-10-23",
-      "attempts": 2
+      "attempts": 3
+    },
+    {
+      "doc_num": "28365636",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-10-20",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "THIS IS REFILED CASE #22CV",
+      "grantee": "Lakeview Loan Servicing, LLC",
+      "amount": 60114.39,
+      "legal": "File Number: The following REAL PROPERTY:",
+      "prop_address": "3653 PARK ST",
+      "prop_city": "GROVE CITY",
+      "prop_state": "OH",
+      "prop_zip": "43123",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28365636/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 55,
+      "interest_rate": 3.125,
+      "case_number": "26CV009789",
+      "loan_type": "FHA",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28241679",
