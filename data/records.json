@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-22T13:04:05+00:00",
+  "fetched_at": "2026-10-23T00:06:55+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
   "new_this_run": 6,
-  "total": 247,
-  "with_address": 114,
+  "total": 249,
+  "with_address": 116,
   "records": [
     {
       "doc_num": "28320531",
@@ -1009,6 +1009,35 @@
       "interest_rate": null,
       "case_number": "22CV006378",
       "loan_type": "FHA"
+    },
+    {
+      "doc_num": "28372570",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-10-22",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "vs. PPN: 01014",
+      "grantee": "JP MORGAN CHASE BANK, NATIONAL ASSOCIATION",
+      "amount": 65602.11,
+      "legal": "",
+      "prop_address": "1865 S TAMARACK CT",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43229",
+      "mail_address": "1865 TAMARACK CT S",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43229-5310",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28372570/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": 6.96,
+      "case_number": "26MS000408",
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28241679",
@@ -3199,6 +3228,35 @@
       "interest_rate": null,
       "case_number": "28367365",
       "loan_type": ""
+    },
+    {
+      "doc_num": "28370913",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-22",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "JOHN OCONNOR",
+      "grantee": "THIRD FEDERAL SAVINGS AND LOAN ASSOCIATI",
+      "amount": null,
+      "legal": "",
+      "prop_address": "7518 WHIGHAM CT",
+      "prop_city": "DUBLIN",
+      "prop_state": "OH",
+      "prop_zip": "43016",
+      "mail_address": "901 CORPORATE CENTER DR",
+      "mail_city": "POMONA",
+      "mail_state": "CA",
+      "mail_zip": "91768-2642",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28370913/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28370913",
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28247524",
@@ -6627,7 +6685,9 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28356992",
-      "loan_type": ""
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28367663",
@@ -6654,7 +6714,9 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28367663",
-      "loan_type": ""
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28365800",
@@ -6681,7 +6743,9 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28365800",
-      "loan_type": ""
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28365653",
@@ -6708,7 +6772,9 @@
       "score": 45,
       "interest_rate": null,
       "case_number": "28365653",
-      "loan_type": ""
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     }
   ]
 }
