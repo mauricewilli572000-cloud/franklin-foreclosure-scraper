@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-23T01:36:49+00:00",
+  "fetched_at": "2026-10-23T12:25:57+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
   "new_this_run": 2,
-  "total": 120,
-  "with_address": 120,
+  "total": 121,
+  "with_address": 121,
   "pending_no_address": 131,
   "records": [
     {
@@ -121,6 +121,36 @@
       "loan_type": "",
       "captured_date": "2026-10-23",
       "attempts": 2
+    },
+    {
+      "doc_num": "28373225",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-10-23",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "WITH Greenville, SC",
+      "grantee": "Bank of New York Mellon f/k/a The",
+      "amount": 152475.0,
+      "legal": "Being Lot number Eighty-five (85) of SOUTH BERWICK ADDITION, as the same is numbered and delineated upon the recorded plat thereof, of record in Plat Book 28, page 28, Recorder's Office, Franklin County, Ohio. The improvements thereon being known as 2735 Floribunda Drive, Columbus, Ohio - 43209",
+      "prop_address": "2735 Floribunda Drive",
+      "prop_city": "Columbus",
+      "prop_state": "OH",
+      "prop_zip": "43209",
+      "mail_address": "2735 Floribunda Drive",
+      "mail_city": "Columbus",
+      "mail_state": "OH",
+      "mail_zip": "43209",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28373225/documents",
+      "flags": [
+        "Probate / estate",
+        "New this week"
+      ],
+      "score": 75,
+      "interest_rate": 2.0,
+      "case_number": "28373225",
+      "loan_type": "",
+      "captured_date": "2026-10-23",
+      "attempts": 1
     },
     {
       "doc_num": "28310856",
@@ -1162,7 +1192,7 @@
       "case_number": "26CV009789",
       "loan_type": "FHA",
       "captured_date": "2026-10-23",
-      "attempts": 2
+      "attempts": 3
     },
     {
       "doc_num": "28248406",
