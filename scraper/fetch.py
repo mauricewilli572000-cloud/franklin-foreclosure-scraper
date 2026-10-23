@@ -1191,6 +1191,18 @@ def _has_address(rec: dict) -> bool:
     return bool(rec.get("prop_address") or rec.get("mail_address"))
 
 
+def _needs_reread(rec: dict) -> bool:
+    """A saved lead is worth re-reading if it has no address, or its owner
+    name is caption junk ("vs. PPN: 01014", "-vs.- PERM PARCEL NO. ..."), or
+    it never got its documents read at all (placeholder type, no amount)."""
+    if not _has_address(rec):
+        return True
+    owner = rec.get("owner") or ""
+    if re.search(r"(?:^|\s)-*vs\b|\bPPN\b|\bPARCEL\b|\bPERM\b", owner, re.IGNORECASE):
+        return True
+    return rec.get("doc_type") == "Foreclosure" and rec.get("amount") is None
+
+
 def split_known_and_retry(existing: dict[str, dict]) -> tuple[set[str], set[str]]:
     """(known, retry). `known` = leads to skip: they have an address, or
     have already used up MAX_ATTEMPTS_PER_LEAD tries. `retry` = saved
@@ -1198,7 +1210,7 @@ def split_known_and_retry(existing: dict[str, dict]) -> tuple[set[str], set[str]
     known: set[str] = set()
     retry: set[str] = set()
     for doc_num, rec in existing.items():
-        if _has_address(rec) or int(rec.get("attempts") or 0) >= MAX_ATTEMPTS_PER_LEAD:
+        if not _needs_reread(rec) or int(rec.get("attempts") or 0) >= MAX_ATTEMPTS_PER_LEAD:
             known.add(doc_num)
         else:
             retry.add(doc_num)
@@ -1273,6 +1285,18 @@ def build_records(
                     record.mail_state = record.mail_state or "OH"
                     record.mail_zip = record.mail_zip or record.prop_zip
                     record.score = calculate_score(flags, filing.amount, True)
+
+            # A re-read that fails (portal hiccup, unreadable scan) must not
+            # wipe out what an earlier run already captured.
+            if prior:
+                for key in (
+                    "prop_address", "prop_city", "prop_zip", "mail_address", "mail_city",
+                    "mail_state", "mail_zip", "amount", "interest_rate", "legal", "loan_type",
+                ):
+                    if getattr(record, key) in (None, "") and prior.get(key) not in (None, ""):
+                        setattr(record, key, prior[key])
+                if not record.owner and prior.get("owner"):
+                    record.owner = prior["owner"]
 
             records.append(record)
         except Exception as exc:  # noqa: BLE001 - one bad filing must never kill the run

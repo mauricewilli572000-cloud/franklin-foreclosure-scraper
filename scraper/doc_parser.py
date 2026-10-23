@@ -401,6 +401,26 @@ def _first_defendant_with_real_address(text: str) -> Optional[str]:
     return None
 
 
+_LEADING_VS = re.compile(r"\s*-*\s*\bvs?\b\.?\s*-*\s*", re.IGNORECASE)
+_LEADING_PARCEL = re.compile(
+    r"\s*(?:PERM(?:ANENT)?\.?\s+)?(?:PPN|PARCEL\s*(?:ID)?\s*(?:NUMBER|NO\.?)?)\s*#?\s*[:\-]?\s*[\d\-]{6,17}",
+    re.IGNORECASE,
+)
+
+
+def _strip_leading_caption_tokens(text: str) -> str:
+    """Captions put a parcel-number line and a "vs" / "-vs-" / "-vs.-"
+    marker between the plaintiff and the defendants, in either order
+    ("PPN: ... vs." or "vs. PPN: ..."), sometimes with "Permanent" or
+    "Perm" in front of "Parcel No". Peel off any run of those so the first
+    thing left is the first defendant."""
+    while True:
+        m = _LEADING_PARCEL.match(text) or _LEADING_VS.match(text)
+        if not m or m.end() == 0:
+            return text
+        text = text[m.end():]
+
+
 DOC_TITLE_PATTERN = re.compile(
     r"\b(COMPLAINT(?:\s+(?:IN|FOR)\s+FORECLOSURE)?|NOTICE OF DEFAULT|LIS PENDENS|"
     r"JUDGMENT ENTRY(?:\s+(?:IN|OF)\s+FORECLOSURE)?|DECREE (?:IN|OF) FORECLOSURE|ORDER OF SALE)\b",
@@ -455,12 +475,7 @@ def extract_caption_names(text: str) -> tuple[Optional[str], Optional[str]]:
 
     if doc_title_match:
         remainder = text[doc_title_match.end():]
-        ppn_match = re.match(
-            r"\s*(?:PPN|Parcel\s*(?:ID)?\s*(?:Number|No\.?)?)\s*[:\-]?\s*[\d\-]{6,17}",
-            remainder, re.IGNORECASE,
-        )
-        if ppn_match:
-            remainder = remainder[ppn_match.end():]
+        remainder = _strip_leading_caption_tokens(remainder)
         grantor = _first_defendant_with_real_address(remainder[:1500])
         if not grantor:
             # No block had a usable address (all "ADDRESS UNKNOWN", or
@@ -474,6 +489,10 @@ def extract_caption_names(text: str) -> tuple[Optional[str], Optional[str]]:
         if vs_match:
             grantor = _clean_party_name(text[vs_match.end():vs_match.end() + 200])
 
+    if grantor:
+        grantor = _strip_leading_caption_tokens(grantor).strip(" ,.-") or None
+        if grantor and re.search(r"\b(?:PPN|PARCEL)\b", grantor, re.IGNORECASE):
+            grantor = None
     return grantee, grantor
     if vs_match:
         remainder = text[vs_match.end():]
