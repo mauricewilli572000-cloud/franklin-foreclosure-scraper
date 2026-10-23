@@ -261,6 +261,7 @@ class RawFiling:
     description: str = ""      # free text used for flag keyword matching
     parcel_number: str = ""    # e.g. "010-068600" — exact key into Auditor Parcel_CSV
     category: str = ""         # grid's "Case Category" column, e.g. "E-Foreclosures"
+    premises_address: str = "" # "commonly known as ..." from the complaint; fallback when no parcel match
 
 
 @dataclass
@@ -987,6 +988,7 @@ async def enrich_filing_with_documents(
             filing.loan_type = parsed.get("loan_type") or filing.loan_type
             filing.legal = parsed.get("legal_description") or filing.legal
             filing.parcel_number = parsed.get("parcel_number") or filing.parcel_number
+            filing.premises_address = parsed.get("premises_address") or filing.premises_address
 
             if parsed.get("interest_rate"):
                 try:
@@ -1254,6 +1256,23 @@ def build_records(
                 record.mail_city = parcel.get("mail_city", "") or parcel.get("prop_city", "")
                 record.mail_state = parcel.get("mail_state", "OH")
                 record.mail_zip = parcel.get("mail_zip", "") or parcel.get("prop_zip", "")
+
+            # No Auditor match: fall back to the property address the
+            # complaint itself states ("commonly known as ...").
+            if not record.prop_address and filing.premises_address:
+                m = re.match(
+                    r"(?P<street>.+?),\s*(?P<city>[A-Za-z .]+?),?\s*(?:OH|Ohio)\s+(?P<zip>\d{5}(?:-\d{4})?)$",
+                    filing.premises_address.strip(),
+                )
+                if m:
+                    record.prop_address = m.group("street").strip()
+                    record.prop_city = m.group("city").strip()
+                    record.prop_zip = m.group("zip")
+                    record.mail_address = record.mail_address or record.prop_address
+                    record.mail_city = record.mail_city or record.prop_city
+                    record.mail_state = record.mail_state or "OH"
+                    record.mail_zip = record.mail_zip or record.prop_zip
+                    record.score = calculate_score(flags, filing.amount, True)
 
             records.append(record)
         except Exception as exc:  # noqa: BLE001 - one bad filing must never kill the run

@@ -26,6 +26,7 @@ string / None rather than crashing the run.
 from __future__ import annotations
 
 import io
+import os
 import logging
 import re
 import zipfile
@@ -45,9 +46,18 @@ except ImportError:  # pragma: no cover
 
 log = logging.getLogger("franklin_scraper.doc_parser")
 
+# Tesseract spawns one OpenMP thread per core by default; on a 2-core CI
+# runner that thrashes (measured: 16s vs 5s for the same 4 pages). One
+# thread per OCR process is faster, and cases already run one at a time.
+os.environ.setdefault("OMP_THREAD_LIMIT", "1")
+
 MIN_TEXT_CHARS_PER_PAGE = 25   # below this, a page is treated as scanned/image-only
+STAMP_PATTERN = re.compile(
+    r"Franklin\s+County\s+Ohio\s+Clerk\s+of\s+Courts[^\n]*?\d{2}CV\d{5,8}", re.IGNORECASE
+)
 CID_GARBAGE_THRESHOLD = 5      # 5+ "(cid:N)" placeholders means the page's font mapping is broken
-OCR_DPI = 300
+OCR_DPI = 200                  # 300 took ~10s/page on a 2-core runner; 200 reads typed legal text fine
+MAX_OCR_PAGES_PER_PDF = 12     # parties, amount, rate, parcel and address are all in the first few pages
 MAX_PAGES_PER_PDF = 40         # safety cap so one runaway filing can't hang the run
 
 
@@ -129,6 +139,15 @@ def _looks_garbled(text: str) -> bool:
     return text.count("(cid:") >= CID_GARBAGE_THRESHOLD
 
 
+def _has_key_fields(text: str) -> bool:
+    """True once the text read so far already yields a parcel number AND
+    an amount owed — enough to stop OCR'ing further pages."""
+    return all(
+        any(re.search(pat, text, re.I | re.M | re.S) for pat in FIELD_PATTERNS[field])
+        for field in ("parcel_number", "amount")
+    )
+
+
 def extract_text_hybrid(pdf_bytes: bytes, filename: str = "") -> str:
     """pdfplumber text extraction with a per-page Tesseract OCR fallback
     for scanned pages OR pages whose extracted text is garbled cid-code
@@ -137,6 +156,7 @@ def extract_text_hybrid(pdf_bytes: bytes, filename: str = "") -> str:
         return ""
 
     pages_text: list[str] = []
+    ocr_pages_done = 0
     try:
         with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
             for i, page in enumerate(pdf.pages[:MAX_PAGES_PER_PDF]):
@@ -146,7 +166,29 @@ def extract_text_hybrid(pdf_bytes: bytes, filename: str = "") -> str:
                 except Exception as exc:  # noqa: BLE001
                     log.debug("%s page %d: pdfplumber extraction failed: %s", filename, i, exc)
 
-                if len(text.strip()) < MIN_TEXT_CHARS_PER_PAGE or _looks_garbled(text):
+                # Every page of a clerk-filed PDF carries the e-filing stamp
+                # ("Franklin County Ohio Clerk of Courts of the Common Pleas-
+                # 2026 Oct 16 11:34 AM-26CV009679") as real text, even when
+                # the rest of the page is a scanned image. That stamp alone
+                # is ~90 chars, so a purely scanned page used to pass the
+                # length check and never get OCR'd. Judge "has real text" on
+                # what is left after removing the stamp.
+                needs_ocr = (
+                    len(STAMP_PATTERN.sub("", text).strip()) < MIN_TEXT_CHARS_PER_PAGE
+                    or _looks_garbled(text)
+                )
+                # Stop OCR'ing once we have a parcel number and a dollar
+                # amount (after at least 3 pages, so the caption is in) or
+                # once the per-PDF OCR budget is spent. Remaining pages keep
+                # whatever plain text they have; this keeps a 47-page
+                # scanned complaint from eating the whole per-case time limit.
+                if needs_ocr and (
+                    ocr_pages_done >= MAX_OCR_PAGES_PER_PDF
+                    or (i >= 3 and _has_key_fields("\n".join(pages_text)))
+                ):
+                    needs_ocr = False
+                if needs_ocr:
+                    ocr_pages_done += 1
                     ocr_text = _ocr_page(pdf_bytes, i, filename)
                     if ocr_text.strip() and not _looks_garbled(ocr_text):
                         text = ocr_text
@@ -210,11 +252,12 @@ FIELD_PATTERNS: dict[str, list[str]] = {
         r"Plaintiff[s]?[:\-]?\s*\n?\s*([A-Z][A-Za-z0-9,.\-'& ]+?)(?:\n|,\s*Plaintiff)",
     ],
     "interest_rate": [
-        r"[Ii]nterest\s*[Rr]ate\s*(?:of)?\s*[:\-]?\s*(\d{1,2}(?:\.\d{1,5})?)\s*(?:%|percent)\b",
-        r"at\s+the\s+rate\s+of\s+(\d{1,2}(?:\.\d{1,5})?)\s*(?:%|percent)\b",
+        r"[Ii]nterest\s*[Rr]ate\s*(?:of)?\s*[:\-]?\s*(\d{1,2}(?:\.\d{1,5})?)\s*(?:%|percent\b)",
+        r"at\s+the\s+rate\s+of\s+(\d{1,2}(?:\.\d{1,5})?)\s*(?:%|percent\b)",
     ],
     "amount": [
         r"principal\s+amount\s+of\s+\$\s*([\d,]+\.\d{2})",
+        r"due\s+and\s+unpaid\s+(?:thereon|on\s+the\s+note)?\s*[:\-]?\s*\$\s*([\d,]+\.\d{2})",
         r"[Pp]rincipal\s*[Bb]alance(?:\s*[Dd]ue)?\s*(?:of)?\s*[:\-]?\s*\$\s*([\d,]+\.\d{2})",
         r"[Jj]udgment\s*[Aa]mount\s*[:\-]?\s*\$\s*([\d,]+\.\d{2})",
         r"(?:[Aa]mount\s*(?:[Dd]ue|[Oo]wed)|sum\s*of)\s*[:\-]?\s*\$\s*([\d,]+\.\d{2})",
@@ -231,6 +274,12 @@ FIELD_PATTERNS: dict[str, list[str]] = {
     # 01010571100" (contiguous-digit PPN), or "Parcel ID Number:
     # 01009559800" (contiguous digits, extra "Number" word). All four
     # confirmed against real filings.
+    # "...premises described therein and commonly known as 4189 Panorama
+    # Drive, Columbus, OH 43230, PPN 010-218735-00" — the property's own
+    # address, used when the Auditor parcel lookup can't match.
+    "premises_address": [
+        r"commonly\s+known\s+as\s+(\d{1,6}[\w\s.\-#/]{3,60}?,\s*[A-Za-z .]{3,30},?\s*(?:OH|Ohio)\s+\d{5}(?:-\d{4})?)",
+    ],
     "parcel_number": [
         r"Parcel\s*(?:ID\s*)?(?:Number|No\.?)\s*[:\-#]?\s*(\d{2,3}-\d{3,8}(?:-\d{1,3})?)",
         r"\bPPN\s*#?\s*[:\-]?\s*(\d{2,3}-\d{3,8}(?:-\d{1,3})?)",
@@ -386,6 +435,24 @@ def extract_caption_names(text: str) -> tuple[Optional[str], Optional[str]]:
     # parcel-number line right after it), up to the first defendant that
     # actually has a real address ---
     doc_title_match = DOC_TITLE_PATTERN.search(text)
+
+    # Layout B: defendants are listed between "vs." and the document title
+    # (plaintiff / vs. / defendants... / CASE NO. / COMPLAINT FOR FORECLOSURE).
+    # Confirmed real: First National Bank of Pennsylvania v. Whitfield. When
+    # that segment holds a defendant with a real street address, use it;
+    # otherwise fall through to the title-first layout below.
+    if doc_title_match:
+        vs_match = re.search(r"\bvs?\.", text[:doc_title_match.start()], re.IGNORECASE)
+        if vs_match:
+            segment = text[vs_match.end():doc_title_match.start()]
+            case_label = re.search(r"\bCASE\s*NO\.?\s*:?", segment, re.IGNORECASE)
+            if case_label:
+                segment = segment[:case_label.start()]
+            if re.search(r"\d{1,6}\s+[A-Za-z]", segment):
+                grantor = _first_defendant_with_real_address(segment)
+                if grantor:
+                    return grantee, grantor
+
     if doc_title_match:
         remainder = text[doc_title_match.end():]
         ppn_match = re.match(
@@ -429,11 +496,20 @@ def parse_fields_from_text(text: str) -> dict[str, Optional[str]]:
     if not text:
         return {field: None for field in FIELD_PATTERNS}
 
+    # The clerk's e-filing stamp is repeated on every page and looks like a
+    # court header ("...Clerk of Courts of the Common Pleas-"), which used to
+    # be picked up as the defendant's name. The case number is still read
+    # from the raw text (the stamp carries it); everything else from text
+    # with the stamp removed.
+    raw_text = text
+    text = STAMP_PATTERN.sub("", text)
+
     for field, patterns in FIELD_PATTERNS.items():
         value = None
+        source = raw_text if field == "case_number" else text
         for pattern in patterns:
             try:
-                match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE | re.DOTALL)
+                match = re.search(pattern, source, re.IGNORECASE | re.MULTILINE | re.DOTALL)
             except re.error as exc:  # noqa: BLE001
                 log.debug("Bad regex for field %s: %s", field, exc)
                 continue
