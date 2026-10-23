@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-22T10:02:17.631904Z",
-  "date_from": "10/15/2026",
-  "date_to": "10/22/2026",
+  "generated_at": "2026-10-23T09:54:41.315859Z",
+  "date_from": "10/16/2026",
+  "date_to": "10/23/2026",
   "limit": null,
-  "listings_found": 78,
-  "listings_processed": 78,
+  "listings_found": 66,
+  "listings_processed": 66,
   "case_detail_failures": 0,
-  "new_leads_this_run": 78,
-  "total_leads_on_file": 271,
+  "new_leads_this_run": 66,
+  "total_leads_on_file": 281,
   "auditor_enrichment_stats": {
-    "attempts": 81,
-    "successes": 74,
+    "attempts": 70,
+    "successes": 63,
     "no_match_by_parcel": 6,
     "no_match_by_address": 5,
     "errors": 0,
@@ -18,71 +18,54 @@
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 78,
+    "attempts": 66,
     "no_docket_entries": 0,
-    "no_complaint_image_url": 2,
-    "no_complaint_doc_url": 3,
+    "no_complaint_image_url": 0,
+    "no_complaint_doc_url": 2,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 37,
+    "pdf_returned_directly": 26,
     "no_text_extracted": 0,
-    "text_extracted": 73,
-    "interest_rate_found": 35,
-    "loan_type_found": 35,
+    "text_extracted": 64,
+    "interest_rate_found": 37,
+    "loan_type_found": 36,
     "amount_filled_from_complaint": 4,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
       {
-        "case": "CV-26-148705",
-        "text_length": 31926,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nArendt Powell Holdings LLC\nc/o Christian Arendt, Statutory Agent\n505 75th Street\nHolmes Beach, FL 34217\nMarlena Pleasure\n10801 Avon Avenue\nCleveland, OH 44105\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states ac"
+        "case": "CV-26-148794",
+        "text_length": 24679,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nOhio City Investments, LLC\n7100 Northland Circle, Ste. 410\nBrooklyn Park, MN 55428\nCity of Cleveland, Department of Public Health\n75 Erieview Plaza, 2nd Floor\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the def"
       },
       {
-        "case": "CV-26-148705",
-        "text_length": 31926,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nArendt Powell Holdings LLC\nc/o Christian Arendt, Statutory Agent\n505 75th Street\nHolmes Beach, FL 34217\nMarlena Pleasure\n10801 Avon Avenue\nCleveland, OH 44105\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states ac"
+        "case": "CV-26-148797",
+        "text_length": 35050,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nTopstone Investment, LLC\nc/o Registered Agent Service,\nStatutory Agent\n6545 Market Avenue North, Suite 100\nN Canton, OH 44721\nBank of Yorba Linda,\na Division of BYL Bank Group\nc/o PBOC Holdings, Inc.\nThe Corporation Trust Company,\nStatutory Agent\n1209 Orange Street\nWilmington, DE 19801\nViviendas AG LLC\n206"
       },
       {
-        "case": "CV-26-148706",
-        "text_length": 27622,
-        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2013\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nRavida Properties, Ltd.\nc/o Stephen Ravida, Statutory Agent\n4249 East 99th Street\nCleveland, OH 44105\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate (Exhibit"
+        "case": "CV-26-148799",
+        "text_length": 26361,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2021\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBlossom Homes LLC\n809 East Schaaf Road\nBrooklyn Heights, OH 44131\nAlina Bodas\n50 Farmcote Drive\nChagrin Falls, OH 44022\nPrasad Bodas\n50 Farmcote Drive\nChagrin Falls, OH 44022\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defenda"
       },
       {
-        "case": "CV-26-148707",
-        "text_length": 28704,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nUnknown heirs, devisees, legatees, assignees,\nexecutors, administrators and legal representatives\nof Robert J. Gazso\nAddress Unknown\nLaura J. Hartman\n23793 Gessner Road\nNorth Olmsted, OH 44070\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action a"
+        "case": "CV-26-148820",
+        "text_length": 53086,
+        "around_interest": "y Agent is Dennis Casey, Jr., with an address of 2140 Miami Rd., Euclid, Ohio\n44117, who claims or may claim an adverse right, title, estate, lien or interest in the\nProperty.\n6. Defendant Tanja Foster is an individual with a last known address of 5388 Mardale\nAve., Bedford Heights, Ohio 44146, who claims or may claim an adverse right, title,\nestate, lien or interest in the Property.\n7. Defendant Torin Darling Brazzle is an individual with a last known address of 928 46th\nSt. Ensley, Birmingham,"
       }
     ],
     "no_doc_url_samples": [
       {
-        "case": "CV-26-148981",
-        "plaintiff": "PNC BANK, NATIONAL ASSOCIATION",
-        "amount_owed": 44707.73,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
-            "has_url": true
-          }
-        ]
-      },
-      {
-        "case": "CV-26-148997",
-        "plaintiff": "UNION HOME MORTGAGE CORP.",
+        "case": "CV-26-149160",
+        "plaintiff": "US BANK TRUST COMPANY NATIONAL ASSOCIATION",
         "amount_owed": 0.0,
         "image_entries": [
           {
             "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
             "doc_desc": "SERVICE REQUEST",
             "has_url": true
           },
@@ -94,10 +77,15 @@
         ]
       },
       {
-        "case": "CV-26-149084",
-        "plaintiff": "MIDFIRST BANK",
-        "amount_owed": 100365.73,
+        "case": "CV-26-149163",
+        "plaintiff": "LOANDEPOT.COM, LLC",
+        "amount_owed": 0.0,
         "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          },
           {
             "desc": "CIVIL IMAGING MISCELLANEOUS",
             "doc_desc": "SERVICE REQUEST",
@@ -111,13 +99,18 @@
         ]
       }
     ],
-    "no_amount_text_samples": []
+    "no_amount_text_samples": [
+      {
+        "case": "CV-26-149143",
+        "around_first_dollar": " about May 18, 2022, Premier Bank extended a loan to Defendant Amanda\nLaFollette in the principal amount of Seventy-Nine Thousand and 00/100 Dollars ($79,000.00).\n2. Pursuant to the aforesaid loan, Defendant Amanda LaFollette executed and\ndelivered to Premier Bank, a certain Note (the \"Note\") in the principal amount Seventy-Nine\nThousand and 00/100 Dollars ($79,000.00), a true and correct redacted copy of which is attached\nhereto, labeled Exhibit \"A\" and made a part hereof.\nElectronically Filed "
+      }
+    ]
   },
   "blocked_mid_run": false,
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 90475,
+  "submit_html_length": 79054,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -127,10 +120,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 16,
-    "sent": 16,
+    "attempted": 10,
+    "sent": 10,
     "failed": 0,
-    "already_sent": 255,
+    "already_sent": 271,
     "sample_errors": []
   }
 }
