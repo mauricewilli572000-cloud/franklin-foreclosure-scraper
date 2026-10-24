@@ -1,104 +1,59 @@
 {
-  "generated_at": "2026-10-23T09:54:41.315859Z",
-  "date_from": "10/16/2026",
-  "date_to": "10/23/2026",
+  "generated_at": "2026-10-24T09:30:52.631407Z",
+  "date_from": "10/17/2026",
+  "date_to": "10/24/2026",
   "limit": null,
-  "listings_found": 66,
-  "listings_processed": 66,
+  "listings_found": 82,
+  "listings_processed": 82,
   "case_detail_failures": 0,
-  "new_leads_this_run": 66,
-  "total_leads_on_file": 281,
+  "new_leads_this_run": 82,
+  "total_leads_on_file": 304,
   "auditor_enrichment_stats": {
-    "attempts": 70,
-    "successes": 63,
-    "no_match_by_parcel": 6,
-    "no_match_by_address": 5,
+    "attempts": 86,
+    "successes": 78,
+    "no_match_by_parcel": 7,
+    "no_match_by_address": 6,
     "errors": 0,
     "sample_errors": [],
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 66,
+    "attempts": 82,
     "no_docket_entries": 0,
-    "no_complaint_image_url": 0,
-    "no_complaint_doc_url": 2,
+    "no_complaint_image_url": 1,
+    "no_complaint_doc_url": 0,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 26,
+    "pdf_returned_directly": 31,
     "no_text_extracted": 0,
-    "text_extracted": 64,
-    "interest_rate_found": 37,
-    "loan_type_found": 36,
-    "amount_filled_from_complaint": 4,
+    "text_extracted": 81,
+    "interest_rate_found": 50,
+    "loan_type_found": 46,
+    "amount_filled_from_complaint": 6,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
       {
-        "case": "CV-26-148794",
-        "text_length": 24679,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nOhio City Investments, LLC\n7100 Northland Circle, Ste. 410\nBrooklyn Park, MN 55428\nCity of Cleveland, Department of Public Health\n75 Erieview Plaza, 2nd Floor\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the def"
+        "case": "CV-26-148969",
+        "text_length": 24941,
+        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nDC Remodeling, LLC\nc/o Derrick Campbell, Statutory Agent\n13309 Claiborne Road\nEast Cleveland, OH 44112\nDerrick Campbell\n13309 Claiborne Road\nCleveland, OH 44112\nState of Ohio, Department of Taxation\nc/o Attorney General\n30 East Broad Street, 14th Floor\nColumbus, OH 43215\nDefendant(s).\n1. Now comes the Plai"
       },
       {
-        "case": "CV-26-148797",
-        "text_length": 35050,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nTopstone Investment, LLC\nc/o Registered Agent Service,\nStatutory Agent\n6545 Market Avenue North, Suite 100\nN Canton, OH 44721\nBank of Yorba Linda,\na Division of BYL Bank Group\nc/o PBOC Holdings, Inc.\nThe Corporation Trust Company,\nStatutory Agent\n1209 Orange Street\nWilmington, DE 19801\nViviendas AG LLC\n206"
+        "case": "CV-26-148971",
+        "text_length": 31115,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBrownstone Homes LLC, an Ohio Limited\nLiability Company\n46 Shopping Plaza Drive, #159\nChagrin Falls, OH 44022\nIndyMac Federal Bank, FSB\n888 Walnut Street\nPasadena, CA 91106\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant"
       },
       {
-        "case": "CV-26-148799",
-        "text_length": 26361,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2021\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBlossom Homes LLC\n809 East Schaaf Road\nBrooklyn Heights, OH 44131\nAlina Bodas\n50 Farmcote Drive\nChagrin Falls, OH 44022\nPrasad Bodas\n50 Farmcote Drive\nChagrin Falls, OH 44022\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defenda"
+        "case": "CV-26-148973",
+        "text_length": 26648,
+        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff,\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nAntonio Zeppetella\n7120 Broadview Road\nParma, OH 44134\nUnited States of America\nc/o United States Attorney\nfor Northern District of Ohio\n801 West Superior Avenue, Suite 400\nCleveland, OH 44113\nUnited States of America\nc/o United States Attorney General\nMain Justice Building., Room. 5111\n10th and Constituti"
       },
       {
-        "case": "CV-26-148820",
-        "text_length": 53086,
-        "around_interest": "y Agent is Dennis Casey, Jr., with an address of 2140 Miami Rd., Euclid, Ohio\n44117, who claims or may claim an adverse right, title, estate, lien or interest in the\nProperty.\n6. Defendant Tanja Foster is an individual with a last known address of 5388 Mardale\nAve., Bedford Heights, Ohio 44146, who claims or may claim an adverse right, title,\nestate, lien or interest in the Property.\n7. Defendant Torin Darling Brazzle is an individual with a last known address of 928 46th\nSt. Ensley, Birmingham,"
+        "case": "CV-26-148975",
+        "text_length": 31417,
+        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113\nPlaintiff, Year Certified: 2019\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nMichael E. Lutz\n6304 Kenyon Avenue\nCleveland, OH 44105\nUnknown heirs, devisees, legatees,\nassignees, executors, administrators\nand legal representatives\nof Michael E. Lutz\nAddress Unknown\nMary L. Lutz\n6304 Kenyon Avenue\nCleveland, OH 44105\nPNC Bank, National Association\n222 Delaware Avenue\nWilmington, DE 1"
       }
     ],
-    "no_doc_url_samples": [
-      {
-        "case": "CV-26-149160",
-        "plaintiff": "US BANK TRUST COMPANY NATIONAL ASSOCIATION",
-        "amount_owed": 0.0,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          }
-        ]
-      },
-      {
-        "case": "CV-26-149163",
-        "plaintiff": "LOANDEPOT.COM, LLC",
-        "amount_owed": 0.0,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          }
-        ]
-      }
-    ],
+    "no_doc_url_samples": [],
     "no_amount_text_samples": [
       {
         "case": "CV-26-149143",
@@ -110,7 +65,7 @@
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 79054,
+  "submit_html_length": 94388,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -120,10 +75,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 10,
-    "sent": 10,
+    "attempted": 23,
+    "sent": 23,
     "failed": 0,
-    "already_sent": 271,
+    "already_sent": 281,
     "sample_errors": []
   }
 }
