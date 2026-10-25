@@ -219,11 +219,17 @@ def _enrich_with_complaint_pdf(session: CuyahogaDocketSession, lead: LeadRecord)
                 _COMPLAINT_STATS["amount_filled_from_complaint"] += 1
             elif not lead.amount_owed and text and text.strip():
                 amt_samples = _COMPLAINT_STATS["no_amount_text_samples"]
-                if len(amt_samples) < 4:
-                    idx = text.find("$")
+                if len(amt_samples) < 25:
+                    import re as _re
+                    # Show every dollar figure with its surrounding words so the
+                    # wording for the amount due is visible, not just the first $.
+                    snippets = [
+                        " ".join(text[max(0, m.start() - 90): m.end() + 40].split())
+                        for m in _re.finditer(r"\$\s*[\d,]+(?:\.\d{2})?", text)
+                    ][:6]
                     amt_samples.append({
                         "case": lead.case_number,
-                        "around_first_dollar": text[max(0, idx - 150): idx + 350] if idx >= 0 else "(no $ in text)",
+                        "dollar_snippets": snippets or ["(no $ in text)"],
                     })
             if not lead.interest_rate and parsed.interest_rate:
                 lead.interest_rate = parsed.interest_rate
