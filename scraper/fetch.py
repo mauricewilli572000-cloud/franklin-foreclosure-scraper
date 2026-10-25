@@ -294,6 +294,7 @@ class LeadRecord:
     interest_rate: Optional[float] = None
     case_number: str = ""
     loan_type: str = ""
+    parcel_number: str = ""    # kept so a bad owner name can be repaired later from Auditor data
     captured_date: str = ""    # UTC date the lead was first added to the list
     attempts: int = 0          # how many runs have tried to read this case's documents
 
@@ -1218,6 +1219,54 @@ def owner_is_junk(name: str) -> bool:
     return len(name) < 4 or bool(_JUNK_OWNER.search(name))
 
 
+def clean_junk_owner(name: str) -> Optional[str]:
+    """Salvage the real name from caption text that picked up neighbouring
+    caption words ("Plaintiff vs. John K. Tucker", "Permanent Parcel No:
+    040-002022-00 -vs- Laura A Harper", "Acme LLC PARCEL NUMBER(S):").
+    Returns None when no usable name is left (e.g. "THIS IS REFILED CASE #")."""
+    t = re.sub(r"\s+", " ", name or "").strip()
+    t = re.sub(r"\(In Rem Only\)", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"\bIN REM\b", "", t, flags=re.IGNORECASE)
+    t = re.sub(
+        r"\b(?:PERM(?:ANENT)?\.?\s+)?PARCEL\s*(?:NO\.?|NUMBER(?:\(S\))?)?\s*:?\s*[\d\-]*",
+        "", t, flags=re.IGNORECASE,
+    )
+    parts = re.split(r"-*\bvs\b\.?-*", t, flags=re.IGNORECASE)
+    t = parts[-1] if len(parts) > 1 else t
+    t = re.sub(r"^\s*Plaintiffs?\b[,.]?", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"\(In Rem Only\)", "", t, flags=re.IGNORECASE)
+    t = re.split(r"\s+c/o\b", t, flags=re.IGNORECASE)[0]
+    t = re.sub(r"\s+UNKNO\w*\s*$", "", t)
+    t = t.strip(" ,.;:-")
+    if re.search(r"\bREFILED\b|\bCASE\s*#|\bTHIS IS\b|\bWITH COUNT\b", t, re.IGNORECASE):
+        return None
+    if re.search(r"\bunknown\b", t, re.IGNORECASE) and re.search(r"\bheirs\b|names unknown", t, re.IGNORECASE):
+        found = re.findall(r"(?i:\bof)\s+((?:[A-Z][\w.'\-]*\s?){2,4})", t)
+        if not found:
+            return None
+        return "Unknown heirs of " + found[-1].strip(" ,.;")
+    return t if t and not owner_is_junk(t) else None
+
+
+def repair_owner_names(records: dict[str, dict], lookup: Optional["ParcelLookup"]) -> int:
+    """Fix junk owner names on already-saved leads: first by cleaning the
+    saved text, then (if the lead has a parcel number) from the Auditor's
+    owner of record. Returns how many were changed."""
+    fixed = 0
+    for rec in records.values():
+        owner = rec.get("owner") or ""
+        if not owner_is_junk(owner):
+            continue
+        new = clean_junk_owner(owner)
+        if not new and lookup and rec.get("parcel_number"):
+            parcel = match_parcel("", rec["parcel_number"], lookup)
+            new = (parcel or {}).get("owner_raw") or None
+        if new and new != owner:
+            rec["owner"] = new
+            fixed += 1
+    return fixed
+
+
 def _needs_reread(rec: dict) -> bool:
     """A saved lead is worth re-reading if it has no address, or its owner
     name is caption junk ("vs. PPN: 01014", "-vs.- PERM PARCEL NO. ..."), or
@@ -1282,6 +1331,7 @@ def build_records(
                 interest_rate=filing.interest_rate,
                 case_number=filing.case_number,
                 loan_type=filing.loan_type,
+                parcel_number=filing.parcel_number or prior.get("parcel_number") or "",
                 captured_date=prior.get("captured_date") or today,
                 attempts=int(prior.get("attempts") or 0) + 1,
             )
@@ -1341,7 +1391,7 @@ def build_records(
 # Output
 # --------------------------------------------------------------------------
 
-def write_outputs(new_records: list[LeadRecord]) -> dict:
+def write_outputs(new_records: list[LeadRecord], parcel_lookup: Optional["ParcelLookup"] = None) -> dict:
     """Merge this run's newly-captured records with whatever was already
     on disk (keyed by doc_num) instead of overwriting — a case that ages
     off the clerk portal's "unapproved" grid stays in the lead list, and
@@ -1349,6 +1399,9 @@ def write_outputs(new_records: list[LeadRecord]) -> dict:
     existing_by_doc_num = load_existing_records()
     for record in new_records:
         existing_by_doc_num[record.doc_num] = asdict(record)
+    repaired = repair_owner_names(existing_by_doc_num, parcel_lookup)
+    if repaired:
+        log.info("Repaired %d junk owner name(s) on saved leads", repaired)
 
     everything = sorted(existing_by_doc_num.values(), key=lambda r: r.get("score", 0), reverse=True)
     merged = [r for r in everything if _has_address(r)]
@@ -1468,7 +1521,7 @@ async def run(skip_parcels: bool = False) -> dict:
         filings = []
 
     new_records = build_records(filings, parcel_lookup, existing)
-    payload = write_outputs(new_records)
+    payload = write_outputs(new_records, parcel_lookup)
 
     # Export the full accumulated lead list (matching records.json), not
     # just this run's new additions — re-importing the same leads into
