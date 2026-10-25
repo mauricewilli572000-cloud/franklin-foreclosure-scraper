@@ -16,10 +16,12 @@ from typing import Optional
 # Ordered most- to least-specific. Real Cuyahoga complaints word the debt as
 # e.g. "is due thereon $111,263.41, together with interest at the rate of..."
 # or "the total sum of $8,014.45 plus interest" (HOA/condo assessments).
+# Spelled-out amounts: "balance of Seventy-Three Thousand ... Dollars ($73,251.83)"
+_WORDS = r"(?:[A-Za-z\-]+(?:\s+(?:and\s+)?[A-Za-z0-9\-/]+){0,25}?\s*dollars\s*\(\s*)?"
 _AMOUNT_PATTERNS = [
     re.compile(r"(?i)due\s+thereon\s*(?:the\s+(?:sum|amount)\s+of\s*)?\$\s*([\d,]+\.\d{2})"),
-    re.compile(r"(?i)principal\s+(?:balance|sum|amount)\s+of\s*\$\s*([\d,]+\.\d{2})"),
-    re.compile(r"(?i)(?:unpaid\s+)?(?:principal\s+)?balance\s+of\s*\$\s*([\d,]+\.\d{2})"),
+    re.compile(r"(?i)principal\s+(?:balance|sum|amount)\s+of\s*" + _WORDS + r"\$\s*([\d,]+\.\d{2})"),
+    re.compile(r"(?i)(?:unpaid\s+)?(?:principal\s+)?balance\s+of\s*" + _WORDS + r"\$\s*([\d,]+\.\d{2})"),
     re.compile(r"(?i)(?:total\s+)?(?:sum|amount)\s+of\s*\$\s*([\d,]+\.\d{2})"),
 ]
 _AMOUNT_RE = _AMOUNT_PATTERNS[-1]  # kept for backward compatibility
