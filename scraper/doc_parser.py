@@ -428,12 +428,28 @@ DOC_TITLE_PATTERN = re.compile(
 )
 
 
+REFILED_NOTE_PATTERNS = (
+    # "THIS IS REFILED CASE #22CV006378" (the number may wrap to the next line)
+    re.compile(r"THIS\s+IS\s+(?:A\s+)?RE-?FILED\s+CASE\s*#?\s*(?:\d{2}\s*CV\s*\d+)?", re.IGNORECASE),
+    # "PREVIOUSLY ASSIGNED TO / JUDGE Richard D. Brown"
+    re.compile(r"PREVIOUSLY\s+ASSIGNED\s+TO\s*\n?\s*JUDGE\s+[^\n]+", re.IGNORECASE),
+    # "WITH COUNT FOR REFORMATION" style caption subtitles
+    re.compile(r"\bWITH\s+COUNT\s+FOR\s+[A-Z ]+?(?=\s+vs\b|\n)", re.IGNORECASE),
+)
+
+
 def extract_caption_names(text: str) -> tuple[Optional[str], Optional[str]]:
     """Return (plaintiff/grantee, primary_defendant/grantor) parsed from
     an Ohio-style complaint caption, or (None, None) if the text doesn't
     look like one."""
     grantee: Optional[str] = None
     grantor: Optional[str] = None
+
+    # Re-filed cases carry notes in the caption ("THIS IS REFILED CASE
+    # #22CV006378 / PREVIOUSLY ASSIGNED TO JUDGE ...") that sit right where
+    # the first defendant's name should start. Drop them first.
+    for pat in REFILED_NOTE_PATTERNS:
+        text = pat.sub("", text)
 
     # --- Plaintiff: text between the court-header phrase and "Plaintiff" ---
     # Real filings also carry the clerk's own e-filing stamp on every
