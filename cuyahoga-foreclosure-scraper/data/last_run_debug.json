@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-10-25T15:00:19.234205Z",
-  "date_from": "10/01/2026",
-  "date_to": "10/25/2026",
+  "generated_at": "2026-10-26T10:59:57.926401Z",
+  "date_from": "10/19/2026",
+  "date_to": "10/26/2026",
   "limit": null,
-  "listings_found": 315,
-  "listings_processed": 315,
+  "listings_found": 82,
+  "listings_processed": 82,
   "case_detail_failures": 0,
-  "new_leads_this_run": 315,
+  "new_leads_this_run": 82,
   "total_leads_on_file": 304,
   "auditor_enrichment_stats": {
-    "attempts": 315,
-    "successes": 307,
-    "no_match_by_parcel": 10,
+    "attempts": 86,
+    "successes": 78,
+    "no_match_by_parcel": 7,
     "no_match_by_address": 6,
     "errors": 0,
     "sample_errors": [],
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 315,
+    "attempts": 82,
     "no_docket_entries": 0,
     "no_complaint_image_url": 1,
     "no_complaint_doc_url": 0,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 133,
+    "pdf_returned_directly": 31,
     "no_text_extracted": 0,
-    "text_extracted": 314,
-    "interest_rate_found": 188,
-    "loan_type_found": 180,
-    "amount_filled_from_complaint": 30,
+    "text_extracted": 81,
+    "interest_rate_found": 50,
+    "loan_type_found": 46,
+    "amount_filled_from_complaint": 7,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
       {
-        "case": "CV-26-147783",
-        "text_length": 28531,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2020\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nUnknown heirs, devisees, legatees, assignees,\nexecutors, administrators and legal representatives\nofHattie C. Collins\nAddress unknown\nAlex Collins\n664 Whitethorne Ave.\nColumbus, OH 43223\nLeonard Collins\n23860 Hartland Dr.\nEuclid, OH 44123\nPhyllis Collins\n1404 E. 91st Street\nCleveland, OH 44106\nMaxine Colli"
+        "case": "CV-26-148969",
+        "text_length": 24941,
+        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nDC Remodeling, LLC\nc/o Derrick Campbell, Statutory Agent\n13309 Claiborne Road\nEast Cleveland, OH 44112\nDerrick Campbell\n13309 Claiborne Road\nCleveland, OH 44112\nState of Ohio, Department of Taxation\nc/o Attorney General\n30 East Broad Street, 14th Floor\nColumbus, OH 43215\nDefendant(s).\n1. Now comes the Plai"
       },
       {
-        "case": "CV-26-147790",
-        "text_length": 25667,
-        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2020\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBarbara Ganaway\n16781 Chagrin Blvd Suite # 537\nCleveland, OH 44120\nU.S. Bank National Association Successor in\nInterest to Firstar Bank, N.A.\nc/o CT Corporation System\n4400 Easton Commons Way, Suite 125\nColumbus, OH 43219\nState of Ohio Department of Taxation\nc/o Ohio Attorney General\n30 East Broad Street, "
+        "case": "CV-26-148971",
+        "text_length": 31115,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBrownstone Homes LLC, an Ohio Limited\nLiability Company\n46 Shopping Plaza Drive, #159\nChagrin Falls, OH 44022\nIndyMac Federal Bank, FSB\n888 Walnut Street\nPasadena, CA 91106\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant"
       },
       {
-        "case": "CV-26-147795",
-        "text_length": 41374,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2017\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nRSN Holdings 5, LLC\nc/o LDD Administrative Service\nCompany, LLC, Statutory Agent\n30195 Chagrin Blvd., Ste. 300\nPepper Pike, OH 44124\nOhio Department of Job and Family Services,\nBureau of Unemployment Compensation\n30 E. Broad St., 32nd Fl.\nColumbus, OH 43215\nCleveland Municipal Court - Criminal Division\n120"
+        "case": "CV-26-148973",
+        "text_length": 26648,
+        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff,\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nAntonio Zeppetella\n7120 Broadview Road\nParma, OH 44134\nUnited States of America\nc/o United States Attorney\nfor Northern District of Ohio\n801 West Superior Avenue, Suite 400\nCleveland, OH 44113\nUnited States of America\nc/o United States Attorney General\nMain Justice Building., Room. 5111\n10th and Constituti"
       },
       {
-        "case": "CV-26-147796",
-        "text_length": 27203,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nGreen Turtle, LLC\nc/o Republic Registered Agent, LLC,\nStatutory Agent\n850 Euclid Avenue, Suite 819\nCleveland, OH 44114\nCity of Cleveland, Ohio,\nDepartment of Building and Housing\n601 Lakeside Avenue, Rm. 510\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, "
+        "case": "CV-26-148975",
+        "text_length": 31417,
+        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113\nPlaintiff, Year Certified: 2019\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nMichael E. Lutz\n6304 Kenyon Avenue\nCleveland, OH 44105\nUnknown heirs, devisees, legatees,\nassignees, executors, administrators\nand legal representatives\nof Michael E. Lutz\nAddress Unknown\nMary L. Lutz\n6304 Kenyon Avenue\nCleveland, OH 44105\nPNC Bank, National Association\n222 Delaware Avenue\nWilmington, DE 1"
       }
     ],
     "no_doc_url_samples": [],
@@ -60,7 +60,7 @@
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 319076,
+  "submit_html_length": 94388,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
