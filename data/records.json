@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-27T13:03:10+00:00",
+  "fetched_at": "2026-10-28T13:54:44+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 1,
-  "total": 119,
-  "with_address": 119,
+  "new_this_run": 3,
+  "total": 122,
+  "with_address": 122,
   "pending_no_address": 131,
   "records": [
     {
@@ -1087,6 +1087,66 @@
       "loan_type": "",
       "captured_date": "2026-10-23",
       "attempts": 3
+    },
+    {
+      "doc_num": "28380491",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-10-27",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "SMITH LAWRENCE JR",
+      "grantee": "PennyMac Loan Services, LLC Case Number:",
+      "amount": 63733.0,
+      "legal": "The",
+      "prop_address": "1426 TWENTY THIRD AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43211",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28380491/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": 4.0,
+      "case_number": "26MS000408",
+      "loan_type": "",
+      "parcel_number": "010-060408-00",
+      "captured_date": "2026-10-28",
+      "attempts": 1
+    },
+    {
+      "doc_num": "28380453",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-10-27",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "ALISA CRADDOLPH",
+      "grantee": "JP MORGAN CHASE BANK, NATIONAL ASSOCIATION",
+      "amount": 65602.11,
+      "legal": "",
+      "prop_address": "1865 S TAMARACK CT",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43229",
+      "mail_address": "1865 TAMARACK CT S",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43229-5310",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28380453/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": 6.96,
+      "case_number": "28380453",
+      "loan_type": "",
+      "parcel_number": "010-144928-00",
+      "captured_date": "2026-10-28",
+      "attempts": 1
     },
     {
       "doc_num": "28365636",
@@ -3279,6 +3339,36 @@
       "case_number": "26CV009881",
       "loan_type": "FHA",
       "captured_date": "2026-10-24",
+      "attempts": 1
+    },
+    {
+      "doc_num": "28381699",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-10-27",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "FIELDS CARL C",
+      "grantee": "WELLS FARGO BANK, N.A, AS TRUSTEE",
+      "amount": 33940.49,
+      "legal": "",
+      "prop_address": "1038 E FIFTEENTH AVE",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43211",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28381699/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": 4.375,
+      "case_number": "28381699",
+      "loan_type": "",
+      "parcel_number": "010-048406-00",
+      "captured_date": "2026-10-28",
       "attempts": 1
     }
   ]
