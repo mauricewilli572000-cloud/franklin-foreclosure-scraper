@@ -1,89 +1,78 @@
 {
-  "generated_at": "2026-10-27T10:24:29.225433Z",
-  "date_from": "10/20/2026",
-  "date_to": "10/27/2026",
+  "generated_at": "2026-10-28T11:16:39.971333Z",
+  "date_from": "10/21/2026",
+  "date_to": "10/28/2026",
   "limit": null,
-  "listings_found": 96,
-  "listings_processed": 96,
+  "listings_found": 90,
+  "listings_processed": 90,
   "case_detail_failures": 0,
-  "new_leads_this_run": 96,
-  "total_leads_on_file": 323,
+  "new_leads_this_run": 90,
+  "total_leads_on_file": 343,
   "auditor_enrichment_stats": {
-    "attempts": 100,
-    "successes": 92,
-    "no_match_by_parcel": 7,
-    "no_match_by_address": 6,
+    "attempts": 94,
+    "successes": 83,
+    "no_match_by_parcel": 9,
+    "no_match_by_address": 8,
     "errors": 0,
     "sample_errors": [],
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 96,
+    "attempts": 90,
     "no_docket_entries": 0,
     "no_complaint_image_url": 1,
-    "no_complaint_doc_url": 1,
+    "no_complaint_doc_url": 0,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 40,
+    "pdf_returned_directly": 39,
     "no_text_extracted": 0,
-    "text_extracted": 94,
-    "interest_rate_found": 56,
-    "loan_type_found": 50,
-    "amount_filled_from_complaint": 10,
+    "text_extracted": 89,
+    "interest_rate_found": 52,
+    "loan_type_found": 45,
+    "amount_filled_from_complaint": 11,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
       {
-        "case": "CV-26-148969",
-        "text_length": 24941,
-        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nDC Remodeling, LLC\nc/o Derrick Campbell, Statutory Agent\n13309 Claiborne Road\nEast Cleveland, OH 44112\nDerrick Campbell\n13309 Claiborne Road\nCleveland, OH 44112\nState of Ohio, Department of Taxation\nc/o Attorney General\n30 East Broad Street, 14th Floor\nColumbus, OH 43215\nDefendant(s).\n1. Now comes the Plai"
+        "case": "CV-26-149077",
+        "text_length": 34120,
+        "around_interest": ", 104-11-064, 104-11-117\nCleveland, Ohio 44113\nYear Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nWillson Ave Group, LLC\n1368 East 55th Street\nCleveland, OH 44103\nGoodrich Gannett Neighborhood Center\n1368 East 55th Street\nCleveland, OH 44103\nCity of Cleveland\nAttn: Legal Department\n601 Lakeside Avenue, Room 106\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga C"
       },
       {
-        "case": "CV-26-148971",
-        "text_length": 31115,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBrownstone Homes LLC, an Ohio Limited\nLiability Company\n46 Shopping Plaza Drive, #159\nChagrin Falls, OH 44022\nIndyMac Federal Bank, FSB\n888 Walnut Street\nPasadena, CA 91106\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant"
+        "case": "CV-26-149077",
+        "text_length": 34120,
+        "around_interest": ", 104-11-064, 104-11-117\nCleveland, Ohio 44113\nYear Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nWillson Ave Group, LLC\n1368 East 55th Street\nCleveland, OH 44103\nGoodrich Gannett Neighborhood Center\n1368 East 55th Street\nCleveland, OH 44103\nCity of Cleveland\nAttn: Legal Department\n601 Lakeside Avenue, Room 106\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga C"
       },
       {
-        "case": "CV-26-148973",
-        "text_length": 26648,
-        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff,\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nAntonio Zeppetella\n7120 Broadview Road\nParma, OH 44134\nUnited States of America\nc/o United States Attorney\nfor Northern District of Ohio\n801 West Superior Avenue, Suite 400\nCleveland, OH 44113\nUnited States of America\nc/o United States Attorney General\nMain Justice Building., Room. 5111\n10th and Constituti"
+        "case": "CV-26-149077",
+        "text_length": 34120,
+        "around_interest": ", 104-11-064, 104-11-117\nCleveland, Ohio 44113\nYear Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nWillson Ave Group, LLC\n1368 East 55th Street\nCleveland, OH 44103\nGoodrich Gannett Neighborhood Center\n1368 East 55th Street\nCleveland, OH 44103\nCity of Cleveland\nAttn: Legal Department\n601 Lakeside Avenue, Room 106\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga C"
       },
       {
-        "case": "CV-26-148975",
-        "text_length": 31417,
-        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113\nPlaintiff, Year Certified: 2019\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nMichael E. Lutz\n6304 Kenyon Avenue\nCleveland, OH 44105\nUnknown heirs, devisees, legatees,\nassignees, executors, administrators\nand legal representatives\nof Michael E. Lutz\nAddress Unknown\nMary L. Lutz\n6304 Kenyon Avenue\nCleveland, OH 44105\nPNC Bank, National Association\n222 Delaware Avenue\nWilmington, DE 1"
+        "case": "CV-26-149077",
+        "text_length": 34120,
+        "around_interest": ", 104-11-064, 104-11-117\nCleveland, Ohio 44113\nYear Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nWillson Ave Group, LLC\n1368 East 55th Street\nCleveland, OH 44103\nGoodrich Gannett Neighborhood Center\n1368 East 55th Street\nCleveland, OH 44103\nCity of Cleveland\nAttn: Legal Department\n601 Lakeside Avenue, Room 106\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga C"
       }
     ],
-    "no_doc_url_samples": [
+    "no_doc_url_samples": [],
+    "no_amount_text_samples": [
       {
-        "case": "CV-26-149339",
-        "plaintiff": "U.S. BANK TRUST NATIONAL ASSOCIATION",
-        "amount_owed": 0.0,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
-            "has_url": true
-          }
+        "case": "CV-26-149403",
+        "dollar_snippets": [
+          "number 265-06-076, in the amount of One Thousand Five Hundred Twenty Dollars and 00/100 ($1,520.00). 5. DeVries owes Plaintiff assessments",
+          "above, in the total amount of Three Thousand Nine Hundred Thirty-Five and 80/100 Dollars ($3,935.80) as of October 19, 2026, based upon unp",
+          "later determined. 7. Said balance as described in Paragraph 5 is increasing at a rate of $120.00 per month for maintenance fees, subject",
+          "o subsequent adjustments based upon changes to the Associations annual budget, a possible $25.00 per month for administrative late payme",
+          "perty belongs, for the sum of Three Thousand Nine Hundred Thirty-Five and 80/100 Dollars ($3,935.80) as of October 19, 2026. 10. Said balan",
+          "ael DeVries, in the amount of Three Thousand Nine Hundred Thirty-Five and 80/100 Dollars ($3,935.80) as of October 19, 2026, for the lien i"
         ]
       }
-    ],
-    "no_amount_text_samples": []
+    ]
   },
   "blocked_mid_run": false,
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 107907,
+  "submit_html_length": 101955,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -93,10 +82,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 19,
-    "sent": 19,
+    "attempted": 20,
+    "sent": 20,
     "failed": 0,
-    "already_sent": 304,
+    "already_sent": 323,
     "sample_errors": []
   }
 }
