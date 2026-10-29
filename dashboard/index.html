@@ -310,10 +310,11 @@ const COUNTIES = [
   {
     key: 'summit',
     label: 'Summit County',
-    dataUrl: 'summit.json',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/summit-county-leads/summit.json',
     tagline: "New foreclosure filings from the Summit County Clerk's live new-filings feed (usually within a day or two of filing), matched to parcel records where possible, and scored for outreach.",
-    csvUrl: 'summit_ghl_export.csv',
-    // Summit's run_pipeline.py writes the same LeadRecord shape as Cuyahoga's, plus flags and added_date.
+    csvUrl: 'https://mauricewilli572000-cloud.github.io/summit-county-leads/summit_ghl_export.csv',
+    // Summit lives in its own repo (summit-county-leads) and publishes summit.json on its own GitHub Pages site;
+    // this tab reads that file by URL. Same LeadRecord shape as Cuyahoga's, plus flags and added_date.
     adapt(data) {
       const records = (data.leads || []).map(l => ({
         doc_num: l.case_number,
