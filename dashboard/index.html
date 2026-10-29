@@ -307,6 +307,47 @@ const COUNTIES = [
       };
     },
   },
+  {
+    key: 'summit',
+    label: 'Summit County',
+    dataUrl: 'summit.json',
+    tagline: "New foreclosure filings from the Summit County Clerk's live new-filings feed (usually within a day or two of filing), matched to parcel records where possible, and scored for outreach.",
+    csvUrl: 'summit_ghl_export.csv',
+    // Summit's run_pipeline.py writes the same LeadRecord shape as Cuyahoga's, plus flags and added_date.
+    adapt(data) {
+      const records = (data.leads || []).map(l => ({
+        doc_num: l.case_number,
+        case_number: l.case_number,
+        doc_type: l.lead_type || 'Foreclosure',
+        filed: l.filing_date,
+        captured_date: l.added_date,
+        owner: l.owner_name || l.defendant,
+        grantee: l.plaintiff,
+        amount: l.amount_owed,
+        legal: '',
+        prop_address: l.property_address,
+        prop_city: l.property_city,
+        prop_state: l.property_state,
+        prop_zip: l.property_zip,
+        mail_address: l.mailing_address,
+        mail_city: '',
+        mail_state: '',
+        mail_zip: '',
+        clerk_url: l.source_url,
+        flags: l.flags || [],
+        score: l.lead_score,
+        interest_rate: l.interest_rate,
+        loan_type: l.loan_type,
+      }));
+      return {
+        fetched_at: data.generated_at,
+        total: data.total_leads || 0,
+        with_address: data.leads_with_property_address || 0,
+        new_this_run: 0,
+        records,
+      };
+    },
+  },
 ];
 
 let ACTIVE_COUNTY = COUNTIES[0];
