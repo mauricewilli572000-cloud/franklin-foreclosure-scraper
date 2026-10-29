@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-28T13:54:44+00:00",
+  "fetched_at": "2026-10-29T14:04:05+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
   "new_this_run": 3,
-  "total": 122,
-  "with_address": 122,
+  "total": 125,
+  "with_address": 125,
   "pending_no_address": 131,
   "records": [
     {
@@ -355,6 +355,37 @@
       "loan_type": "FIXED RATE",
       "parcel_number": "010-125360",
       "captured_date": "2026-10-27",
+      "attempts": 1
+    },
+    {
+      "doc_num": "28383853",
+      "doc_type": "COMPLAINT IN FORECLOSURE",
+      "filed": "2026-10-28",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "Joshua McKenzie",
+      "grantee": "w York Mellon Trust",
+      "amount": 83803.24,
+      "legal": "Legal Acres",
+      "prop_address": "1728 E RIVERBIRCH DR",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43229",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28383853/documents",
+      "flags": [
+        "Probate / estate",
+        "New this week"
+      ],
+      "score": 70,
+      "interest_rate": 4.875,
+      "case_number": "13CV010910",
+      "loan_type": "",
+      "parcel_number": "010-144838-00",
+      "captured_date": "2026-10-29",
       "attempts": 1
     },
     {
@@ -3369,6 +3400,66 @@
       "loan_type": "",
       "parcel_number": "010-048406-00",
       "captured_date": "2026-10-28",
+      "attempts": 1
+    },
+    {
+      "doc_num": "28386533",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-10-28",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "JOHN PATRICK UMBAUGH",
+      "grantee": "FEDERAL HOME LOAN MORTGAGE |",
+      "amount": null,
+      "legal": "ATTACHED HERETO AND MADE A PART HEREOF",
+      "prop_address": "4018 STRIEBEL CT",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43227",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28386533/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": 7.0,
+      "case_number": "28386533",
+      "loan_type": "FIXED RATE",
+      "parcel_number": "010-121210",
+      "captured_date": "2026-10-29",
+      "attempts": 1
+    },
+    {
+      "doc_num": "28375589",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-23",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "JOSEPH GRAFE",
+      "grantee": "NEWREZ LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "2374 WARFIELD DR",
+      "prop_city": "GROVE CITY",
+      "prop_state": "OH",
+      "prop_zip": "43123",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28375589/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 50,
+      "interest_rate": null,
+      "case_number": "28375589",
+      "loan_type": "",
+      "parcel_number": "",
+      "captured_date": "2026-10-29",
       "attempts": 1
     }
   ]
