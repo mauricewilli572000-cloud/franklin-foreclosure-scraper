@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-29T14:04:05+00:00",
+  "fetched_at": "2026-10-30T13:52:55+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 3,
-  "total": 125,
-  "with_address": 125,
+  "new_this_run": 1,
+  "total": 126,
+  "with_address": 126,
   "pending_no_address": 131,
   "records": [
     {
@@ -1177,6 +1177,37 @@
       "loan_type": "",
       "parcel_number": "010-144928-00",
       "captured_date": "2026-10-28",
+      "attempts": 1
+    },
+    {
+      "doc_num": "28388997",
+      "doc_type": "COMPLAINT FOR FORECLOSURE",
+      "filed": "2026-10-29",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "Twalibu M. Matovu is in military service",
+      "grantee": "CIVIL DIVISION FRANKLIN COUNTY TREASURER, Chery] Brooks Sullivan",
+      "amount": 6911.91,
+      "legal": "Being Unit 4323 of Chateau Morse Condominium, as the same is numbered, designated, delineated and described in the Declaration and on the drawings of said Condominium of record, respectively, in Deed Book 3531, Pages 309-332 and Condominium Plat Book 3, Page 615-6285, both inclusive, Recorder of Franklin County, Ohio",
+      "prop_address": "4323 CHATEAU MORSE DR",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43231",
+      "mail_address": "4323 CHATEAU MORSE DR",
+      "mail_city": "COLUMBUS",
+      "mail_state": "OH",
+      "mail_zip": "43231-6150",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28388997/documents",
+      "flags": [
+        "Tax lien",
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": null,
+      "case_number": "28388997",
+      "loan_type": "",
+      "parcel_number": "010-171221",
+      "captured_date": "2026-10-30",
       "attempts": 1
     },
     {
