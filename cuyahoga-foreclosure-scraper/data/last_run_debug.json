@@ -1,34 +1,34 @@
 {
-  "generated_at": "2026-10-29T11:32:59.536152Z",
-  "date_from": "10/22/2026",
-  "date_to": "10/29/2026",
+  "generated_at": "2026-10-30T11:25:06.595916Z",
+  "date_from": "10/23/2026",
+  "date_to": "10/30/2026",
   "limit": null,
-  "listings_found": 99,
-  "listings_processed": 99,
+  "listings_found": 106,
+  "listings_processed": 106,
   "case_detail_failures": 0,
-  "new_leads_this_run": 99,
-  "total_leads_on_file": 371,
+  "new_leads_this_run": 106,
+  "total_leads_on_file": 389,
   "auditor_enrichment_stats": {
-    "attempts": 104,
-    "successes": 94,
-    "no_match_by_parcel": 8,
+    "attempts": 111,
+    "successes": 101,
+    "no_match_by_parcel": 7,
     "no_match_by_address": 7,
     "errors": 0,
     "sample_errors": [],
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 99,
+    "attempts": 106,
     "no_docket_entries": 0,
-    "no_complaint_image_url": 1,
-    "no_complaint_doc_url": 2,
+    "no_complaint_image_url": 0,
+    "no_complaint_doc_url": 1,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 46,
+    "pdf_returned_directly": 48,
     "no_text_extracted": 0,
-    "text_extracted": 96,
-    "interest_rate_found": 53,
-    "loan_type_found": 47,
-    "amount_filled_from_complaint": 11,
+    "text_extracted": 105,
+    "interest_rate_found": 59,
+    "loan_type_found": 54,
+    "amount_filled_from_complaint": 9,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
@@ -55,26 +55,9 @@
     ],
     "no_doc_url_samples": [
       {
-        "case": "CV-26-149480",
+        "case": "CV-26-149589",
         "plaintiff": "U.S. BANK NATIONAL ASSOCIATION",
-        "amount_owed": 87648.07,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          }
-        ]
-      },
-      {
-        "case": "CV-26-149488",
-        "plaintiff": "LAKEVIEW LOAN SERVICING LLC",
-        "amount_owed": 54794.63,
+        "amount_owed": 210562.56,
         "image_entries": [
           {
             "desc": "CIVIL IMAGING MISCELLANEOUS",
@@ -113,7 +96,7 @@
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 110550,
+  "submit_html_length": 117130,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -123,10 +106,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 28,
-    "sent": 28,
+    "attempted": 18,
+    "sent": 18,
     "failed": 0,
-    "already_sent": 343,
+    "already_sent": 371,
     "sample_errors": []
   }
 }
