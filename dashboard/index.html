@@ -349,6 +349,92 @@ const COUNTIES = [
       };
     },
   },
+  {
+    key: 'evictions',
+    label: 'Franklin Evictions',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/franklin-eviction-leads/evictions.json',
+    tagline: "Tired-landlord leads: landlords who keep filing evictions in Franklin County Municipal Court (Clerk's monthly F.E.D. reports, last 13 months), grouped by landlord and scored for outreach. Verify ownership on the Auditor site before contacting.",
+    csvUrl: 'https://mauricewilli572000-cloud.github.io/franklin-eviction-leads/evictions_ghl_export.csv',
+    // Lives in its own repo (franklin-eviction-leads) and publishes evictions.json on its own GitHub Pages site.
+    // One record = one LANDLORD (plaintiff), not one case.
+    columns: [
+      { key: 'score', label: 'Score', sortable: true },
+      { key: 'owner', label: 'Landlord', sortable: true },
+      { key: 'filings_12m', label: 'Filings (12 mo)', sortable: true },
+      { key: 'property_count', label: 'Rentals', sortable: true },
+      { key: 'filed', label: 'Last filing', sortable: true },
+      { key: 'captured_date', label: 'Added', sortable: true },
+      { key: 'mail_address', label: 'Mailing address', sortable: false },
+      { key: 'flags', label: 'Flags', sortable: false },
+    ],
+    adapt(data) {
+      const typeLabel = { individual: 'Individual', llc: 'LLC', company: 'Company', trust: 'Trust/estate',
+                          manager: 'Manager/agent - verify owner', institutional: 'Institutional' };
+      const records = (data.records || []).map(l => {
+        const flags = [typeLabel[l.owner_type] || l.owner_type];
+        if (l.property_kind === 'apartment complex') flags.push('Apartment complex');
+        if (l.mailing_state && l.mailing_state !== 'OH') flags.push('Out-of-state owner');
+        if (l.filings_90d >= 3) flags.push('Active last 90 days');
+        return {
+          doc_num: l.lead_id,
+          case_number: (l.case_numbers || []).join(', '),
+          doc_type: l.lead_type,
+          filed: l.last_filing,
+          captured_date: l.date_added,
+          owner: l.owner_name,
+          grantee: '',
+          prop_address: (l.property_addresses || []).join('; '),
+          mail_address: l.mailing_street,
+          mail_city: l.mailing_city,
+          mail_state: l.mailing_state,
+          mail_zip: l.mailing_zip,
+          flags,
+          score: l.score,
+          filings_12m: l.filings_12m,
+          property_count: l.property_count,
+          raw: l,
+        };
+      });
+      return {
+        fetched_at: data.generated_at,
+        total: data.total_leads || 0,
+        with_address: data.leads_with_mailing_address || 0,
+        new_this_run: data.new_this_run || 0,
+        records,
+      };
+    },
+    rowHTML(r, flagsHTML) {
+      const x = r.raw;
+      return `
+        <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
+        <td>${esc(r.owner) || '—'}</td>
+        <td>${x.filings_12m}<br><span class="muted">${x.filings_90d} in last 90 days</span></td>
+        <td>${x.property_count}</td>
+        <td>${esc(r.filed) || '—'}</td>
+        <td>${esc(r.captured_date) || '—'}</td>
+        <td>${esc(fullMailAddress(r)) || '<span class="muted">not on file</span>'}</td>
+        <td>${flagsHTML}</td>`;
+    },
+    detailHTML(r) {
+      const x = r.raw;
+      const cases = x.case_numbers || [];
+      const rentals = (x.property_addresses || []);
+      return `
+        <dl class="detail-grid">
+          <div><dt>Owner type</dt><dd>${esc(r.flags[0])}</dd></div>
+          <div><dt>Property profile</dt><dd>${esc(x.property_kind) || '—'}</dd></div>
+          <div><dt>Filings (window / 12 mo / 90 days)</dt><dd>${x.filings_window} / ${x.filings_12m} / ${x.filings_90d}</dd></div>
+          <div><dt>First / last filing</dt><dd>${esc(x.first_filing) || '—'} / ${esc(x.last_filing) || '—'}</dd></div>
+          <div><dt>Dismissed / judgments / writs</dt><dd>${x.dismissed} / ${x.judgments} / ${x.writs}</dd></div>
+          <div><dt>Distinct rental addresses</dt><dd>${x.property_count}</dd></div>
+          <div class="full"><dt>Why it scored ${r.score}</dt><dd>${esc((x.signals || []).join(' · '))}</dd></div>
+          <div class="full"><dt>Mailing address</dt><dd>${esc(fullMailAddress(r)) || '—'}</dd></div>
+          <div class="full"><dt>Rental addresses (defendant addresses${rentals.length < x.property_count ? '; first ' + rentals.length + ' shown' : ''})</dt><dd>${esc(rentals.join(' · ')) || '—'}</dd></div>
+          <div class="full"><dt>Case numbers${cases.length > 12 ? ' (first 12 of ' + cases.length + ')' : ''}</dt><dd class="mono">${esc(cases.slice(0, 12).join(', '))}</dd></div>
+          <div class="full"><dd><a class="link" href="https://www.fcmcclerk.com/reports/evictions" target="_blank" rel="noopener">Source: Franklin County Municipal Court Clerk eviction reports →</a></dd></div>
+        </dl>`;
+    },
+  },
 ];
 
 let ACTIVE_COUNTY = COUNTIES[0];
@@ -412,7 +498,8 @@ function render(list) {
   const table = document.createElement('table');
   const thead = document.createElement('thead');
   const headRow = document.createElement('tr');
-  for (const col of COLUMNS) {
+  const cols = ACTIVE_COUNTY.columns || COLUMNS;
+  for (const col of cols) {
     const th = document.createElement('th');
     th.textContent = col.label;
     if (col.sortable) {
@@ -436,9 +523,9 @@ function render(list) {
     const tr = document.createElement('tr');
     tr.className = 'row' + (r.doc_num === EXPANDED_DOC_NUM ? ' expanded' : '');
     const flagsHTML = (r.flags || []).map(f =>
-      `<span class="flag${/lis pendens|pre-foreclosure|probate/i.test(f) ? ' hot' : ''}">${esc(f)}</span>`
+      `<span class="flag${/lis pendens|pre-foreclosure|probate|out-of-state/i.test(f) ? ' hot' : ''}">${esc(f)}</span>`
     ).join('');
-    tr.innerHTML = `
+    tr.innerHTML = ACTIVE_COUNTY.rowHTML ? ACTIVE_COUNTY.rowHTML(r, flagsHTML) : `
       <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
       <td>${esc(r.owner) || '—'}</td>
       <td>${esc(r.prop_address) || '—'}${r.prop_city ? `<br><span class="muted">${esc(r.prop_city)}${r.prop_zip ? ', ' + esc(r.prop_zip) : ''}</span>` : ''}</td>
@@ -458,8 +545,8 @@ function render(list) {
       const detailTr = document.createElement('tr');
       detailTr.className = 'detail-row';
       const td = document.createElement('td');
-      td.colSpan = COLUMNS.length;
-      td.innerHTML = detailHTML(r);
+      td.colSpan = cols.length;
+      td.innerHTML = (ACTIVE_COUNTY.detailHTML || detailHTML)(r);
       detailTr.appendChild(td);
       tbody.appendChild(detailTr);
     }
@@ -489,8 +576,9 @@ function applyFilters() {
 
   list.sort((a, b) => {
     let av = a[SORT_KEY], bv = b[SORT_KEY];
-    if (av == null) av = (SORT_KEY === 'amount' || SORT_KEY === 'score') ? -Infinity : '';
-    if (bv == null) bv = (SORT_KEY === 'amount' || SORT_KEY === 'score') ? -Infinity : '';
+    const numeric = ['amount', 'score', 'filings_12m', 'property_count'].includes(SORT_KEY);
+    if (av == null) av = numeric ? -Infinity : '';
+    if (bv == null) bv = numeric ? -Infinity : '';
     if (typeof av === 'string') av = av.toLowerCase();
     if (typeof bv === 'string') bv = bv.toLowerCase();
     if (av < bv) return -1 * SORT_DIR;
@@ -528,6 +616,7 @@ function renderTabs() {
       if (btn.dataset.key === ACTIVE_COUNTY.key) return;
       ACTIVE_COUNTY = COUNTIES.find(c => c.key === btn.dataset.key);
       EXPANDED_DOC_NUM = null;
+      SORT_KEY = 'score'; SORT_DIR = -1;
       renderTabs();
       loadActive();
     });
