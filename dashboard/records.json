@@ -1,7 +1,7 @@
 {
-  "fetched_at": "2026-10-31T13:24:31+00:00",
+  "fetched_at": "2026-11-01T14:06:29+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 7,
+  "new_this_run": 1,
   "total": 132,
   "with_address": 132,
   "pending_no_address": 134,
@@ -1300,7 +1300,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-10-31",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28383021",
