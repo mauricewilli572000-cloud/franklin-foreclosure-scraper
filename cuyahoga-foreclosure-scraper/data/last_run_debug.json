@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-31T10:56:51.736806Z",
-  "date_from": "10/24/2026",
-  "date_to": "10/31/2026",
+  "generated_at": "2026-11-01T11:55:05.393489Z",
+  "date_from": "10/25/2026",
+  "date_to": "11/01/2026",
   "limit": null,
   "listings_found": 107,
   "listings_processed": 107,
@@ -95,10 +95,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 24,
-    "sent": 24,
+    "attempted": 0,
+    "sent": 0,
     "failed": 0,
-    "already_sent": 389,
+    "already_sent": 413,
     "sample_errors": []
   }
 }
