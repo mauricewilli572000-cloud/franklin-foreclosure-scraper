@@ -435,6 +435,100 @@ const COUNTIES = [
         </dl>`;
     },
   },
+  {
+    key: 'cleveland',
+    label: 'Cleveland Code Enforcement',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/cleveland-code-enforcement/cleveland_feed.json',
+    tagline: "Not foreclosures: distressed-property signals in the City of Cleveland (condemnations, board-ups, housing violation notices, civil tickets) from the city's open data, matched to County owner and mailing records and scored for outreach. Showing leads scoring 40+; leads that also have a foreclosure filing are flagged.",
+    csvUrl: 'https://mauricewilli572000-cloud.github.io/cleveland-code-enforcement/ghl_cleveland_code_enforcement.csv',
+    // Lives in its own repo (cleveland-code-enforcement) and publishes cleveland_feed.json on its own GitHub Pages site.
+    // One record = one PROPERTY with all of its open code enforcement signals merged.
+    columns: [
+      { key: 'score', label: 'Score', sortable: true },
+      { key: 'owner', label: 'Owner', sortable: true },
+      { key: 'prop_address', label: 'Property', sortable: false },
+      { key: 'open_records', label: 'Open records', sortable: true },
+      { key: 'oldest_open_days', label: 'Days open', sortable: true },
+      { key: 'captured_date', label: 'Added', sortable: true },
+      { key: 'mail_address', label: 'Mailing address', sortable: false },
+      { key: 'flags', label: 'Flags', sortable: false },
+    ],
+    adapt(data) {
+      const typeLabel = {
+        'Active Condemnation': 'Condemned',
+        'Board-Up (open/vacant/vandalized)': 'Boarded up',
+        'Building Complaint Violation Notice': 'Violation notice',
+        'Civil Ticket (Residents First)': 'Civil ticket',
+      };
+      const ownerLabel = { individual: 'Individual owner', entity: 'LLC / company', institutional: 'Institutional owner' };
+      const meta = data.meta || {};
+      const records = (data.leads || []).map(l => {
+        const flags = (l.lead_types || []).map(t => typeLabel[t] || t);
+        if (l.in_foreclosure) flags.push('Also in foreclosure');
+        if (l.out_of_state_owner) flags.push('Out-of-state owner');
+        if (ownerLabel[l.owner_class]) flags.push(ownerLabel[l.owner_class]);
+        return {
+          doc_num: l.lead_id,
+          case_number: (l.case_numbers || []).join(', '),
+          doc_type: (l.lead_types || []).join('; '),
+          filed: l.latest_date,
+          captured_date: l.added_date,
+          owner: l.owner_name,
+          grantee: '',
+          prop_address: l.property_address,
+          prop_city: 'Cleveland',
+          prop_state: 'OH',
+          prop_zip: l.zip,
+          mail_address: l.mailing_address,   // already a full "street, city, state zip" string
+          mail_city: '',
+          mail_state: '',
+          mail_zip: '',
+          flags,
+          score: l.score,
+          open_records: l.open_records,
+          oldest_open_days: l.oldest_open_days,
+          raw: l,
+        };
+      });
+      return {
+        fetched_at: meta.updated_utc,
+        total: meta.feed_count || records.length,
+        with_address: meta.with_mailing || 0,
+        new_this_run: meta.new_count || 0,
+        records,
+      };
+    },
+    rowHTML(r, flagsHTML) {
+      const x = r.raw;
+      return `
+        <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
+        <td>${esc(r.owner) || '—'}</td>
+        <td>${esc(r.prop_address) || '—'}<br><span class="muted">Cleveland${r.prop_zip ? ', ' + esc(r.prop_zip) : ''}</span></td>
+        <td>${x.open_records}</td>
+        <td>${x.oldest_open_days ? x.oldest_open_days + ' d' : '<span class="muted">—</span>'}</td>
+        <td>${esc(r.captured_date) || '—'}</td>
+        <td>${esc(r.mail_address) || '<span class="muted">not on file</span>'}</td>
+        <td>${flagsHTML}</td>`;
+    },
+    detailHTML(r) {
+      const x = r.raw;
+      const cases = x.case_numbers || [];
+      return `
+        <dl class="detail-grid">
+          <div class="full"><dt>Why it scored ${r.score}</dt><dd>${esc((x.score_reasons || []).join(' · '))}</dd></div>
+          <div><dt>Open signals</dt><dd>${esc((x.lead_types || []).join(' · ')) || '—'}</dd></div>
+          <div><dt>Violation / citation types</dt><dd>${esc((x.violation_types || []).join(' · ')) || '—'}</dd></div>
+          <div><dt>Latest filing / oldest open</dt><dd>${esc(x.latest_date) || '—'} / ${x.oldest_open_days ? x.oldest_open_days + ' days' : '—'}</dd></div>
+          <div><dt>Parcel</dt><dd class="mono">${esc(x.parcel) || '—'}</dd></div>
+          <div><dt>Neighborhood / ward</dt><dd>${esc(x.neighborhood) || '—'} / ${esc(x.ward) || '—'}</dd></div>
+          <div><dt>Owner record</dt><dd>${esc(x.owner_name) || '—'}</dd></div>
+          <div class="full"><dt>Property address</dt><dd>${esc(r.prop_address) || '—'}, Cleveland, OH ${esc(r.prop_zip)}</dd></div>
+          <div class="full"><dt>Mailing address</dt><dd>${esc(r.mail_address) || '—'}</dd></div>
+          <div class="full"><dt>Case numbers${cases.length >= 10 ? ' (first 10)' : ''}</dt><dd class="mono">${esc(cases.join(', ')) || '—'}</dd></div>
+          <div class="full"><dd><a class="link" href="https://data.clevelandohio.gov" target="_blank" rel="noopener">Source: City of Cleveland Open Data (Building &amp; Housing) →</a></dd></div>
+        </dl>`;
+    },
+  },
 ];
 
 let ACTIVE_COUNTY = COUNTIES[0];
@@ -523,7 +617,7 @@ function render(list) {
     const tr = document.createElement('tr');
     tr.className = 'row' + (r.doc_num === EXPANDED_DOC_NUM ? ' expanded' : '');
     const flagsHTML = (r.flags || []).map(f =>
-      `<span class="flag${/lis pendens|pre-foreclosure|probate|out-of-state/i.test(f) ? ' hot' : ''}">${esc(f)}</span>`
+      `<span class="flag${/lis pendens|pre-foreclosure|probate|out-of-state|also in foreclosure/i.test(f) ? ' hot' : ''}">${esc(f)}</span>`
     ).join('');
     tr.innerHTML = ACTIVE_COUNTY.rowHTML ? ACTIVE_COUNTY.rowHTML(r, flagsHTML) : `
       <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
@@ -576,7 +670,7 @@ function applyFilters() {
 
   list.sort((a, b) => {
     let av = a[SORT_KEY], bv = b[SORT_KEY];
-    const numeric = ['amount', 'score', 'filings_12m', 'property_count'].includes(SORT_KEY);
+    const numeric = ['amount', 'score', 'filings_12m', 'property_count', 'open_records', 'oldest_open_days'].includes(SORT_KEY);
     if (av == null) av = numeric ? -Infinity : '';
     if (bv == null) bv = numeric ? -Infinity : '';
     if (typeof av === 'string') av = av.toLowerCase();
