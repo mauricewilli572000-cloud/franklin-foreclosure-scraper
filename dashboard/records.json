@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-11-01T14:06:29+00:00",
+  "fetched_at": "2026-11-02T16:56:08+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 1,
-  "total": 132,
-  "with_address": 132,
+  "new_this_run": 4,
+  "total": 133,
+  "with_address": 133,
   "pending_no_address": 134,
   "records": [
     {
@@ -1300,7 +1300,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-10-31",
-      "attempts": 2
+      "attempts": 3
     },
     {
       "doc_num": "28383021",
@@ -1331,7 +1331,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-10-31",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28379895",
@@ -1362,6 +1362,37 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-10-31",
+      "attempts": 2
+    },
+    {
+      "doc_num": "28383033",
+      "doc_type": "Foreclosure",
+      "filed": "2026-10-27",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "MABUKAR COMPANY LLC",
+      "grantee": "DOMINION FINANCIAL SERVICES LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "6034 KARL RD",
+      "prop_city": "COLUMBUS",
+      "prop_state": "OH",
+      "prop_zip": "43229",
+      "mail_address": "PO BOX 9202",
+      "mail_city": "COPPELL",
+      "mail_state": "TX",
+      "mail_zip": "75019-9208",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28383033/documents",
+      "flags": [
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 60,
+      "interest_rate": null,
+      "case_number": "28383033",
+      "loan_type": "",
+      "parcel_number": "",
+      "captured_date": "2026-11-02",
       "attempts": 1
     },
     {
