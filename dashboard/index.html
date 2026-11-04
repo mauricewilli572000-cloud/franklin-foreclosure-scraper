@@ -375,6 +375,9 @@ const COUNTIES = [
         if (l.property_kind === 'apartment complex') flags.push('Apartment complex');
         if (l.mailing_state && l.mailing_state !== 'OH') flags.push('Out-of-state owner');
         if (l.filings_90d >= 3) flags.push('Active last 90 days');
+        const verif = { 'verified': 'Owner verified (Auditor)', 'via manager': 'Owner found via manager',
+                        'plaintiff not owner of record': 'Plaintiff is not owner of record' }[l.verification];
+        if (verif) flags.push(verif);
         return {
           doc_num: l.lead_id,
           case_number: (l.case_numbers || []).join(', '),
@@ -427,8 +430,13 @@ const COUNTIES = [
           <div><dt>First / last filing</dt><dd>${esc(x.first_filing) || '—'} / ${esc(x.last_filing) || '—'}</dd></div>
           <div><dt>Dismissed / judgments / writs</dt><dd>${x.dismissed} / ${x.judgments} / ${x.writs}</dd></div>
           <div><dt>Distinct rental addresses</dt><dd>${x.property_count}</dd></div>
+          <div><dt>Owner verification (Auditor parcels)</dt><dd>${esc(x.verification) || '—'}</dd></div>
+          <div><dt>Rentals matched to a parcel</dt><dd>${x.parcels_matched || 0} of ${x.property_count}</dd></div>
+          <div><dt>Owner's parcels countywide</dt><dd>${x.owner_portfolio ? x.owner_portfolio : '—'}</dd></div>
           <div class="full"><dt>Why it scored ${r.score}</dt><dd>${esc((x.signals || []).join(' · '))}</dd></div>
-          <div class="full"><dt>Mailing address</dt><dd>${esc(fullMailAddress(r)) || '—'}</dd></div>
+          <div class="full"><dt>${(x.verification === 'verified' || x.verification === 'via manager') ? 'Owner mailing address (Auditor)' : 'Mailing address (court filing)'}</dt><dd>${esc(fullMailAddress(r)) || '—'}</dd></div>
+          ${x.court_mailing ? `<div class="full"><dt>Mailing address on the court filing</dt><dd>${esc(x.court_mailing)}</dd></div>` : ''}
+          ${(x.via_managers || []).length ? `<div class="full"><dt>Filed through manager(s)</dt><dd>${esc((x.via_managers || []).join(' · '))}</dd></div>` : ''}
           <div class="full"><dt>Rental addresses (defendant addresses${rentals.length < x.property_count ? '; first ' + rentals.length + ' shown' : ''})</dt><dd>${esc(rentals.join(' · ')) || '—'}</dd></div>
           <div class="full"><dt>Case numbers${cases.length > 12 ? ' (first 12 of ' + cases.length + ')' : ''}</dt><dd class="mono">${esc(cases.slice(0, 12).join(', '))}</dd></div>
           <div class="full"><dd><a class="link" href="https://www.fcmcclerk.com/reports/evictions" target="_blank" rel="noopener">Source: Franklin County Municipal Court Clerk eviction reports →</a></dd></div>
