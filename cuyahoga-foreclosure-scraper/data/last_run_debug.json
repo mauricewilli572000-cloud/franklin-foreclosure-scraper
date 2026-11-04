@@ -1,69 +1,64 @@
 {
-  "generated_at": "2026-11-03T12:52:19.047508Z",
-  "date_from": "10/27/2026",
-  "date_to": "11/03/2026",
+  "generated_at": "2026-11-04T13:02:17.493958Z",
+  "date_from": "10/28/2026",
+  "date_to": "11/04/2026",
   "limit": null,
-  "listings_found": 99,
-  "listings_processed": 99,
+  "listings_found": 102,
+  "listings_processed": 102,
   "case_detail_failures": 0,
-  "new_leads_this_run": 99,
-  "total_leads_on_file": 425,
+  "new_leads_this_run": 102,
+  "total_leads_on_file": 448,
   "auditor_enrichment_stats": {
-    "attempts": 105,
-    "successes": 93,
-    "no_match_by_parcel": 8,
+    "attempts": 112,
+    "successes": 100,
+    "no_match_by_parcel": 9,
     "no_match_by_address": 8,
     "errors": 0,
     "sample_errors": [],
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 99,
+    "attempts": 102,
     "no_docket_entries": 0,
-    "no_complaint_image_url": 0,
+    "no_complaint_image_url": 1,
     "no_complaint_doc_url": 1,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 39,
+    "pdf_returned_directly": 45,
     "no_text_extracted": 0,
-    "text_extracted": 98,
-    "interest_rate_found": 61,
-    "loan_type_found": 57,
-    "amount_filled_from_complaint": 8,
+    "text_extracted": 100,
+    "interest_rate_found": 55,
+    "loan_type_found": 52,
+    "amount_filled_from_complaint": 7,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
       {
-        "case": "CV-26-149378",
-        "text_length": 69994,
-        "around_interest": " Chaqueco aka Yahneshly L. Chaqueco, based upon unpaid maintenance\nfees and assessments, late fees and attorney fees, the total sum of $4,914.13 plus\ninterest at the highest rate then permitted by law pursuant to O.R.C. 1343.01 as\nprovided for in the Declaration of Condominium Ownership for as of October 11, 2026.\n4. Plaintiff is further owed from the Defendant, Yahneshly Lupita\nChaqueco aka Yahneshly Chaqueco aka Yahneshly L. Chaqueco, maintenance fees\nand assessments, late fee and attorneys' f"
+        "case": "CV-26-149445",
+        "text_length": 40301,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2018\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nAnn Harris\n5225 Hampton Drive\nNorth Olmsted, OH 44070\nAnthony L. Harris\n5225 Hampton Drive\nNorth Olmsted, OH 44070\nPamela R. Harris\n5225 Hampton Drive\nNorth Olmsted, OH 44070\nUnited States of America\nc/o United States Attorney for\nNorthern District of Ohio\n801 West Superior Avenue, Suite 400\nCleveland, OH "
       },
       {
-        "case": "CV-26-149379",
-        "text_length": 28362,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2021\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nQimeng Zhang\nPO Box 604171\nCleveland, OH 44104\nDeutsche Bank National Trust Company\n1661 Worthington Road, Suite 100\nWest Palm Beach, FL 33409\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. Th"
+        "case": "CV-26-149449",
+        "text_length": 27223,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2014\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nAaron M. Stephens\n12332 Ashbury Avenue\nCleveland, OH 44106\nState of Ohio Department of Taxation\nc/o Attorney General\n30 E Broad Street, 14th Floor\nColumbus, OH 43215\nThe Cleveland Electric Illuminating Company\n76 S Main Street\nAkron, OH 44308\nThe City of Cleveland, Ohio Department of\nBuilding and Housing\n6"
       },
       {
-        "case": "CV-26-149381",
-        "text_length": 27485,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nFresh and Meaty Burgers Cleveland Miles, Inc.,\nan Ohio Corporation\n11600 Miles Avenue\nCleveland, OH 44105\nKeyBank National Association\n127 Public Square\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant"
+        "case": "CV-26-149453",
+        "text_length": 35172,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nUnknown heirs, devisees, legatees,\nassignees, executors, administrators and\nlegal representatives of James E. Marks\nAddress Unknown\nJanet Quarterman\n2005 E. 228th Street\nEuclid, OH 44117\nDeborah Cook\n10221 NW 57th Street\nKansas City, MO 64118\nPatricia May\n20112 Gardenview Drive\nMaple Heights, OH 44137\nRick"
       },
       {
-        "case": "CV-26-149406",
-        "text_length": 28034,
-        "around_interest": "ide Ave., Ste. 300\nCleveland, Ohio 44113\nPlaintiff, Year Certified: 2023\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nMitchell J. Cultrona\n17009 Mapleboro Avenue\nMaple Heights, OH 44137\nUnknown heirs, devisees, legatees,\nassignees, executors, administrators and\nlegal representatives of Mitchell J. Cultrona\nAddress Unknown\nTina Cultrona\n12215 AL Highway 23\nAshville, AL 35953\nCity of Maple Heights, Ohio\nc/o R.I.T.A.\nP. 0. B"
+        "case": "CV-26-149456",
+        "text_length": 26155,
+        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\n3382 E 108th LLC\nc/o Saniyyah Powell, Statutory Agent\n16122 Grovewood Avenue Apt. 3\nCleveland, OH 44110\nState of Ohio, Department of Taxation\nc/o Attorney General of Ohio\n30 E. Broad Street, 14th Floor\nColumbus, OH 43215\nSaniyyah A. Hughes\n16122 Grovewood Avenue, Apt 3\nCleveland, OH 44110\nUnknown spouse of"
       }
     ],
     "no_doc_url_samples": [
       {
-        "case": "CV-26-149757",
-        "plaintiff": "U.S. BANK TRUST NATIONAL ASSOCIATION, NOT IN ITS I",
-        "amount_owed": 85687.3,
+        "case": "CV-26-149814",
+        "plaintiff": "WILMINGTON SAVINGS FUND SOCIETY, FSB NOT IN ITS  I",
+        "amount_owed": 175667.02,
         "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
           {
             "desc": "CIVIL IMAGING MISCELLANEOUS",
             "doc_desc": "SERVICE REQUEST",
@@ -83,23 +78,6 @@
       }
     ],
     "no_amount_text_samples": [
-      {
-        "case": "CV-26-149403",
-        "dollar_snippets": [
-          "number 265-06-076, in the amount of One Thousand Five Hundred Twenty Dollars and 00/100 ($1,520.00). 5. DeVries owes Plaintiff assessments",
-          "above, in the total amount of Three Thousand Nine Hundred Thirty-Five and 80/100 Dollars ($3,935.80) as of October 19, 2026, based upon unp",
-          "later determined. 7. Said balance as described in Paragraph 5 is increasing at a rate of $120.00 per month for maintenance fees, subject",
-          "o subsequent adjustments based upon changes to the Associations annual budget, a possible $25.00 per month for administrative late payme",
-          "perty belongs, for the sum of Three Thousand Nine Hundred Thirty-Five and 80/100 Dollars ($3,935.80) as of October 19, 2026. 10. Said balan",
-          "ael DeVries, in the amount of Three Thousand Nine Hundred Thirty-Five and 80/100 Dollars ($3,935.80) as of October 19, 2026, for the lien i"
-        ]
-      },
-      {
-        "case": "CV-26-149428",
-        "dollar_snippets": [
-          "(no $ in text)"
-        ]
-      },
       {
         "case": "CV-26-149679",
         "dollar_snippets": [
@@ -124,7 +102,7 @@
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 110389,
+  "submit_html_length": 113385,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -134,10 +112,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 12,
-    "sent": 12,
+    "attempted": 23,
+    "sent": 23,
     "failed": 0,
-    "already_sent": 413,
+    "already_sent": 425,
     "sample_errors": []
   }
 }
