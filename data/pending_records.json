@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-03T15:01:21+00:00",
+  "fetched_at": "2026-11-04T15:11:25+00:00",
   "note": "Leads with no address yet; retried on later runs.",
   "total": 137,
   "records": [
@@ -3665,7 +3665,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-11-03",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28387879",
@@ -3695,7 +3695,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-11-03",
-      "attempts": 1
+      "attempts": 2
     },
     {
       "doc_num": "28387255",
@@ -3725,7 +3725,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-11-03",
-      "attempts": 1
+      "attempts": 2
     }
   ]
 }
