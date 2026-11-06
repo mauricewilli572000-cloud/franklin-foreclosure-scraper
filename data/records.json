@@ -1,7 +1,7 @@
 {
-  "fetched_at": "2026-11-05T15:16:09+00:00",
+  "fetched_at": "2026-11-06T14:54:45+00:00",
   "source": "Franklin County Clerk of Courts + Auditor Parcel Data",
-  "new_this_run": 3,
+  "new_this_run": 2,
   "total": 147,
   "with_address": 147,
   "pending_no_address": 137,
@@ -1549,7 +1549,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-11-03",
-      "attempts": 2
+      "attempts": 3
     },
     {
       "doc_num": "28388620",
@@ -1654,14 +1654,14 @@
       "grantee": "CAF BRIDGE BORROWER WFN LLC",
       "amount": null,
       "legal": "",
-      "prop_address": "5421 N LONSDALE PL",
+      "prop_address": "E FIFTH AVE",
       "prop_city": "COLUMBUS",
       "prop_state": "OH",
-      "prop_zip": "43232",
-      "mail_address": "PO BOX 9202",
-      "mail_city": "COPPELL",
-      "mail_state": "TX",
-      "mail_zip": "75019-9208",
+      "prop_zip": "43219",
+      "mail_address": "4020 KINROSS LAKES PKWY STE 200",
+      "mail_city": "RICHFIELD",
+      "mail_state": "OH",
+      "mail_zip": "44286-9249",
       "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28395229/documents",
       "flags": [
         "LLC / corp owner",
@@ -1673,7 +1673,7 @@
       "loan_type": "",
       "parcel_number": "",
       "captured_date": "2026-11-04",
-      "attempts": 2
+      "attempts": 3
     },
     {
       "doc_num": "28400348",
