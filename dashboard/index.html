@@ -540,6 +540,124 @@ const COUNTIES = [
         </dl>`;
     },
   },
+  {
+    key: 'excess',
+    label: 'Franklin Excess Funds',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/franklin-excess-funds/excess_funds.json',
+    tagline: "Not foreclosure filings: money the Franklin County Clerk is holding from sheriff sales that sold for more than was owed (Excess Sales Proceeds report). The former owner or their heirs can usually claim it by motion. Checked daily; cases that drop off the Clerk's list are treated as claimed.",
+    csvUrl: 'https://mauricewilli572000-cloud.github.io/franklin-excess-funds/excess_funds_ghl_export.csv',
+    // Lives in its own repo (franklin-excess-funds) and publishes excess_funds.json on its own GitHub Pages site.
+    // One record = one CASE with all of its deposits summed.
+    columns: [
+      { key: 'score', label: 'Score', sortable: true },
+      { key: 'owner', label: 'Former owner', sortable: true },
+      { key: 'prop_address', label: 'Property', sortable: false },
+      { key: 'amount', label: 'Surplus held', sortable: true },
+      { key: 'filed', label: 'Deposited', sortable: true },
+      { key: 'captured_date', label: 'Added', sortable: true },
+      { key: 'mail_address', label: 'Mailing address', sortable: false },
+      { key: 'flags', label: 'Flags', sortable: false },
+    ],
+    adapt(data) {
+      const records = (data.leads || []).map(l => ({
+        doc_num: l.case_number,
+        case_number: l.case_number,
+        doc_type: 'Excess Sales Proceeds',
+        filed: l.deposit_date,
+        captured_date: l.first_seen,
+        owner: l.owner,
+        grantee: l.plaintiff,
+        amount: l.amount,
+        legal: '',
+        prop_address: l.prop_address,
+        prop_city: l.prop_city,
+        prop_state: l.prop_state,
+        prop_zip: l.prop_zip,
+        mail_address: l.mail_address,
+        mail_city: l.mail_city,
+        mail_state: l.mail_state,
+        mail_zip: l.mail_zip,
+        flags: l.flags || [],
+        score: l.score,
+        raw: l,
+      }));
+      const total = data.total_surplus != null ? ' ($' + Number(data.total_surplus).toLocaleString() + ' held)' : '';
+      return {
+        fetched_at: data.generated_at ? data.generated_at + total : null,
+        total: data.total_leads || 0,
+        with_address: data.leads_with_mailing_address || 0,
+        new_this_run: data.new_this_run || 0,
+        records,
+      };
+    },
+    detailHTML(r) {
+      const x = r.raw;
+      const extra = Object.entries(x.extra || {});
+      return `
+        <dl class="detail-grid">
+          <div class="full"><dt>Why it scored ${r.score}</dt><dd>${esc((x.score_reasons || []).join(' · '))}</dd></div>
+          <div><dt>Case number</dt><dd class="mono">${esc(x.case_number)}</dd></div>
+          <div><dt>Surplus on deposit</dt><dd>${money(x.amount)}${x.row_count > 1 ? ` <span class="muted">(${x.row_count} deposits)</span>` : ''}</dd></div>
+          <div><dt>Plaintiff</dt><dd>${esc(x.plaintiff) || '—'}${x.tax_foreclosure ? ' <span class="muted">(tax foreclosure)</span>' : ''}</dd></div>
+          <div><dt>Owner type</dt><dd>${esc(x.owner_type) || '—'}</dd></div>
+          <div><dt>Deposited / sale date</dt><dd>${esc(x.deposit_date) || '—'} / ${esc(x.sale_date) || '—'}</dd></div>
+          <div><dt>First seen on Clerk list</dt><dd>${esc(x.first_seen) || '—'}</dd></div>
+          <div class="full"><dt>All defendants (as listed)</dt><dd>${esc(x.defendants_raw || x.caption) || '—'}</dd></div>
+          <div class="full"><dt>Property address${x.address_source ? ' <span class="muted">— ' + esc(x.address_source) + '</span>' : ''}</dt><dd>${esc(fullPropAddress(r)) || '—'}</dd></div>
+          <div class="full"><dt>Mailing address</dt><dd>${esc(fullMailAddress(r)) || '—'}</dd></div>
+          ${x.parcel_number ? `<div><dt>Parcel</dt><dd class="mono">${esc(x.parcel_number)}</dd></div>` : ''}
+          ${extra.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}
+          <div class="full"><dd>
+            <a class="link" href="${esc(x.case_search_url)}" target="_blank" rel="noopener">Look up case ${esc(x.case_number)} (Clerk case search) →</a><br>
+            <a class="link" href="${esc(x.source_url)}" target="_blank" rel="noopener">Source: Clerk's Excess Sales Proceeds report →</a><br>
+            <a class="link" href="https://clerk.franklincountyohio.gov/Resources/Foreclosure-Excess-Fund-Process" target="_blank" rel="noopener">How funds are claimed (motion + hearing) →</a>
+          </dd></div>
+        </dl>`;
+    },
+  },
+  {
+    key: 'excess-national',
+    label: 'Excess Funds (US)',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/excess-funds-national/feeds/top.json',
+    tagline: "Top 1,000 foreclosure and tax-sale surplus leads nationwide, from county lists found automatically. Open the full nationwide dashboard for every state, county filters and the source list.",
+    csvUrl: 'https://mauricewilli572000-cloud.github.io/excess-funds-national/feeds/top_ghl.csv',
+    // Lives in its own repo (excess-funds-national). Full dashboard: https://mauricewilli572000-cloud.github.io/excess-funds-national/
+    columns: [
+      { key: 'score', label: 'Score', sortable: true },
+      { key: 'owner', label: 'Owner', sortable: true },
+      { key: 'prop_address', label: 'County', sortable: false },
+      { key: 'amount', label: 'Surplus', sortable: true },
+      { key: 'filed', label: 'Sale / deposit', sortable: true },
+      { key: 'captured_date', label: 'Added', sortable: true },
+      { key: 'mail_address', label: 'Mailing address', sortable: false },
+      { key: 'flags', label: 'Flags', sortable: false },
+    ],
+    adapt(data) {
+      const records = (data.leads || []).map(l => ({
+        doc_num: l.lead_id, case_number: l.case_number || l.parcel, doc_type: l.fund_type,
+        filed: l.sale_date, captured_date: l.first_seen, owner: l.owner, grantee: l.plaintiff,
+        amount: l.amount, prop_address: l.county + ', ' + l.state, prop_city: l.prop_address || '',
+        prop_state: '', prop_zip: '', mail_address: l.mail_address, mail_city: l.mail_city,
+        mail_state: l.mail_state, mail_zip: l.mail_zip, flags: l.flags || [], score: l.score, raw: l,
+      }));
+      return { fetched_at: data.generated_at, total: data.total_leads || 0,
+               with_address: data.leads_with_mailing_address || 0, new_this_run: data.new_this_run || 0, records };
+    },
+    detailHTML(r) {
+      const x = r.raw;
+      return `<dl class="detail-grid">
+        <div class="full"><dt>Why it scored ${r.score}</dt><dd>${esc((x.score_reasons || []).join(' · '))}</dd></div>
+        <div><dt>County</dt><dd>${esc(x.county)}, ${esc(x.state)}</dd></div>
+        <div><dt>Case / parcel</dt><dd class="mono">${esc(x.case_number || x.parcel) || '—'}</dd></div>
+        <div><dt>Owner type</dt><dd>${esc(x.owner_type) || '—'}</dd></div>
+        <div><dt>Surplus</dt><dd>${money(x.amount)}</dd></div>
+        <div class="full"><dt>Name(s) as listed</dt><dd>${esc(x.owner_raw) || '—'}</dd></div>
+        <div class="full"><dt>Property address</dt><dd>${esc(x.prop_address) || '—'}</dd></div>
+        <div class="full"><dd><a class="link" href="${esc(x.source_url)}" target="_blank" rel="noopener">Source list →</a> &nbsp;
+          <a class="link" href="https://mauricewilli572000-cloud.github.io/excess-funds-national/" target="_blank" rel="noopener">Full nationwide dashboard →</a></dd></div>
+      </dl>`;
+    },
+  },
 ];
 
 let ACTIVE_COUNTY = COUNTIES[0];
@@ -628,7 +746,7 @@ function render(list) {
     const tr = document.createElement('tr');
     tr.className = 'row' + (r.doc_num === EXPANDED_DOC_NUM ? ' expanded' : '');
     const flagsHTML = (r.flags || []).map(f =>
-      `<span class="flag${/lis pendens|pre-foreclosure|probate|out-of-state|also in foreclosure/i.test(f) ? ' hot' : ''}">${esc(f)}</span>`
+      `<span class="flag${/lis pendens|pre-foreclosure|probate|out-of-state|also in foreclosure|heirs|25k/i.test(f) ? ' hot' : ''}">${esc(f)}</span>`
     ).join('');
     tr.innerHTML = ACTIVE_COUNTY.rowHTML ? ACTIVE_COUNTY.rowHTML(r, flagsHTML) : `
       <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
