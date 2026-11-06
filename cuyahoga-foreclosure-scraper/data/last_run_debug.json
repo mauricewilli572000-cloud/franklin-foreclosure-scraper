@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-05T13:08:13.477114Z",
-  "date_from": "10/29/2026",
-  "date_to": "11/05/2026",
+  "generated_at": "2026-11-06T12:54:22.545102Z",
+  "date_from": "10/30/2026",
+  "date_to": "11/06/2026",
   "limit": null,
-  "listings_found": 89,
-  "listings_processed": 89,
+  "listings_found": 82,
+  "listings_processed": 82,
   "case_detail_failures": 0,
-  "new_leads_this_run": 89,
-  "total_leads_on_file": 463,
+  "new_leads_this_run": 82,
+  "total_leads_on_file": 475,
   "auditor_enrichment_stats": {
-    "attempts": 99,
-    "successes": 85,
+    "attempts": 92,
+    "successes": 77,
     "no_match_by_parcel": 11,
     "no_match_by_address": 10,
     "errors": 0,
@@ -18,91 +18,91 @@
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 89,
+    "attempts": 82,
     "no_docket_entries": 0,
-    "no_complaint_image_url": 0,
+    "no_complaint_image_url": 1,
     "no_complaint_doc_url": 3,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 42,
+    "pdf_returned_directly": 35,
     "no_text_extracted": 0,
-    "text_extracted": 86,
-    "interest_rate_found": 44,
-    "loan_type_found": 41,
-    "amount_filled_from_complaint": 7,
+    "text_extracted": 78,
+    "interest_rate_found": 43,
+    "loan_type_found": 40,
+    "amount_filled_from_complaint": 8,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
       {
-        "case": "CV-26-149532",
-        "text_length": 28378,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2013\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nKeys To The Kingdom Russell LLC\nc/o Zipporah Russell, Statutory Agent\n833 E 131st Street\nCleveland, OH 44108\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate ("
+        "case": "CV-26-149640",
+        "text_length": 23239,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nPCA Real Estate Holdings LLC\n13219 Shaker Square\nCleveland, OH 44120\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate (Exhibit \"A\"), was created and signed by "
       },
       {
-        "case": "CV-26-149533",
-        "text_length": 25537,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nBoncidium, LLC\n3611 South Harbor Blvd., Ste. 100\nSanta Ana, CA 92704\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate (Exhibit \"A\"), was created and signed by "
+        "case": "CV-26-149644",
+        "text_length": 33538,
+        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nClarissa Jackson\n12470 Caves Road\nChesterland, OH 44026\nRickey Jackson\n12470 Caves Road\nChesterland, OH 44026\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate "
       },
       {
-        "case": "CV-26-149539",
-        "text_length": 42962,
-        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2018\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nJules Macumu Mubalama\n12109 Lenacrave Avenue\nCleveland, OH 44105\nUnknown spouse of Jules Macumu Mubalama\n12109 Lenacrave Avenue\nCleveland, OH 44105\nHSBC Bank USA, N.A., as Trustee for The\nRegistered Holders of Renaissance Home Equity\nLoan Trust 2006-1\n1800 Tysons Boulevard, Suite 560\nMe Lean, VA 22102\nDefe"
+        "case": "CV-26-149662",
+        "text_length": 28045,
+        "around_interest": " Lakeside Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2021\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\nPENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nRose Mary Jackson (deceased), trustee, or\nsuccessor trustee(s) of the Rose Mary Jackson\nTrust Dated March 6, 1998\n3213 E 132nd Street\nCleveland, OH 44120\nUnknown successor trustee of the Rose Mary\nJackson Trust dated March 6 1998\n3213 E 132nd Street\nCleveland, OH 44120\nState of Ohio, Department of Taxation"
       },
       {
-        "case": "CV-26-149540",
-        "text_length": 25544,
-        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2022\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nAnthony M. Sumpter\n3290 Regent Road\nCleveland, OH 44127\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate (Exhibit \"A\"), was created and signed by the\nOffice of"
+        "case": "CV-26-149668",
+        "text_length": 27183,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2023\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nRana Muhammad Farhan\n180 Creekside Drive\nMaple Heights, OH 44137\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate (Exhibit \"A\"), was created and signed by the\n"
       }
     ],
     "no_doc_url_samples": [
-      {
-        "case": "CV-26-149814",
-        "plaintiff": "WILMINGTON SAVINGS FUND SOCIETY, FSB NOT IN ITS  I",
-        "amount_owed": 175667.02,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
-            "has_url": true
-          }
-        ]
-      },
-      {
-        "case": "CV-26-149875",
-        "plaintiff": "US BANK TRUST NATIONAL ASSOCIATION",
-        "amount_owed": 107695.87,
-        "image_entries": [
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
-            "has_url": true
-          },
-          {
-            "desc": "CIVIL IMAGING MISCELLANEOUS",
-            "doc_desc": "SERVICE REQUEST",
-            "has_url": true
-          }
-        ]
-      },
       {
         "case": "CV-26-149897",
         "plaintiff": "U.S. BANK NATIONAL ASSOCIATION",
         "amount_owed": 121566.38,
         "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-149973",
+        "plaintiff": "US BANK NATIONAL ASSOCIATION",
+        "amount_owed": 68482.29,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-149998",
+        "plaintiff": "THIRD FEDERAL SAVINGS AND LOAN ASSOCIATION",
+        "amount_owed": 30846.73,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          },
           {
             "desc": "CIVIL IMAGING MISCELLANEOUS",
             "doc_desc": "SERVICE REQUEST",
@@ -152,7 +152,7 @@
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 100816,
+  "submit_html_length": 94233,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -162,10 +162,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 15,
-    "sent": 15,
+    "attempted": 12,
+    "sent": 12,
     "failed": 0,
-    "already_sent": 448,
+    "already_sent": 463,
     "sample_errors": []
   }
 }
