@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Foreclosure Leads</title>
+<title>Motivated Seller Leads</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -208,7 +208,7 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>Foreclosure Leads</h1>
+    <h1>Motivated Seller Leads</h1>
     <p class="tagline" id="tagline">E-Foreclosure filings pulled nightly from the county Clerk of Courts, matched against parcel records, and scored for outreach.</p>
   </header>
 
@@ -656,6 +656,180 @@ const COUNTIES = [
         <div class="full"><dd><a class="link" href="${esc(x.source_url)}" target="_blank" rel="noopener">Source list →</a> &nbsp;
           <a class="link" href="https://mauricewilli572000-cloud.github.io/excess-funds-national/" target="_blank" rel="noopener">Full nationwide dashboard →</a></dd></div>
       </dl>`;
+    },
+  },
+  {
+    key: 'columbus',
+    label: 'Columbus Code Enforcement',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/columbus-code-enforcement/code_enforcement.json',
+    tagline: "Not foreclosures: open City of Columbus code enforcement cases (vacant structures, exterior violations, overgrowth, repeat offenders) from the Accela permits portal, matched to Franklin County Auditor owner and mailing records and scored for outreach. Only active cases; apartments/units and noise complaints are excluded.",
+    csvUrl: 'https://raw.githubusercontent.com/mauricewilli572000-cloud/columbus-code-enforcement/main/data/ghl_code_enforcement.csv',
+    // Lives in its own repo (columbus-code-enforcement) and publishes docs/code_enforcement.json on its own GitHub Pages site.
+    // One record = one open enforcement CASE.
+    columns: [
+      { key: 'score', label: 'Score', sortable: true },
+      { key: 'owner', label: 'Owner', sortable: true },
+      { key: 'prop_address', label: 'Property', sortable: false },
+      { key: 'repeat', label: 'Repeat cases', sortable: true },
+      { key: 'filed', label: 'Opened', sortable: true },
+      { key: 'captured_date', label: 'Added', sortable: true },
+      { key: 'mail_address', label: 'Mailing address', sortable: false },
+      { key: 'flags', label: 'Flags', sortable: false },
+    ],
+    adapt(data) {
+      const records = (data.leads || []).map(l => {
+        const flags = (l.lead_tags || '').split(',').map(t => t.trim()).filter(Boolean)
+          .filter(t => t !== 'open' && !/^repeat-\d+$/.test(t))
+          .map(t => ({ absentee: 'Absentee owner', 'exterior-violation': 'Exterior violation' }[t] || (t.charAt(0).toUpperCase() + t.slice(1))));
+        if (l.repeat_violations > 1) flags.push(`${l.repeat_violations} cases at address`);
+        if (l.foreclosure_match) flags.push('Also in foreclosure');
+        if (l.mailing_state && l.mailing_state !== 'OH') flags.push('Out-of-state owner');
+        return {
+          doc_num: l.case_number,
+          case_number: l.case_number,
+          doc_type: l.record_type,
+          filed: l.filing_date,
+          captured_date: l.date_added,
+          owner: l.owner_name,
+          grantee: '',
+          prop_address: l.property_address,
+          prop_city: l.property_city,
+          prop_state: l.property_state,
+          prop_zip: l.property_zip,
+          mail_address: l.mailing_address,
+          mail_city: l.mailing_city,
+          mail_state: l.mailing_state,
+          mail_zip: l.mailing_zip,
+          flags,
+          score: l.lead_score,
+          repeat: l.repeat_violations || 0,
+          raw: l,
+        };
+      });
+      return {
+        fetched_at: data.updated,
+        total: data.count || records.length,
+        with_address: records.filter(r => r.mail_address).length,
+        new_this_run: records.filter(r => r.captured_date && data.updated && r.captured_date === String(data.updated).slice(0, 10)).length,
+        records,
+      };
+    },
+    rowHTML(r, flagsHTML) {
+      return `
+        <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
+        <td>${esc(r.owner) || '<span class="muted">not matched</span>'}</td>
+        <td>${esc(r.prop_address) || '—'}<br><span class="muted">${esc(r.prop_city || 'Columbus')}${r.prop_zip ? ', ' + esc(r.prop_zip) : ''}</span></td>
+        <td>${r.repeat || '—'}</td>
+        <td>${esc(r.filed) || '—'}</td>
+        <td>${esc(r.captured_date) || '—'}</td>
+        <td>${esc(fullMailAddress(r)) || '<span class="muted">not on file</span>'}</td>
+        <td>${flagsHTML}</td>`;
+    },
+    detailHTML(r) {
+      const x = r.raw;
+      return `
+        <dl class="detail-grid">
+          <div class="full"><dt>Case type</dt><dd>${esc(x.record_type) || '—'} <span class="muted">(${esc(x.record_status) || '—'})</span></dd></div>
+          <div class="full"><dt>Inspector's description</dt><dd>${esc(x.description) || '—'}</dd></div>
+          <div><dt>Case number</dt><dd class="mono">${esc(x.case_number)}</dd></div>
+          <div><dt>Opened</dt><dd>${esc(x.filing_date) || '—'}</dd></div>
+          <div><dt>Cases at this address</dt><dd>${x.repeat_violations || 1}</dd></div>
+          <div><dt>Absentee owner</dt><dd>${x.absentee_owner ? 'Yes' : 'No'}</dd></div>
+          <div><dt>Last sale</dt><dd>${esc(x.last_sale_date) || '—'}${x.last_sale_price && x.last_sale_price !== '0' ? ' · ' + money(Number(x.last_sale_price)) : ''}</dd></div>
+          <div><dt>Year built / land use</dt><dd>${esc(x.year_built) || '—'} / ${esc(x.land_use) || '—'}${x.homestead ? ' · homestead' : ''}</dd></div>
+          ${x.foreclosure_match ? `<div class="full"><dt>Foreclosure match</dt><dd>${esc(x.foreclosure_match)} ${esc(x.foreclosure_case_number)}</dd></div>` : ''}
+          <div class="full"><dt>Property address</dt><dd>${esc(fullPropAddress(r)) || '—'}</dd></div>
+          <div class="full"><dt>Mailing address</dt><dd>${esc(fullMailAddress(r)) || '—'}</dd></div>
+          <div class="full"><dd><a class="link" href="${esc(x.source_url)}" target="_blank" rel="noopener">Open case on the Columbus permits portal →</a></dd></div>
+        </dl>`;
+    },
+  },
+  {
+    key: 'agents',
+    label: 'Agent Roster',
+    dataUrl: 'https://mauricewilli572000-cloud.github.io/agent-roster-scraper/data/records.json',
+    tagline: "Not property leads: licensed real estate agents in Franklin, Cuyahoga, Summit and Hamilton counties, with direct phone numbers where found, ranked by how many distressed, well-under-market or stale (120+ days) listings they currently have. Use for off-market outreach.",
+    csvUrl: 'https://raw.githubusercontent.com/mauricewilli572000-cloud/agent-roster-scraper/main/exports/ghl_distressed_agents.csv',
+    // Lives in its own repo (agent-roster-scraper) and publishes docs/data/records.json on its own GitHub Pages site.
+    // One record = one AGENT. Its own dashboard: https://mauricewilli572000-cloud.github.io/agent-roster-scraper/
+    columns: [
+      { key: 'score', label: 'Distress score', sortable: true },
+      { key: 'owner', label: 'Agent', sortable: true },
+      { key: 'prop_address', label: 'Brokerage', sortable: false },
+      { key: 'flagged', label: 'Flagged listings', sortable: true },
+      { key: 'county', label: 'County', sortable: true },
+      { key: 'captured_date', label: 'Added', sortable: true },
+      { key: 'mail_address', label: 'Phone / email', sortable: false },
+      { key: 'flags', label: 'Flags', sortable: false },
+    ],
+    adapt(data) {
+      const list = Array.isArray(data) ? data : (data.records || data.agents || []);
+      const records = list.map(a => {
+        const flags = [];
+        if (a.distressed_listings) flags.push(`${a.distressed_listings} distressed`);
+        if (a.under_market_listings) flags.push(`${a.under_market_listings} under market`);
+        if (a.stale_listings) flags.push(`${a.stale_listings} stale 120d+`);
+        if (a.new_listings) flags.push(`${a.new_listings} new`);
+        if (a.lead_match_listings) flags.push('Also in foreclosure');
+        if (a.phone) flags.push('Has phone');
+        if (a.license_check && a.license_check !== 'ok' && a.license_check !== 'verified') flags.push('License: ' + a.license_check);
+        return {
+          doc_num: a.id || a.license_number || a.name,
+          case_number: a.license_number || '',
+          doc_type: a.license_type || 'Agent',
+          filed: a.last_listing || '',
+          captured_date: a.first_seen || '',
+          owner: a.name,
+          grantee: '',
+          prop_address: a.brokerage || '',
+          prop_city: a.city || '', prop_state: a.state || '', prop_zip: a.zip || '',
+          mail_address: [a.phone, a.email].filter(Boolean).join(' · '),
+          mail_city: '', mail_state: '', mail_zip: '',
+          county: a.county || '',
+          flagged: a.flagged_listings || 0,
+          flags,
+          score: Math.round(a.distress_score || 0),
+          raw: a,
+        };
+      });
+      // records.json is a bare list (the timestamp lives in meta.json), so use the newest last_seen
+      const seen = list.map(a => a.last_seen || a.first_seen || '').filter(Boolean).sort();
+      return {
+        fetched_at: (data && data.generated_at) || seen[seen.length - 1] || (records.length ? 'see agent dashboard' : null),
+        total: records.length,
+        with_address: records.filter(r => r.raw.phone).length,
+        new_this_run: 0,
+        records,
+      };
+    },
+    rowHTML(r, flagsHTML) {
+      const x = r.raw;
+      return `
+        <td><span class="score ${scoreClass(r.score)}">${r.score}</span></td>
+        <td>${esc(r.owner) || '—'}<br><span class="muted">${esc(x.license_type) || ''}</span></td>
+        <td>${esc(r.prop_address) || '<span class="muted">—</span>'}${x.city ? `<br><span class="muted">${esc(x.city)}</span>` : ''}</td>
+        <td>${r.flagged || '—'}</td>
+        <td>${esc(r.county) || '—'}</td>
+        <td>${esc(r.captured_date) || '—'}</td>
+        <td>${x.phone ? `<a class="link" href="tel:${esc(x.phone)}">${esc(x.phone)}</a>` : '<span class="muted">no phone</span>'}${x.email ? `<br><span class="muted">${esc(x.email)}</span>` : ''}</td>
+        <td>${flagsHTML}</td>`;
+    },
+    detailHTML(r) {
+      const x = r.raw;
+      return `
+        <dl class="detail-grid">
+          <div><dt>License</dt><dd class="mono">${esc(x.license_number) || '—'}</dd></div>
+          <div><dt>Type / expires</dt><dd>${esc(x.license_type) || '—'} / ${esc(x.license_expires || x.expiration) || '—'}</dd></div>
+          <div><dt>License check</dt><dd>${esc(x.license_check) || '—'}</dd></div>
+          <div><dt>Brokerage (license record)</dt><dd>${esc(x.license_brokerage || x.brokerage) || '—'}</dd></div>
+          <div><dt>Phone (source)</dt><dd>${esc(x.phone) || '—'} <span class="muted">${esc(x.phone_source) || ''}</span></dd></div>
+          <div><dt>Email</dt><dd>${esc(x.email) || '—'}</dd></div>
+          <div><dt>Listings: flagged / distressed / under market / stale / new</dt>
+            <dd>${x.flagged_listings || 0} / ${x.distressed_listings || 0} / ${x.under_market_listings || 0} / ${x.stale_listings || 0} / ${x.new_listings || 0}</dd></div>
+          <div><dt>Last flagged listing</dt><dd>${esc(x.last_listing) || '—'}</dd></div>
+          <div><dt>First / last seen</dt><dd>${esc(x.first_seen) || '—'} / ${esc(x.last_seen) || '—'}</dd></div>
+          <div class="full"><dd><a class="link" href="https://mauricewilli572000-cloud.github.io/agent-roster-scraper/" target="_blank" rel="noopener">Open the full agent roster dashboard →</a></dd></div>
+        </dl>`;
     },
   },
 ];
