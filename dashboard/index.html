@@ -376,8 +376,10 @@ const COUNTIES = [
         if (l.mailing_state && l.mailing_state !== 'OH') flags.push('Out-of-state owner');
         if (l.filings_90d >= 3) flags.push('Active last 90 days');
         const verif = { 'verified': 'Owner verified (Auditor)', 'via manager': 'Owner found via manager',
-                        'plaintiff not owner of record': 'Plaintiff is not owner of record' }[l.verification];
+                        'plaintiff not owner of record': 'Plaintiff is not owner of record',
+                        'sold since filing': 'Rentals sold since filing (may have exited)' }[l.verification];
         if (verif) flags.push(verif);
+        if (l.sold_since > 0 && l.verification !== 'sold since filing') flags.push(l.sold_since + ' rental(s) sold since filing');
         return {
           doc_num: l.lead_id,
           case_number: (l.case_numbers || []).join(', '),
@@ -432,6 +434,7 @@ const COUNTIES = [
           <div><dt>Distinct rental addresses</dt><dd>${x.property_count}</dd></div>
           <div><dt>Owner verification (Auditor parcels)</dt><dd>${esc(x.verification) || '—'}</dd></div>
           <div><dt>Rentals matched to a parcel</dt><dd>${x.parcels_matched || 0} of ${x.property_count}</dd></div>
+          <div><dt>Rentals sold since the filing</dt><dd>${x.sold_since || 0}</dd></div>
           <div><dt>Owner's parcels countywide</dt><dd>${x.owner_portfolio ? x.owner_portfolio : '—'}</dd></div>
           <div class="full"><dt>Why it scored ${r.score}</dt><dd>${esc((x.signals || []).join(' · '))}</dd></div>
           <div class="full"><dt>${(x.verification === 'verified' || x.verification === 'via manager') ? 'Owner mailing address (Auditor)' : 'Mailing address (court filing)'}</dt><dd>${esc(fullMailAddress(r)) || '—'}</dd></div>
