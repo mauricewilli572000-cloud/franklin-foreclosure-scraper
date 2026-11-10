@@ -1,0 +1,226 @@
+
+  :root {
+    --bg: #17140f;
+    --panel: #201b14;
+    --panel-2: #2a2419;
+    --border: #3d3625;
+    --ink: #efe8d8;
+    --ink-dim: #a99c81;
+    --ink-faint: #766a53;
+    --gold: #c9a24b;
+    --gold-dim: #8a6f38;
+    --good-bg: #21301f; --good-fg: #a8d1a0;
+    --warn-bg: #362b12; --warn-fg: #e0bd7a;
+    --bad-bg: #331c17;  --bad-fg: #e0a89c;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', -apple-system, Segoe UI, Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 2.5rem 1.75rem 5rem; }
+
+  header h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.9rem;
+    margin: 0 0 .3rem;
+    letter-spacing: -0.01em;
+  }
+  header p.tagline {
+    color: var(--ink-dim);
+    margin: 0 0 1.1rem;
+    max-width: 60ch;
+  }
+  .stats {
+    color: var(--ink-dim);
+    font-size: .88rem;
+    margin: 0 0 1.6rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .stats strong { color: var(--ink); font-weight: 600; }
+  .stats a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+  .stats a:hover { color: var(--ink); }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+  .toolbar input[type="search"] {
+    flex: 1 1 16rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: .55rem .8rem;
+    border-radius: .35rem;
+    font-size: .9rem;
+  }
+  .toolbar input[type="search"]::placeholder { color: var(--ink-faint); }
+  .toolbar select {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: .55rem .7rem;
+    border-radius: .35rem;
+    font-size: .85rem;
+  }
+  .toolbar label.check {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    color: var(--ink-dim);
+    font-size: .85rem;
+    white-space: nowrap;
+    padding: .3rem .2rem;
+  }
+  .toolbar label.check input { accent-color: var(--gold); }
+
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    position: sticky; top: 0;
+    background: var(--panel-2);
+    text-align: left;
+    padding: .65rem .7rem;
+    font-weight: 500;
+    color: var(--ink-dim);
+    font-size: .78rem;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  thead th:hover { color: var(--ink); }
+  thead th.sorted { color: var(--gold); }
+  thead th .arrow { font-size: .7em; opacity: .8; margin-left: .15rem; }
+
+  tbody tr.row { cursor: pointer; border-bottom: 1px solid var(--border); }
+  tbody tr.row:hover { background: var(--panel); }
+  tbody tr.row.expanded { background: var(--panel); }
+  /* Low interest rate: an existing cheap mortgage is the best fit for subject-to deals. */
+  tbody tr.row.lowrate { background: #2d2713; box-shadow: inset 3px 0 0 var(--gold); }
+  tbody tr.row.lowrate:hover, tbody tr.row.lowrate.expanded { background: #38301a; }
+  .rate { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rate.low {
+    display: inline-block; padding: .1rem .45rem; border-radius: 999px;
+    border: 1px solid var(--gold-dim); background: #3a3017; color: var(--gold); font-weight: 600;
+  }
+  tbody td { padding: .65rem .7rem; vertical-align: top; }
+
+  .score {
+    display: inline-block;
+    min-width: 2.1rem;
+    text-align: center;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    padding: .15rem .45rem;
+    border-radius: .3rem;
+  }
+  .score-hi  { background: var(--good-bg); color: var(--good-fg); }
+  .score-mid { background: var(--warn-bg); color: var(--warn-fg); }
+  .score-lo  { background: var(--bad-bg);  color: var(--bad-fg); }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; font-size: .82rem; color: var(--ink-dim); }
+  .muted { color: var(--ink-faint); }
+  .amount { font-variant-numeric: tabular-nums; }
+
+  .flag {
+    display: inline-block;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: .25rem;
+    padding: .1rem .4rem;
+    margin: 0 .25rem .25rem 0;
+    font-size: .72rem;
+    color: var(--ink-dim);
+  }
+  .flag.hot { border-color: var(--gold-dim); color: var(--gold); }
+
+  .detail-row td {
+    background: #1b170f;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.4rem 1.3rem;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem 1.6rem;
+  }
+  .detail-grid dt {
+    font-size: .72rem;
+    text-transform: none;
+    color: var(--ink-faint);
+    margin-bottom: .15rem;
+  }
+  .detail-grid dd { margin: 0; }
+  .detail-grid .full { grid-column: 1 / -1; }
+
+  a.link { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+  a.link:hover { color: var(--ink); }
+
+  #empty {
+    color: var(--ink-dim);
+    padding: 3rem 1rem;
+    text-align: center;
+    border: 1px dashed var(--border);
+    border-radius: .5rem;
+  }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 1.5rem 1rem 4rem; }
+    thead th:nth-child(6), tbody td:nth-child(6) { display: none; } /* hide mailing address col on small screens */
+  }
+
+  .county-tabs {
+    display: flex;
+    gap: .25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .county-tabs button {
+    appearance: none;
+    background: none;
+    border: none;
+    color: var(--ink-dim);
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 500;
+    padding: .6rem 1rem .55rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .county-tabs button:hover { color: var(--ink); }
+  .county-tabs button[aria-selected="true"] {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* Navigation between dashboards */
+  .dash-nav {
+    display: flex; flex-wrap: wrap; gap: .25rem 1.1rem; align-items: center;
+    margin: 0 0 1.6rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border);
+    font-size: .86rem;
+  }
+  .dash-nav a { color: var(--ink-dim); text-decoration: none; padding: .15rem 0; border-bottom: 1px solid transparent; }
+  .dash-nav a:hover { color: var(--ink); }
+  .dash-nav a.home { color: var(--gold); margin-right: .4rem; }
+  .dash-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* Landing page cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+  a.card {
+    display: block; padding: 1.15rem 1.2rem 1.25rem; text-decoration: none; color: var(--ink);
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+  }
+  a.card:hover { border-color: var(--gold-dim); background: var(--panel-2); }
+  a.card h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.2rem; font-weight: 600; margin: 0 0 .35rem; color: var(--gold); }
+  a.card p { margin: 0 0 .7rem; color: var(--ink-dim); }
+  a.card .tabs { font-size: .8rem; color: var(--ink-faint); }

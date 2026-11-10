@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foreclosure Leads · Motivated Seller Leads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="dash-nav" id="dash-nav"></nav>
+  <header>
+    <h1>Foreclosure Leads</h1>
+    <p class="tagline" id="tagline"></p>
+  </header>
+
+  <div class="county-tabs" id="county-tabs" role="tablist"></div>
+
+  <div class="stats" id="stats">Loading records…</div>
+
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search owner, address, case number…">
+    <select id="minScore">
+      <option value="0">Any score</option>
+      <option value="70">Score 70+</option>
+      <option value="50">Score 50+</option>
+      <option value="30">Score 30+</option>
+    </select>
+    <select id="flagFilter">
+      <option value="">Any flag</option>
+    </select>
+    <label class="check"><input type="checkbox" id="addressOnly"> Has address</label>
+    <span id="rateControls" style="display:contents;">
+      <select id="lowRateMax" title="Rates at or below this are highlighted as low">
+        <option value="3.5">Low rate: 3.5% or less</option>
+        <option value="4.5" selected>Low rate: 4.5% or less</option>
+        <option value="5.5">Low rate: 5.5% or less</option>
+      </select>
+      <label class="check"><input type="checkbox" id="lowRateOnly"> Low rate only <span id="lowRateCount" class="muted"></span></label>
+    </span>
+  </div>
+
+  <div id="table-wrap"></div>
+  <div id="empty" style="display:none;">No leads on file yet — once the nightly scrape runs, they'll appear here.</div>
+</div>
+
+<script>window.PAGE = {"id": "foreclosures", "heading": "Foreclosure Leads", "keys": ["franklin", "cuyahoga", "summit"]};</script>
+<script src="dashboards.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
