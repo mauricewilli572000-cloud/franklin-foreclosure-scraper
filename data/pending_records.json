@@ -1,7 +1,7 @@
 {
-  "fetched_at": "2026-11-10T15:29:32+00:00",
+  "fetched_at": "2026-11-12T04:11:17+00:00",
   "note": "Leads with no address yet; retried on later runs.",
-  "total": 137,
+  "total": 139,
   "records": [
     {
       "doc_num": "28241679",
@@ -86,6 +86,37 @@
       "interest_rate": null,
       "case_number": "28317665",
       "loan_type": ""
+    },
+    {
+      "doc_num": "28415967",
+      "doc_type": "Foreclosure",
+      "filed": "2026-11-10",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "LMCF 3 LLC AN OHIO LIMITED LIABILITY COM",
+      "grantee": "PACIFIC ASSET HOLDING LLC",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28415967/documents",
+      "flags": [
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 55,
+      "interest_rate": null,
+      "case_number": "28415967",
+      "loan_type": "",
+      "parcel_number": "",
+      "captured_date": "2026-11-12",
+      "attempts": 1
     },
     {
       "doc_num": "28247524",
@@ -3726,6 +3757,36 @@
       "parcel_number": "",
       "captured_date": "2026-11-03",
       "attempts": 2
+    },
+    {
+      "doc_num": "28412587",
+      "doc_type": "Foreclosure",
+      "filed": "2026-11-10",
+      "cat": "efc",
+      "cat_label": "E-Foreclosure",
+      "owner": "PAUL D GIFFORD",
+      "grantee": "THE HUNTINGTON NATIONAL BANK",
+      "amount": null,
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "OH",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28412587/documents",
+      "flags": [
+        "New this week"
+      ],
+      "score": 45,
+      "interest_rate": null,
+      "case_number": "28412587",
+      "loan_type": "",
+      "parcel_number": "",
+      "captured_date": "2026-11-12",
+      "attempts": 1
     }
   ]
 }
