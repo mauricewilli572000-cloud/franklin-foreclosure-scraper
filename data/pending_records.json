@@ -1,7 +1,7 @@
 {
-  "fetched_at": "2026-11-12T04:11:17+00:00",
+  "fetched_at": "2026-11-12T15:49:11+00:00",
   "note": "Leads with no address yet; retried on later runs.",
-  "total": 139,
+  "total": 138,
   "records": [
     {
       "doc_num": "28241679",
@@ -86,37 +86,6 @@
       "interest_rate": null,
       "case_number": "28317665",
       "loan_type": ""
-    },
-    {
-      "doc_num": "28415967",
-      "doc_type": "Foreclosure",
-      "filed": "2026-11-10",
-      "cat": "efc",
-      "cat_label": "E-Foreclosure",
-      "owner": "LMCF 3 LLC AN OHIO LIMITED LIABILITY COM",
-      "grantee": "PACIFIC ASSET HOLDING LLC",
-      "amount": null,
-      "legal": "",
-      "prop_address": "",
-      "prop_city": "",
-      "prop_state": "OH",
-      "prop_zip": "",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "clerk_url": "https://clerknewfiling.franklincountyohio.gov/api/submissions/28415967/documents",
-      "flags": [
-        "LLC / corp owner",
-        "New this week"
-      ],
-      "score": 55,
-      "interest_rate": null,
-      "case_number": "28415967",
-      "loan_type": "",
-      "parcel_number": "",
-      "captured_date": "2026-11-12",
-      "attempts": 1
     },
     {
       "doc_num": "28247524",
