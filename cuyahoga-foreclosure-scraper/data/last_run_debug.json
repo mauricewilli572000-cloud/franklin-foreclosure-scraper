@@ -1,42 +1,37 @@
 {
-  "generated_at": "2026-11-12T13:45:10.078544Z",
-  "date_from": "11/05/2026",
-  "date_to": "11/12/2026",
+  "generated_at": "2026-11-13T13:04:35.398732Z",
+  "date_from": "11/06/2026",
+  "date_to": "11/13/2026",
   "limit": null,
-  "listings_found": 91,
-  "listings_processed": 91,
+  "listings_found": 115,
+  "listings_processed": 115,
   "case_detail_failures": 0,
-  "new_leads_this_run": 91,
-  "total_leads_on_file": 553,
+  "new_leads_this_run": 115,
+  "total_leads_on_file": 586,
   "auditor_enrichment_stats": {
-    "attempts": 105,
-    "successes": 89,
-    "no_match_by_parcel": 11,
-    "no_match_by_address": 11,
+    "attempts": 129,
+    "successes": 112,
+    "no_match_by_parcel": 13,
+    "no_match_by_address": 12,
     "errors": 0,
     "sample_errors": [],
     "backfilled_existing_leads": 0
   },
   "complaint_pdf_stats": {
-    "attempts": 91,
+    "attempts": 115,
     "no_docket_entries": 0,
-    "no_complaint_image_url": 0,
-    "no_complaint_doc_url": 1,
+    "no_complaint_image_url": 2,
+    "no_complaint_doc_url": 6,
     "not_a_pdf": 0,
-    "pdf_returned_directly": 53,
+    "pdf_returned_directly": 68,
     "no_text_extracted": 0,
-    "text_extracted": 90,
-    "interest_rate_found": 34,
-    "loan_type_found": 39,
-    "amount_filled_from_complaint": 3,
+    "text_extracted": 107,
+    "interest_rate_found": 36,
+    "loan_type_found": 36,
+    "amount_filled_from_complaint": 7,
     "errors": 0,
     "sample_errors": [],
     "no_rate_text_samples": [
-      {
-        "case": "CV-26-149961",
-        "text_length": 25124,
-        "around_interest": "s:\nSituated in the City of Maple Heights, County of Cuyahoga and State of Ohio:\nAnd known as being Unit 101 in Building A, together with an undivided interest\nin and to all the common areas and facilities appurtenant to said unit in The\nSwiss Chalet Condominium as established by the Declaration of Condominium\nOwnership, the Bylaws and other exhibits attached thereto recorded in Deed\nVolume 14855, Page 979 et seq. of Cuyahoga County Records and as shown\nby the drawings of The Swiss Chalet Condomi"
-      },
       {
         "case": "CV-26-150040",
         "text_length": 32939,
@@ -51,13 +46,113 @@
         "case": "CV-26-150050",
         "text_length": 24849,
         "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2019\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nLEG Limited\nc/o Michael Connick Esq., Statutory Agent\n526 Superior Avenue., Suite 925\nCleveland, OH 44114\nDefendant(s).\n1. Now comes the Plaintiff, County Treasurer of Cuyahoga County, Ohio, and for his cause\nof action against the defendant(s), states accordingly:\nA. That a Delinquent Land Certificate (Exh"
+      },
+      {
+        "case": "CV-26-150051",
+        "text_length": 34923,
+        "around_interest": "side Ave., Ste. 300\nCleveland, Ohio 44113 Year Certified: 2024\nPlaintiff\nCOMPLAINT FOR COLLECTION OF\nDELINQUENT TAXES, ASSESSMENTS\n-vs- PENALTIES AND INTEREST,\nFORECLOSURE AND EQUITABLE\nRELIEF\nUnknown heirs, devisees, legatees, assignees,\nexecutors, administrators and legal representatives\nof Gregory Shelley\nAddress Unknown\nPamela Shelley\n6610 Wakefield Avenue\nCleveland, OH 44102\nDavid Alan Shelley\n6604 Wakefield Avenue\nCleveland, OH 44102\nGary Shelley\n1370 West 116th Street\nCleveland, OH 44102\n"
       }
     ],
     "no_doc_url_samples": [
       {
-        "case": "CV-26-150282",
-        "plaintiff": "EVERBANK NA",
-        "amount_owed": 193702.93,
+        "case": "CV-26-150323",
+        "plaintiff": "LAKEVIEW LOAN SERVICING, LLC",
+        "amount_owed": 155346.06,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-150324",
+        "plaintiff": "U.S. BANK NATIONAL ASSOCIATION",
+        "amount_owed": 134631.48,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-150331",
+        "plaintiff": "PENNYMAC LOAN SERVICES LLC",
+        "amount_owed": 0.0,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "PRELIMINARY JUDICIAL REPORT",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-150388",
+        "plaintiff": "PNC BANK, NATIONAL ASSOCIATION",
+        "amount_owed": 0.0,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-150395",
+        "plaintiff": "NEWREZ LLC DBA SHELLPOINT MORTGAGE SERVICING",
+        "amount_owed": 0.0,
+        "image_entries": [
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          },
+          {
+            "desc": "CIVIL IMAGING MISCELLANEOUS",
+            "doc_desc": "SERVICE REQUEST",
+            "has_url": true
+          }
+        ]
+      },
+      {
+        "case": "CV-26-150405",
+        "plaintiff": "U.S. BANK NATIONAL ASSOCIATION",
+        "amount_owed": 156677.11,
         "image_entries": [
           {
             "desc": "CIVIL IMAGING MISCELLANEOUS",
@@ -72,13 +167,36 @@
         ]
       }
     ],
-    "no_amount_text_samples": []
+    "no_amount_text_samples": [
+      {
+        "case": "CV-26-150308",
+        "dollar_snippets": [
+          "t _, View Filing Date Party Type Docket Description Image 07/16/2020 N/A JL JUDGMENT AMT: $3,662.26 RENDERED BY: GARFIELD HTS MUNICIPAL COU",
+          "LAND CREDIT 07/16/2020 N/A SF JUDGEMENT LIEN CASE FILED Costs Account Amount CLERK'S FEES $20.00 TOTAL COST $20.00 Only the official cou",
+          "2020 N/A SF JUDGEMENT LIEN CASE FILED Costs Account Amount CLERK'S FEES $20.00 TOTAL COST $20.00 Only the official court records availab",
+          "_... View Filing Date Party Type Docket Description Image 09/02/2020 N/A JL JUDGMENT AMT: $2,465.20 RENDERED BY: BEDFORD MUNICIPAL COURT OR",
+          "ER & STRAKA 09/02/2020 N/A SF JUDGEMENT LIEN CASE FILED Costs Account Amount CLERK'S FEES $20.00 TOTAL COST $20.00 Only the official cou",
+          "2020 N/A SF JUDGEMENT LIEN CASE FILED Costs Account Amount CLERK'S FEES $20.00 TOTAL COST $20.00 Only the official court records availab"
+        ]
+      },
+      {
+        "case": "CV-26-150335",
+        "dollar_snippets": [
+          "122, in the amount of Thirty-Eight Thousand Eight Hundred Seventy-Two and 28/100 Dollars ($38,872.28). 5. Tatil, LLC owes Shaker Club assess",
+          "bove, in the total amount of Thirty-Three Thousand Four Hundred Fifty and 00/100 Dollars ($33,450.00) as of October 29, 2026, based upon unp",
+          "later determined. 7. Said balance as described in Paragraph 5 is increasing at a rate of $1,033.12 per month for maintenance fees, subject",
+          "e fees, subject to change based upon future budgets of Shaker Club, utilities, a possible $50.00 per month for administrative late payme",
+          "erty belongs, for the sum of Thirty-Three Thousand Four Hundred Fifty and 00/100 Dollars ($33,450.00) as of October 29, 2026. 10. Said balan",
+          "Tatil, LLC, in the amount of Thirty-Three Thousand Four Hundred Fifty and 00/100 Dollars ($33,450.00) as of October 29, 2026, for the lien i"
+        ]
+      }
+    ]
   },
   "blocked_mid_run": false,
   "search_page_html_length": 40781,
   "type_select_html_length": 23551,
   "submit_was_async": false,
-  "submit_html_length": 102477,
+  "submit_html_length": 125494,
   "submit_html_head": "\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-us\">\r\n<head id=\"Head1\">\r\n    <!--\r\n    Created by Artisteer v2.4.0.26594\r\n    Base template (without user's data) checked by http://validator.w3.org : \"This page is valid XHTML 1.0 Transitional\"\r\n  -->\r\n    \r\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=100\" /> -->\r\n    \r\n    <meta name=\"author\" content=\"PROWARE\" /><meta name=\"dcterms.rightsHolder\" content=\"PROWARE\" /><meta name=\"dcterms.rights\" content=\"Copyright \u00a9 PROWARE All Rights Reserved.\" /><title>\r\n\t\r\n    Foreclosure Listing Results\r\n</title>    \r\n    \r\n    <style type=\"text/css\" media=\"print\">\r\n        .hide_print {display: none;}\r\n    </style>\r\n\r\n    <link id=\"css1\" rel=\"Stylesheet\" href=\"style.css\" type=\"text/css\" /><link id=\"css4\" rel=\"Stylesheet\" href=\"style_customb.css\" type=\"text/css\" /><link id=\"css5\" rel=\"Stylesheet\" href=\"style_wcag.css\" type=\"text/css\" />\r\n        <script type=\"text/javascript\" src=\"script.js\"></script>\r\n        <script type=\"text/javascript\" src=\"script_custom.js\"></script>\r\n        \r\n    \r\n\r\n    <script src='https://www.google.com/recaptcha/api.js' type=\"text/javascript\"></script>\r\n<meta name=\"copyright\" content=\"Copyright \u00a9 2026 PROWARE All Rights Reserved.\" /></head>\r\n<body>\r\n    <form method=\"post\" action=\"./ForeclosureSearchResults.aspx\" id=\"form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />\r\n<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"",
   "submit_postback_status": 200,
   "submit_postback_delta_keys": [
@@ -88,10 +206,10 @@
   "current_url_after_submit": "https://cpdocket.cp.cuyahogacounty.gov/ForeclosureSearchResults.aspx",
   "ghl_push": {
     "enabled": true,
-    "attempted": 24,
-    "sent": 24,
+    "attempted": 33,
+    "sent": 33,
     "failed": 0,
-    "already_sent": 529,
+    "already_sent": 553,
     "sample_errors": []
   }
 }
